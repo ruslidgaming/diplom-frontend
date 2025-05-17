@@ -27,7 +27,6 @@
     }
 }
 
-// Стили кнопок
 ._btn {
     display: inline-block;
     text-align: center;
@@ -39,6 +38,7 @@
     &._blue {
         color: white;
         background-color: var(--clr-blue);
+        border-radius: 4px;
 
         @media (min-width: em($mPoint-4, 16)) {
             &:hover {
@@ -49,5 +49,27 @@
 
     @media (max-width: em($mPoint-5, 16)) {
         font-size: 16px !important;
+    }
+}
+
+.h1 {
+    font-family: var(--font-unbounded);
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 60px;
+
+    & span {
+        color: var(--clr-blue);
+    }
+}
+
+.h2 {
+    font-family: var(--font-unbounded);
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 60px;
+
+    & span {
+        color: var(--clr-blue);
     }
 }

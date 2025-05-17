@@ -33,24 +33,84 @@
         font-style: normal;
         font-weight: 700;
         font-size: 22px;
-        line-height: 24px;
+        line-height: prc(24, 22);
         color: var(--clr-orange);
     }
 }
 .header {
-    &__logo {
-    }
+    background-color: white;
+    padding: 20px 0;
+    border-radius: 0 0 50px 50px;
+
     &__container {
         display: flex;
         align-items: center;
         justify-content: space-between;
     }
     &__nav {
+        display: flex;
+        align-items: center;
+        gap: 15px;
     }
 }
 .nav {
+    font-family: var(--font-unbounded);
+    font-weight: 400;
+
     &__item {
+        &:hover {
+            color: var(--clr-blue);
+        }
     }
     &__button {
+        padding: 10px 15px;
+        font-size: 16px !important;
+    }
+}
+
+.banner {
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: white;
+    border-radius: 50px;
+
+    .banner__container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 100px 20px 180px 20px;
+    }
+
+    &__text {
+        flex: 0 0 auto;
+        max-width: 825px;
+    }
+
+    &__btn {
+        margin-top: 30px;
+        padding: 20px 100px;
+    }
+
+    &__left {
+        flex: 1 1 100%;
+
+        display: flex;
+        justify-content: center;
+    }
+
+    &__img {
+        width: 400px;
+        height: 400px;
+
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        & img {
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+        }
     }
 }

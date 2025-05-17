@@ -24,10 +24,10 @@ export const Icon = (props: Props) => {
         <div style={_style} className={` ${props.className}`}>
             <img
                 draggable="false"
-                onClick={props.onClick ? (e) => props.onClick!(e) : () => {}}
+                onClick={props.onClick ? (e) => props.onClick!(e) : () => { }}
                 src={img}
                 alt=""
-                style={_style} 
+                style={_style}
             />
         </div>
     );

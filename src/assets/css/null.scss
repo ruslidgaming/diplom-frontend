@@ -3,7 +3,7 @@
 	margin: 0px;
 	border: 0px;
 	scroll-behavior: smooth;
-	transition: 0.5s;
+	transition: 0.3s;
 }
 
 *,
@@ -45,6 +45,7 @@ body {
 	line-height: 1;
 	font-weight: 400;
 	font-family: $commonFont;
+	color: var(--clr-black);
 	text-rendering: optimizeLegibility;
 	-ms-text-size-adjust: 100%;
 	-moz-text-size-adjust: 100%;
