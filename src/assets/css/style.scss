@@ -1,0 +1,56 @@
+// =====Подключение шрифтов=====
+@import "fonts.scss";
+
+// =====Подключение обнуления=====
+@import "null.scss";
+
+// =====Общие формулы=====
+@import "formulas.scss";
+
+// =====Подключение общих стилей=====
+@import "common.scss";
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    &__img {
+        width: 70px;
+        height: 54px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        & img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+    &__text {
+        font-family: "Unbounded";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 22px;
+        line-height: 24px;
+        color: var(--clr-orange);
+    }
+}
+.header {
+    &__logo {
+    }
+    &__container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    &__nav {
+    }
+}
+.nav {
+    &__item {
+    }
+    &__button {
+    }
+}
