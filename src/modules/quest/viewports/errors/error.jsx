@@ -6,7 +6,7 @@ import Error403 from './components/Error403';
 export default function Errors() {
     const { codeNum } = useParams();
 
-    function errorCode(code: string) {
+    function errorCode(code) {
         switch (code) {
             case "404":
                 return <Error404 />;
