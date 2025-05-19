@@ -1014,3 +1014,85 @@
         padding: 15px;
     }
 }
+
+.regLog {
+    &__textarea {
+        & .input__input {
+            & textarea {
+                height: 200px;
+            }
+        }
+    }
+    &__form {
+        margin-top: 70px;
+        margin-bottom: 70px;
+
+        &-btns {
+            display: flex;
+            justify-content: center;
+        }
+        &-btn {
+            cursor: pointer;
+            border: 1px solid lightgray;
+            border-radius: 8px;
+            color: lightgray;
+            font-family: var(--font-unbounded);
+
+            font-size: 18px;
+            padding: 8px 15px;
+
+            &:first-child {
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+            &:last-child {
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+            }
+
+            &._active {
+                border: 1px solid var(--clr-blue);
+                background-color: var(--clr-blue);
+                color: white;
+            }
+        }
+
+        &.form-register {
+            & .form__body {
+                & .form__inputs {
+                    max-height: 400px;
+                    overflow-y: auto;
+                    padding-right: 5px;
+
+                    &::-webkit-scrollbar {
+                        width: 5px;
+                        height: 2px;
+                    }
+
+                    &::-webkit-scrollbar-track {
+                        background-color: var(--clr-fon);
+                    }
+
+                    &::-webkit-scrollbar-thumb {
+                        border-radius: 8px;
+                        background-color: rgba(0, 0, 255, 0.579);
+                    }
+                }
+            }
+        }
+    }
+    &__description {
+        color: var(--clr-darkgray);
+        @include adaptivePoints(font-size, 16, 16, 14);
+        text-align: center;
+        & a {
+            color: var(--clr-blue);
+        }
+    }
+    &__input .input__input {
+        display: flex;
+        align-items: center;
+        padding-right: 5px;
+        gap: 10px;
+    }
+}

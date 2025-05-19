@@ -1,6 +1,7 @@
 import { observer } from "mobx-react-lite";
 import logo from "../../../assets/img/logo.svg"
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export const Header = observer(() => {
 
@@ -25,11 +26,11 @@ export const Header = observer(() => {
                 </div>
 
                 <div className="header__nav nav">
-                    <a href="#" className="nav__item">Примеры</a>
-                    <a href="#" className="nav__item">О платформе</a>
-                    <a href="#" className="nav__item">Контакты</a>
-                    <a href="#" className="nav__item">Тарифы</a>
-                    <a href="#" className="nav__button _btn _blue">Войти</a>
+                    <Link to="#" className="nav__item">Примеры</Link>
+                    <Link to="#" className="nav__item">О платформе</Link>
+                    <Link to="#" className="nav__item">Контакты</Link>
+                    <Link to="#" className="nav__item">Тарифы</Link>
+                    <Link to="/login" className="nav__button _btn _blue">Войти</Link>
                 </div>
             </div>
             <div className={navSwitcher ? "nav__panel nav__pannel-active" : "nav__panel"}>
@@ -41,11 +42,11 @@ export const Header = observer(() => {
                         </svg>
                     </div>
 
-                    <a href="#" className="nav__item">Примеры</a>
-                    <a href="#" className="nav__item">О платформе</a>
-                    <a href="#" className="nav__item">Контакты</a>
-                    <a href="#" className="nav__item">Тарифы</a>
-                    <a href="#" className="nav__button _btn _blue">Войти</a>
+                    <Link to="#" className="nav__item">Примеры</Link>
+                    <Link to="#" className="nav__item">О платформе</Link>
+                    <Link to="#" className="nav__item">Контакты</Link>
+                    <Link to="#" className="nav__item">Тарифы</Link>
+                    <Link to="/login" className="nav__button _btn _blue">Войти</Link>
                 </div>
             </div>
         </header>

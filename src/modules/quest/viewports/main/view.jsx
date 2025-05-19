@@ -16,6 +16,7 @@ import deedbackModel from './models/feedback';
 import DivInput from '../../../../core/UIKit/input';
 import FAQItem from './components/faqItem';
 import { faqQuestions } from './data/faq-data';
+import { Link } from 'react-router-dom';
 
 function Main() {
     const swiperRef = useRef(null)
@@ -60,7 +61,7 @@ function Main() {
             <div className="banner__container container">
                 <div className="banner__text">
                     <h1 className='h1'>Сделай знания доступными с помощью платформы <span> Фенек</span ></h1 >
-                    <a href="" className='banner__btn _btn _blue' >Открыть курс</a>
+                    <Link to="" className='banner__btn _btn _blue' >Открыть курс</Link>
                 </div >
                 <div className="banner__left">
                     <div className="banner__img">
@@ -115,7 +116,7 @@ function Main() {
                     </div>
                     <div className="item-projects__title">Компании</div>
                     <p className="item-projects__text">Удобный личный кабинет для учеников Удобный личный кабинет для учеников Удобный личный кабинет для учениковУдобный личный кабинет для учеников Удобный личный кабинет для учеников Удобный личный кабинет для учеников Удобный личный кабинет для учениковУдобный личный кабинет для учеников</p>
-                    <a href="#" className='item-projects__btn _btn _blue-text'>Узнать тариф</a>
+                    <Link to="#" className='item-projects__btn _btn _blue-text'>Узнать тариф</Link>
                 </div>
                 <div className="projects__item item-projects">
                     <div className="item-projects__img">
@@ -123,7 +124,7 @@ function Main() {
                     </div>
                     <div className="item-projects__title">Компании</div>
                     <p className="item-projects__text">Удобный личный кабинет для учеников Удобный личный кабинет для учеников Удобный личный кабинет для учениковУдобный личный кабинет для учеников Удобный личный кабинет для учеников Удобный личный кабинет для учеников Удобный личный кабинет для учениковУдобный личный кабинет для учеников</p>
-                    <a href="#" className='item-projects__btn _btn _blue-text'>Узнать тариф</a>
+                    <Link to="#" className='item-projects__btn _btn _blue-text'>Узнать тариф</Link>
                 </div>
 
                 <div className="projects__item item-projects">
@@ -134,7 +135,7 @@ function Main() {
                     <p className="item-projects__text">
                         Прокачали свою экспертизу и готовы заработать на своих знаниях? Запускайте свою школу у нас!
                     </p>
-                    <a href="#" className='item-projects__btn  _btn _blue-text'>Узнать тариф</a>
+                    <Link to="#" className='item-projects__btn  _btn _blue-text'>Узнать тариф</Link>
                 </div>
                 <div className="projects__item item-projects">
                     <div className="item-projects__img">
@@ -144,7 +145,7 @@ function Main() {
                     <p className="item-projects__text">
                         Прокачали свою экспертизу и готовы заработать на своих знаниях? Запускайте свою школу у нас!
                     </p>
-                    <a href="#" className='item-projects__btn  _btn _blue-text'>Узнать тариф</a>
+                    <Link to="#" className='item-projects__btn  _btn _blue-text'>Узнать тариф</Link>
                 </div>
             </div>
         </section>
@@ -286,7 +287,7 @@ function Main() {
                                     <p>нет</p>
                                 </div>
                             </div>
-                            <a href="#" className="item-rate__btn _btn _blue">Выбрать</a>
+                            <Link to="#" className="item-rate__btn _btn _blue">Выбрать</Link>
                         </div>
                         <div className="rate__item item-rate">
                             <div className="item-rate__name">Базовый</div>
@@ -308,7 +309,7 @@ function Main() {
                                     <p>нет</p>
                                 </div>
                             </div>
-                            <a href="#" className="item-rate__btn _btn _blue">Выбрать</a>
+                            <Link to="#" className="item-rate__btn _btn _blue">Выбрать</Link>
                         </div>
                         <div className="rate__item item-rate">
                             <div className="item-rate__name">Базовый</div>
@@ -330,7 +331,7 @@ function Main() {
                                     <p>нет</p>
                                 </div>
                             </div>
-                            <a href="#" className="item-rate__btn _btn _blue">Выбрать</a>
+                            <Link to="#" className="item-rate__btn _btn _blue">Выбрать</Link>
                         </div>
                     </div>
                 </section>
@@ -354,7 +355,7 @@ function Main() {
                         <input type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Имя" name="" id="" />
                     </DivInput>
                     <button className='feedback__btn _btn _blue' onClick={sendMessage}>Отправить</button>
-                    <p className='feedback__discreption'>Нажимая кнопку, принимаю <a href="#">условия политики</a> и <a href="#">пользовательского соглашения</a></p>
+                    <p className='feedback__discreption'>Нажимая кнопку, принимаю <Link to="#">условия политики</Link> и <Link to="#">пользовательского соглашения</Link></p>
                 </div>
             </div>
 

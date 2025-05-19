@@ -48,7 +48,8 @@
         border: 1px solid rgb(169, 169, 169);
         border-radius: 5px;
 
-        & input {
+        & input,
+        & textarea {
             width: 100%;
             padding: 10px;
 
@@ -56,6 +57,10 @@
                 border: 1px solid var(--clr-black);
             }
         }
+    }
+
+    &-password__icon {
+        cursor: pointer;
     }
 }
 
@@ -118,5 +123,62 @@
 
     @media (max-width: em($mPoint-5, 16)) {
         font-size: 32px;
+    }
+}
+.h3 {
+    font-family: var(--font-unbounded);
+    font-weight: 700;
+    font-size: 32px;
+    line-height: prc(60, 48);
+
+    & span {
+        color: var(--clr-blue);
+    }
+
+    @media (max-width: em($mPoint-5, 16)) {
+        font-size: 28px;
+    }
+}
+
+.form {
+    &__container {
+        background-color: white;
+
+        padding: 48px 60px;
+        border-radius: 10px;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        max-width: 540px;
+        width: 100%;
+
+        @media (max-width: em(620, 16)) {
+            padding: 30px 20px;
+        }
+
+        @media (max-width: em($mPoint-5, 16)) {
+            padding: 48px 20px;
+        }
+    }
+
+    &__title {
+        text-align: center;
+        @include adaptivePoints(margin-bottom, 50px, 50px, 30px);
+    }
+
+    &__body,
+    &__inputs {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    &__inputs {
+    }
+    &__actions {
+    }
+    &__button {
+        width: 100%;
+        padding: 15px 0;
     }
 }

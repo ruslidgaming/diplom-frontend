@@ -17,8 +17,27 @@
 </head>
 
 <body>
-  <div id="root"></div>
-  <script type="module" src="/src/main.jsx"></script>
+
+  <style>
+    #root {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .wrapper {
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+
+  <div class="wrapper">
+
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </div>
 </body>
 
 </html>
