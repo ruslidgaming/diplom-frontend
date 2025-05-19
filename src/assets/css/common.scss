@@ -7,6 +7,7 @@
     --clr-black: #17181c;
     --clr-darkgray: #2c2d33;
     --clr-fon: #f5f5f5;
+    --clr-fon-profile: #f5f6fa;
 }
 
 .container {
@@ -129,6 +130,20 @@
     font-family: var(--font-unbounded);
     font-weight: 700;
     font-size: 32px;
+    line-height: prc(60, 48);
+
+    & span {
+        color: var(--clr-blue);
+    }
+
+    @media (max-width: em($mPoint-5, 16)) {
+        font-size: 28px;
+    }
+}
+.h4 {
+    font-family: var(--font-unbounded);
+    font-weight: 700;
+    font-size: 24px;
     line-height: prc(60, 48);
 
     & span {

@@ -20,11 +20,12 @@ export const Footer = observer(() => {
                 </div>
 
                 <div className="footer__item item-footer">
-                    <div className="item-footer__title">О компании</div>
-                    <Link to="#" className="item-footer__link">Примеры</Link>
-                    <Link to="#" className="item-footer__link">О платформе</Link>
-                    <Link to="#" className="item-footer__link">Контакты</Link>
-                    <Link to="#" className="item-footer__link">Тарифы</Link>
+                    <div className="item-footer__title">Меню</div>
+                    <a href="/#about" className="item-footer__link">О компании</a>
+                    <a href="/#projects" className="item-footer__link">Наши клиенты</a>
+                    <a href="/#constructor" className="item-footer__link">Конструктор</a>
+                    <a href="/#system" className="item-footer__link">Панели</a>
+                    <a href="/#rate" className="item-footer__link">Тарифы</a>
                 </div>
 
                 <div className="footer__item item-footer">

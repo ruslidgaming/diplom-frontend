@@ -28,6 +28,8 @@ function Login() {
         <FromRegLog className="regLog__form" formType="login" formTitle="Авторизация" submitText="Войти" onSubmit={""} disciption={
             <p className="regLog__description">
                 У вас нету аккаунта? <Link to="/register">Зарегистрироваться</Link>
+                <br />
+                или <Link to="/profile">Войти</Link>
             </p>
         }>
 

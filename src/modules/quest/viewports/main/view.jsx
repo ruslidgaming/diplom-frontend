@@ -71,7 +71,7 @@ function Main() {
                 </div>
             </div >
         </section >
-        <section className="about container section">
+        <section className="about container section" id='about'>
             <div className="about__title h2"><span>Фенек</span> - это</div>
             <div className="about__items">
                 <div className="about__item item-about">
@@ -106,7 +106,7 @@ function Main() {
             </div>
         </section>
 
-        <section className="projects container section">
+        <section className="projects container section" id='projects'>
             <div className="projects__title h2">Наша <span>платформа</span> <br />подойдёт</div>
 
             <div className="projects__items">
@@ -159,7 +159,7 @@ function Main() {
                 </section>
 
 
-                <section className='constructor'>
+                <section className='constructor' id='constructor'>
                     <div className="constructor__title h2">Создай свой лендинг на простом <span>конструкторе</span></div>
                     <Swiper
                         ref={swiperRef}
@@ -214,7 +214,7 @@ function Main() {
                     </div>
                 </section>
 
-                <section className="system section">
+                <section className="system section" id='system'>
                     <div className="system__title h2">Удобная система <br /> управления <span>курсами</span></div>
 
                     <div className="system__info">
@@ -263,7 +263,7 @@ function Main() {
                     </div>
                 </section>
 
-                <section className='rate section'>
+                <section className='rate section' id='rate'>
                     <div className="rate__title h2">Тарифы</div>
 
                     <div className="rate__items">

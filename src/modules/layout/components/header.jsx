@@ -10,12 +10,12 @@ export const Header = observer(() => {
     return <>
         <header className="header">
             <div className="header__container container">
-                <div className="header__logo logo">
+                <Link to="/" className="header__logo logo">
                     <div className="logo__img">
                         <img src={logo} alt="logo" />
                     </div>
                     <p className="logo__text">ФЕНЕК</p>
-                </div>
+                </Link>
 
                 <div className="nav__open" onClick={() => setNavSwitcher(!navSwitcher)}>
                     <svg width="39" height="22" viewBox="0 0 39 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -26,11 +26,11 @@ export const Header = observer(() => {
                 </div>
 
                 <div className="header__nav nav">
-                    <Link to="#" className="nav__item">Примеры</Link>
-                    <Link to="#" className="nav__item">О платформе</Link>
-                    <Link to="#" className="nav__item">Контакты</Link>
-                    <Link to="#" className="nav__item">Тарифы</Link>
-                    <Link to="/login" className="nav__button _btn _blue">Войти</Link>
+                    <a href="/#about" className="nav__item">О платформе</a>
+                    <a href="/#projects" className="nav__item">Наши клиенты</a>
+                    <a href="/#constructor" className="nav__item">Конструктор</a>
+                    <a href="/#rate" className="nav__item">Тарифы</a>
+                    <a href="/login" className="nav__button _btn _blue">Войти</a>
                 </div>
             </div>
             <div className={navSwitcher ? "nav__panel nav__pannel-active" : "nav__panel"}>
@@ -42,11 +42,11 @@ export const Header = observer(() => {
                         </svg>
                     </div>
 
-                    <Link to="#" className="nav__item">Примеры</Link>
-                    <Link to="#" className="nav__item">О платформе</Link>
-                    <Link to="#" className="nav__item">Контакты</Link>
-                    <Link to="#" className="nav__item">Тарифы</Link>
-                    <Link to="/login" className="nav__button _btn _blue">Войти</Link>
+                    <a href="/#about" className="nav__item">О платформе</a>
+                    <a href="/#projects" className="nav__item">Наши клиенты</a>
+                    <a href="/#constructor" className="nav__item">Конструктор</a>
+                    <a href="/#rate" className="nav__item">Тарифы</a>
+                    <a href="/login" className="nav__button _btn _blue">Войти</a>
                 </div>
             </div>
         </header>
