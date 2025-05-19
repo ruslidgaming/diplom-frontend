@@ -1,4 +1,6 @@
-export function AboutIcons(name) {
+import { useEffect } from "react"
+
+export default function AboutIcons({ name }) {
 
     if (name == 'constructor') {
         return <>

@@ -41,6 +41,8 @@
     background-color: white;
     padding: 20px 0;
     border-radius: 0 0 50px 50px;
+    @include adaptivePoints(border-bottom-left-radius, 50px, 30px, 15px);
+    @include adaptivePoints(border-bottom-right-radius, 50px, 30px, 15px);
 
     &__container {
         display: flex;
@@ -108,6 +110,7 @@
     }
 
     &__panel {
+        z-index: 100;
         display: block;
         opacity: 0;
         visibility: hidden;
@@ -120,6 +123,7 @@
         height: 100%;
         background-color: rgba(0, 0, 0, 0.241);
         color: white;
+
         &.nav__pannel-active {
             opacity: 1;
             visibility: visible;
@@ -144,6 +148,25 @@
             font-size: 24px;
         }
     }
+
+    @media (max-width: em($mPoint-6, 16)) {
+        &__body {
+            width: 100%;
+        }
+
+        &__close {
+            left: 30px;
+
+            & svg {
+                width: 24px;
+                height: 24px;
+            }
+
+            & svg rect {
+                fill: white;
+            }
+        }
+    }
 }
 
 .banner {
@@ -151,7 +174,8 @@
     margin-left: 20px;
     margin-right: 20px;
     background-color: white;
-    border-radius: 50px;
+
+    @include adaptivePoints(border-radius, 50px, 30px, 15px);
 
     &__container {
         display: flex;
@@ -218,6 +242,12 @@
     }
 
     @media (max-width: em($mPoint-6, 16)) {
+        margin-left: 0;
+        margin-right: 0;
+        &__container {
+            padding: 0 20px 50px 20px;
+        }
+
         &__btn {
             width: 100%;
             padding-left: 0;
@@ -226,7 +256,7 @@
 
         &__img {
             width: 100%;
-            max-width: 300px;
+            max-width: 240px;
         }
     }
 }
@@ -335,6 +365,8 @@
 
         display: flex;
         align-items: start;
+        flex-wrap: wrap;
+        gap: 30px;
         justify-content: space-between;
         color: white;
         font-family: var(--font-unbounded);
@@ -351,6 +383,10 @@
         line-height: prc(24, 16);
         color: rgba(255, 255, 255, 0.473);
     }
+
+    @media (max-width: em($mPoint-5, 16)) {
+        font-size: 14px;
+    }
 }
 
 .item-footer {
@@ -359,12 +395,12 @@
     gap: 10px;
 
     &__title {
-        @include adaptivePoints(font-size, 20px, 20px, 18px);
+        @include adaptivePoints(font-size, 20px, 18px, 16px);
         font-weight: 700;
         margin-bottom: 5px;
     }
     &__link {
-        font-size: 16px;
+        @include adaptivePoints(font-size, 16px, 16px, 14px);
         font-weight: 400;
         position: relative;
         width: fit-content;
@@ -415,9 +451,22 @@
     &__items {
         display: grid;
         grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 40px;
+        gap: 30px;
     }
     &__item {
+    }
+
+    @media (max-width: em($mPoint-3, 16)) {
+        &__items {
+            row-gap: 80px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    @media (max-width: em(530, 16)) {
+        &__items {
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
     }
 }
 .item-projects {
@@ -464,7 +513,7 @@
     &__title {
         font-family: var(--font-unbounded);
         font-weight: 700;
-        @include adaptivePoints(font-size, 24px, 24px, 18px);
+        @include adaptivePoints(font-size, 24px, 20px, 18px);
         color: var(--clr-blue);
         margin-bottom: 15px;
     }
@@ -481,24 +530,487 @@
 .black-fon {
     margin-top: 90px;
     background-color: var(--clr-black);
-    border-radius: 80px 80px 0 0;
-    padding: 80px 0;
+    padding: 150px 0 180px 0;
+    color: white;
+
+    @include adaptivePoints(border-top-left-radius, 80px, 50px, 30px);
+    @include adaptivePoints(border-top-right-radius, 80px, 50px, 30px);
+
+    &__logo {
+        width: fit-content;
+        margin: 0 auto 100px auto;
+
+        &-img {
+            width: 146.57px;
+            height: 121.47px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            & img {
+                height: 100%;
+                width: 100%;
+                object-fit: contain;
+            }
+        }
+    }
 }
 
 .constructor {
     &__title {
+        max-width: 825px;
+        margin: 0 auto 0 auto;
+        text-align: center;
+
+        @include adaptivePoints(margin-bottom, 60px, 40px, 30px);
     }
     &__items {
     }
     &__item {
     }
+
+    &__btns {
+        margin-top: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        gap: 15px;
+    }
+    &__btn {
+        @media (min-width: em($mPoint-4, 16)) {
+            &:hover {
+                & svg path {
+                    fill: var(--clr-blue);
+                }
+            }
+        }
+
+        @media (max-width: em($mPoint-5, 16)) {
+            & svg {
+                width: 50px;
+                height: 50px;
+            }
+        }
+    }
 }
 
 .item-constructor {
+    background-color: var(--clr-darkgray);
+    border-radius: 30px;
+    padding: 20px 24px;
+
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+
+    @media (max-width: em($mPoint-5, 16)) {
+        border-radius: 20px;
+    }
+
+    @media (max-width: em($mPoint-6, 16)) {
+        padding: 20px 15px;
+        border-radius: 12px;
+    }
+
     &__img {
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 20px;
+
+        & img {
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+        }
     }
     &__number {
+        width: fit-content;
+        padding: 8px 30px;
+        border-radius: 15px;
+        background-color: var(--clr-blue);
+
+        @include adaptivePoints(font-size, 20px, 20px, 16px);
+        font-family: var(--font-unbounded);
     }
     &__title {
+        @include adaptivePoints(font-size, 24px, 18px, 16px);
+        text-align: center;
+        max-width: 340px;
+        font-family: var(--font-unbounded);
+        font-weight: 700;
+    }
+}
+
+.system {
+    &__title {
+        @include adaptivePoints(margin-bottom, 80px, 40px, 30px);
+    }
+    &__info {
+        display: grid;
+        grid-template-columns: 40% 60%;
+        @include adaptivePoints(gap, 20px, 15px, 10px);
+    }
+    &__items {
+        display: flex;
+        flex-direction: column;
+        @include adaptivePoints(gap, 20px, 15px, 10px);
+    }
+    &__item {
+    }
+    &__media {
+        border-radius: 15px;
+        overflow: hidden;
+    }
+    &__img {
+        width: 100%;
+        height: 100%;
+
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        & img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__video {
+        width: 100%;
+        height: 100%;
+
+        & video {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+
+    @media (max-width: em($mPoint-4, 16)) {
+        &__info {
+            display: flex;
+            flex-direction: column-reverse;
+        }
+
+        &__items {
+            flex-direction: row;
+        }
+    }
+}
+.item-system {
+    background-color: var(--clr-darkgray);
+    border-radius: 15px;
+    flex: 1 1 auto;
+    padding: 30px 40px 30px 20px;
+    cursor: pointer;
+
+    &._info {
+        display: none;
+    }
+
+    &._active {
+        background-color: var(--clr-blue);
+        @media (min-width: em($mPoint-4, 16)) {
+            &:hover {
+                background-color: var(--clr-blue);
+            }
+        }
+    }
+
+    @media (max-width: em($mPoint-5, 16)) {
+        flex: 1 1 100%;
+        padding: 10px 0 10px 0;
+
+        display: flex;
+        justify-content: center;
+
+        & > .item-system__title,
+        & > .item-system__text {
+            display: none;
+        }
+
+        &._info {
+            display: block;
+            padding: 20px;
+
+            & > .item-system__title,
+            & > .item-system__text {
+                display: block;
+            }
+        }
+    }
+
+    @media (max-width: em($mPoint-6, 16)) {
+        &__text {
+            font-size: 14px;
+        }
+
+        &__icon {
+            & svg {
+                width: 25px;
+                height: 25px;
+            }
+        }
+    }
+
+    @media (min-width: em($mPoint-4, 16)) {
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.256);
+        }
+    }
+
+    &__title {
+        @include adaptivePoints(font-size, 20, 20, 16);
+        font-weight: 400;
+        margin-bottom: 16px;
+        font-family: var(--font-unbounded);
+    }
+
+    &__icon {
+        & svg path {
+            fill: white;
+        }
+    }
+}
+
+.rate {
+    &__title {
+        text-align: center;
+
+        @include adaptivePoints(margin-bottom, 80px, 50px, 40px);
+    }
+    &__items {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+    }
+    &__item {
+        min-width: 280px;
+
+        max-width: 450px;
+    }
+}
+.item-rate {
+    background-color: var(--clr-darkgray);
+    @include adaptivePoints(border-radius, 15px, 15px, 10px);
+    flex: 1 1 auto;
+
+    padding: 20px 35px 50px 35px;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    @include adaptivePoints(gap, 30px, 20px, 15px);
+
+    &__name {
+        @include adaptivePoints(font-size, 20px, 18px, 16px);
+        padding: 8px 15px;
+        @include adaptivePoints(border-radius, 15px, 15px, 10px);
+        background-color: rgba(255, 255, 255, 0.296);
+        width: min-content;
+        margin: 0 auto;
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        &-item {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            color: rgba(255, 255, 255, 0.714);
+        }
+    }
+
+    &__btn {
+        padding: 10px 0;
+    }
+
+    @media (max-width: em($mPoint-5, 16)) {
+        padding: 15px 20px 30px 20px;
+    }
+}
+
+.white-fon {
+    margin-top: -75px;
+    background-color: white;
+    padding: 150px 0 80px 0;
+    color: var(--clr-black);
+
+    @include adaptivePoints(border-top-left-radius, 80px, 50px, 30px);
+    @include adaptivePoints(border-top-right-radius, 80px, 50px, 30px);
+}
+
+.feedback {
+    background-color: var(--clr-blue);
+    max-width: 1000px;
+    @include adaptivePoints(border-radius, 20px, 20px, 15px);
+    overflow: hidden;
+
+    display: flex;
+    border: 1.5px solid lightgray;
+
+    margin-right: auto;
+    margin-left: auto;
+
+    &__text {
+        padding: 50px 10px 50px 80px;
+        color: white;
+    }
+
+    &__title {
+        margin-bottom: 15px;
+    }
+
+    &__subtitle {
+        font-size: 18px;
+    }
+
+    &__form {
+        padding: 15px;
+        background-color: white;
+        flex: 1 1 100%;
+        max-width: 50%;
+
+        @include adaptivePoints(border-radius, 18px, 18px, 15px);
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: stretch;
+        gap: 15px;
+    }
+
+    &__input {
+    }
+
+    &__btn {
+        padding: 10px;
+    }
+
+    &__discreption {
+        font-family: var(--font-inter);
+        font-weight: 400;
+        font-size: 16px;
+        line-height: prc(24, 16);
+        color: #898989;
+
+        & a {
+            text-decoration: underline;
+            &:hover {
+                color: var(--clr-blue);
+            }
+        }
+    }
+
+    @media (max-width: em($mPoint-3, 16)) {
+        @include adaptivePoints(margin-left, 30px, 20px, 20px);
+        @include adaptivePoints(margin-right, 30px, 20px, 20px);
+    }
+
+    @media (max-width: em($mPoint-5, 16)) {
+        flex-direction: column;
+
+        &__text {
+            padding: 20px;
+        }
+
+        &__form {
+            width: 100%;
+            max-width: none;
+        }
+
+        &__discreption {
+            font-size: 14px;
+        }
+    }
+}
+
+.faq {
+    @include adaptivePoints(margin-bottom, 100px, 100px, 60px);
+
+    &__title {
+        text-align: center;
+        @include adaptivePoints(margin-bottom, 80px, 80px, 40px);
+    }
+    &__items {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+
+        align-items: start;
+        grid-auto-flow: row;
+        contain: layout; // Предотвращает влияние на соседние элементы
+
+        > * {
+            min-width: 0; // Важно для длинного текста
+            overflow-wrap: break-word;
+        }
+    }
+
+    @media (max-width: em($mPoint-5, 16)) {
+        &__items {
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+
+            & .faq__item:nth-child(n + 7) {
+                display: none;
+            }
+        }
+    }
+}
+
+.item-faq {
+    border: 2px solid lightgray;
+    padding: 30px 15px;
+    @include adaptivePoints(border-radius, 20px, 15px, 10px);
+
+    &__top {
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        gap: 10px;
+    }
+    &__title {
+        flex: 1 1 100%;
+        font-family: var(--font-unbounded);
+        font-size: 18px;
+
+        &._active {
+            color: var(--clr-blue);
+        }
+    }
+    &__btn {
+        transform: rotate(180deg);
+
+        &._active {
+            transform: rotate(0);
+        }
+    }
+    &__text {
+        opacity: 0;
+        visibility: hidden;
+        height: 0;
+        margin-top: 0;
+
+        &._active {
+            opacity: 1;
+            visibility: visible;
+            height: 100%;
+            margin-top: 15px;
+        }
+    }
+
+    @media (max-width: em($mPoint-5, 16)) {
+        padding: 15px;
     }
 }
