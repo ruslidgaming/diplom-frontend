@@ -1,10 +1,10 @@
 import { observer } from "mobx-react-lite";
 import registerModel from "./models/register-model.jsx";
-import FromRegLog from "../../../layout/components/form.jsx";
-import DivInput from "../../../../core/UIKit/input.jsx";
+import FromRegLog from "../../layout/components/form.jsx";
+import DivInput from "../../../core/UIKit/input.jsx";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import Icon from "../../../../core/UIKit/icons.jsx";
+import Icon from "../../../core/UIKit/icons.jsx";
 
 function Register() {
     const {
@@ -26,6 +26,7 @@ function Register() {
         setTelephon,
         setName,
         setSurname,
+        register
     } = registerModel;
 
     const [showPassword, setShowPassword] = useState(false);
@@ -40,7 +41,7 @@ function Register() {
 
     return <>
 
-        <FromRegLog className="regLog__form" formType="register" formTitle="Регистрация" submitText="Регистрация" onSubmit={""} disciption={
+        <FromRegLog className="regLog__form" formType="register" formTitle="Регистрация" submitText="Регистрация" onSubmit={register} disciption={
             <p className="regLog__description">
                 У вас есть аккаунт? <Link to="/login">Войти</Link>
             </p>

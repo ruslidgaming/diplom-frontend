@@ -39,7 +39,6 @@ export default function Profile() {
                 <div className="profile__main">
                     <div className="profile__panel panel-profile">
                         <div className="panel-profile__items">
-
                             {panelData.map((item, i) => {
                                 if (item.type == "title") {
                                     return (
@@ -56,6 +55,13 @@ export default function Profile() {
                                     )
                                 }
                             })}
+
+                            <div className={`panel-profile__item item-profile`}>
+                                <div className="item-profile__icon">
+                                    <ProfileIcon name="logout" />
+                                </div>
+                                <p className="item-profile__name">Выйти</p>
+                            </div>
 
                         </div>
                     </div>

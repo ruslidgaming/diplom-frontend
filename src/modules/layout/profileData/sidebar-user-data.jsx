@@ -1,11 +1,6 @@
 export const sidebarUserData = [
     {
         type: "link",
-        icon: "admin",
-        name: "Админы",
-    },
-    {
-        type: "link",
         icon: "cours",
         name: "Курсы",
     },

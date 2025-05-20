@@ -1,4 +1,5 @@
 import { makeAutoObservable } from "mobx";
+import { loginUser } from "../service/login-service";
 
 class LoginModel {
     constructor() {
@@ -43,6 +44,17 @@ class LoginModel {
         this._email = "";
         this._login = "";
         this._role = role;
+    }
+
+    login(){
+
+        if(this._role == "admin"){}
+
+        let data = {
+            email: this.email,
+            password: this.password,
+        }
+        loginUser()
     }
 }
 

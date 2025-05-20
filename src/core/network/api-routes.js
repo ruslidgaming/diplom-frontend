@@ -1,18 +1,14 @@
 export const UserRoutes = {
-    GetById: '/Users/GetUserById',
-    GetAllUsers: "/Users/GetAllUsers",
-    EnterCode: '/Users/UserEnterCode',
-    IdentifyByPhone: '/Users/UserIdentification',
-    RefreshToken: '/Users/RefreshAuthorization',
-    Authorization: '/Users/Authorization',
-    Create: "/Users/CreateUser",
-    Update: "/Users/UpdateUser",
-    Delete: "/Users",
-    EmailConfirm: "/Users/email/send",
-    PasswordRecovery: "/Users/password/recovery",
-    Approve: "/Users/email/approve",
-    AuthorizationByPhone: "/Users/login/phone",
+  Register: "/register",
+  Login: "/login",
 }
+
+export const MentorRoutes = {
+
+}
+
+
+
 
 export const SewersRoutes = {
   Create: "/Sewers/CreateSewer",
@@ -71,7 +67,3 @@ export const StatRoutes = {
   GetExported: "/Stats/company/waste/exported",
   GetTransportingIncome: "/Stats/company/transport/income",
 };
-
-export const WsRoute = `wss://${
-  import.meta.env.VITE_WEBSOCKET_HOST
-}/socket/notifications`;

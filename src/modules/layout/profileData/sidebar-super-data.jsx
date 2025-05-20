@@ -11,9 +11,9 @@ export const sidebarSuperData = [
     },
     {
         type: "link",
-        icon: "web",
-        name: "Сайты",
-        link: "/profile/sites",
+        icon: "feedback",
+        name: "Заявки",
+        link: "/profile/feedback",
     },
     {
         type: "title",
@@ -36,5 +36,13 @@ export const sidebarSuperData = [
         icon: "cours",
         name: "Курсы",
         link: "/profile/admincourses",
+    },
+    {
+        type: "title",
+        name: "",
+    },
+    {
+        type: "title",
+        name: "",
     },
 ]

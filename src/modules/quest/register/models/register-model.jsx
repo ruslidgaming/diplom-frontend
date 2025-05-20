@@ -1,4 +1,5 @@
 import { makeAutoObservable } from "mobx";
+import { registerUser } from "../service/register-service";
 
 class RegisterModel {
     constructor() {
@@ -79,6 +80,30 @@ class RegisterModel {
 
     setSurname(surname) {
         this._surname = surname;
+    }
+
+
+    register() {
+        const data = {
+            name: this.name,
+            surname: this.surname,
+            oldname: this.oldname,
+
+            email: this.email,
+            telephon: this.telephon,
+
+            companyName: this.companyName,
+            companyDescription: this.companyDescription,
+
+            password: this.password,
+        }
+
+        registerUser(data)
+            .then(x => {
+                console.log(x)
+            }).catch(() => {
+                console.log('ошибка')
+            })
     }
 }
 

@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from 'react';
-import systemVideo from "../../../../../assets/img/vidoe-system.mp4";
+import systemVideo from "../../../../assets/img/vidoe-system.mp4";
 
 export function LazyVideoPlayer() {
     const videoRef = useRef(null);

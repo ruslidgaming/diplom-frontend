@@ -30,7 +30,7 @@ export default function FromRegLog({
                     </div>
 
                     <div className="form__actions">
-                        <button type="submit" className="form__button _btn _blue">
+                        <button type="submit" onClick={() => onSubmit()} className="form__button _btn _blue">
                             {submitText}
                         </button>
                     </div>

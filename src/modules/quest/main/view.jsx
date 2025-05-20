@@ -1,7 +1,7 @@
-import banner from '../../../../assets/img/banner.png';
+import banner from '../../../assets/img/banner.png';
 import AboutIcons from './components/about-icons';
-import logo from "../../../../assets/img/logo.svg";
-import sliderContr from "../../../../assets/img/swiper-constr.jpg";
+import logo from "../../../assets/img/logo.svg";
+import sliderContr from "../../../assets/img/swiper-constr.jpg";
 
 // ===Swiper===
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -13,7 +13,7 @@ import { systemItems } from './components/SystemItems';
 import { LazyVideoPlayer } from './components/LazyVidePlaeer';
 import { observer } from 'mobx-react-lite';
 import deedbackModel from './models/feedback';
-import DivInput from '../../../../core/UIKit/input';
+import DivInput from '../../../core/UIKit/input';
 import FAQItem from './components/faqItem';
 import { faqQuestions } from './data/faq-data';
 import { Link } from 'react-router-dom';

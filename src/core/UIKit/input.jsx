@@ -16,6 +16,3 @@ export default function DivInput({
         </div>
     )
 }
-
-// <Icon name={showPassword ? "eye" : "eye-slash"} onClick={togglePasswordVisibility} />
-// { icon ? <Icon name={icon} /> : "" }

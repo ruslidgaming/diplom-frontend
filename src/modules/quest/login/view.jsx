@@ -1,10 +1,10 @@
 import { observer } from "mobx-react-lite";
 import loginModel from "./models/login-model.jsx";
-import FromRegLog from "../../../layout/components/form.jsx";
-import DivInput from "../../../../core/UIKit/input.jsx";
+import FromRegLog from "../../layout/components/form.jsx";
+import DivInput from "../../../core/UIKit/input.jsx";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import Icon from "../../../../core/UIKit/icons.jsx";
+import Icon from "../../../core/UIKit/icons.jsx";
 
 function Login() {
     const { email,

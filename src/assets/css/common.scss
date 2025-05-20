@@ -38,6 +38,11 @@
 
 .input {
     &__wrapper {
+        &._icon {
+            & .input__input {
+                gap: 8px;
+            }
+        }
     }
     &__title {
         color: var(--clr-darkgray);
@@ -92,6 +97,18 @@
     @media (max-width: em($mPoint-5, 16)) {
         font-size: 16px !important;
     }
+
+    &._red {
+        background-color: #ff233c;
+        color: white;
+        border-radius: 4px;
+
+        @media (min-width: em($mPoint-4, 16)) {
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+    }
 }
 
 .h1 {
@@ -143,8 +160,8 @@
 .h4 {
     font-family: var(--font-unbounded);
     font-weight: 700;
-    font-size: 24px;
-    line-height: prc(60, 48);
+    font-size: 20px;
+    line-height: 110%;
 
     & span {
         color: var(--clr-blue);
@@ -195,5 +212,122 @@
     &__button {
         width: 100%;
         padding: 15px 0;
+    }
+}
+
+.list-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    &__item {
+        padding: 15px;
+        border-radius: 15px;
+        box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.334);
+    }
+}
+
+.search {
+    & .input__input {
+        display: flex;
+        align-items: center;
+    }
+
+    &__icon {
+        cursor: pointer;
+        transform: translateY(3px);
+    }
+}
+
+.static {
+    &__carts {
+        display: flex;
+        gap: 30px;
+        margin-bottom: 50px;
+    }
+    &__cart {
+    }
+
+    &__section {
+        margin-bottom: 80px;
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__title {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 15px;
+    }
+
+    &__btns {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+    &__btn {
+        font-size: 14px;
+        padding: 5px 10px 7px 10px;
+        border-radius: 10px;
+        color: lightgray;
+        border: 1px solid lightgray;
+        cursor: pointer;
+        @media (min-width: em($mPoint-4, 16)) {
+            &:hover {
+                background-color: lightgray;
+                color: white;
+            }
+        }
+
+        &._active {
+            border-color: var(--clr-blue);
+            background-color: var(--clr-blue);
+            color: white;
+        }
+
+        &-text {
+            font-size: 14px;
+            font-weight: 500;
+        }
+    }
+    &__chart {
+    }
+}
+.cart-static {
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.268);
+    display: flex;
+    gap: 15px;
+
+    &__icon {
+        background-color: var(--clr-blue);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100%;
+        width: 50px;
+        height: 50px;
+
+        & svg {
+            width: 24px;
+            height: 24px;
+
+            & path {
+                fill: white;
+            }
+        }
+    }
+    &__info {
+    }
+    &__name {
+        font-size: 12px;
+        margin-bottom: 5px;
+    }
+    &__count {
+        font-family: var(--font-unbounded);
+        font-size: 20px;
+        font-weight: 500;
     }
 }
