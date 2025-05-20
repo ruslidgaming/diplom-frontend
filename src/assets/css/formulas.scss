@@ -27,3 +27,15 @@ $mPoint-6: 468;
     $addSize: $startSize - $minSize;
     #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / (1920 - 320)));
 }
+
+//* Адаптив по точкам
+@mixin adaptivePoints($property, $startSize, $middleSize, $minSize) {
+    #{$property}: $startSize;
+
+    @media (max-width: em($mPoint-5, 16)) {
+        #{$property}: $middleSize;
+    }
+    @media (max-width: em($mPoint-6, 16)) {
+        #{$property}: $minSize;
+    }
+}
