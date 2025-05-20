@@ -54,7 +54,6 @@ class LoginModel {
             email: this.email,
             password: this.password,
         }
-        loginUser()
     }
 }
 
