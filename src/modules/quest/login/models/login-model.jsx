@@ -50,10 +50,19 @@ class LoginModel {
 
         if(this._role == "admin"){}
 
-        let data = {
+        const data = {
             email: this.email,
             password: this.password,
         }
+
+        loginUser(data)
+                    .then(x => {
+                        console.log(x)
+                    }).catch(() => {
+                        console.log('ошибка')
+                    })
+
+        
     }
 }
 
