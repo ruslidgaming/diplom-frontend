@@ -5,7 +5,7 @@ import router from './core/routes/router';
 
 function App() {
   return (
-    <> Руслан лох
+    <>
       <AuthProvider>
         <RouterProvider router={router} />
       </AuthProvider>
