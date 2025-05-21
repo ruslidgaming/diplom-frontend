@@ -3,8 +3,11 @@ import registerModel from "./models/register-model.jsx";
 import FromRegLog from "../../layout/components/form.jsx";
 import DivInput from "../../../core/UIKit/input.jsx";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Icon from "../../../core/UIKit/icons.jsx";
+import { useForm } from 'react-hook-form';
+import Input from "./Input.jsx";
+
 
 function Register() {
     const {
@@ -17,6 +20,7 @@ function Register() {
         email,
         password,
         password_r,
+        errors,
         setEmail,
         setPassword,
         setOldname,
@@ -26,7 +30,7 @@ function Register() {
         setTelephon,
         setName,
         setSurname,
-        register
+        setRegister,
     } = registerModel;
 
     const [showPassword, setShowPassword] = useState(false);
@@ -41,46 +45,96 @@ function Register() {
 
     return <>
 
-        <FromRegLog className="regLog__form" formType="register" formTitle="Регистрация" submitText="Регистрация" onSubmit={register} disciption={
+        <FromRegLog className="regLog__form" formType="register" formTitle="Регистрация" submitText="Регистрация" onSubmit={setRegister} disciption={
             <p className="regLog__description">
-                У вас есть аккаунт? <Link to="/login">Войти</Link>
+                У вас есть аккаунт? <a href="/login">Войти</a>
             </p>
         }>
 
-            <DivInput className="regLog__input" label="Фамилия*">
-                <input type="text" placeholder="Фамилия" value={name} onChange={e => setName(e.target.value)} />
-            </DivInput>
-            <DivInput className="regLog__input" label="Имя*">
-                <input type="text" placeholder="Имя" value={surname} onChange={e => setSurname(e.target.value)} />
-            </DivInput>
-            <DivInput className="regLog__input" label="Отчество">
-                <input type="text" placeholder="Отчество" value={oldname} onChange={e => setOldname(e.target.value)} />
-            </DivInput>
-            <DivInput className="regLog__input" label="Номер телефона*">
-                <input type="text" placeholder="Номер телефона" value={telephon} onChange={e => setTelephon(e.target.value)} />
-            </DivInput>
-            <DivInput className="regLog__input" label="Почта*">
-                <input type="text" placeholder="Почта" value={email} onChange={e => setEmail(e.target.value)} />
-            </DivInput>
-            <DivInput className="regLog__input" label="Название училища*">
-                <input type="text" placeholder="Название училища" value={companyName} onChange={e => setCompanyName(e.target.value)} />
-            </DivInput>
+            <Input
+                label="Фамилия"
+                placeholder="Фамилия"
+                required
+                value={surname}
+                onChange={setSurname}
+                errors={errors.surname !== "" ? errors.surname : ''}
+            />
+            <Input
+                label="Имя"
+                placeholder="Имя"
+                required
+                value={name}
+                onChange={setName}
+                errors={errors.name !== "" ? errors.name : ''}
+            />
+            <Input
+                label="Отчество"
+                placeholder="Отчество"
+                value={oldname}
+                onChange={setOldname}
+                errors={errors.oldname !== "" ? errors.oldname : ''}
+            />
+
+            <Input
+                label="Номер телефона"
+                placeholder="Номер телефона"
+                required
+                value={telephon}
+                onChange={setTelephon}
+                errors={errors.telephon !== "" ? errors.telephon : ''}
+            />
+
+            <Input
+                type="email"
+                label="Почта"
+                placeholder="Почта"
+                value={email}
+                onChange={setEmail}
+                required
+                errors={errors.email !== "" ? errors.email : ''}
+            />
+
+            <Input
+                type="text"
+                label="Название училища"
+                required
+                placeholder="Название училища"
+                value={companyName}
+                onChange={setCompanyName}
+                errors={errors.companyName !== "" ? errors.companyName : ''}
+            />
             <DivInput className="regLog__textarea" label="Описание училища*">
                 <textarea placeholder="Описание училища" onChange={e => setCompanyDescription(e.target.value)}>{companyDescription}</textarea>
             </DivInput>
-            <DivInput className="regLog__input" label="Пароль*">
-                <input type={showPassword ? "text" : "password"} placeholder="Пароль" value={password} onChange={e => setPassword(e.target.value)} />
+
+            {errors.companyDescription !== "" && (<p style={{ color: "red" }}>{errors.companyDescription}</p>)}
+
+            <Input
+                type={showPassword ? "text" : "password"}
+                label="Пароль"
+                placeholder="Пароль"
+                required
+                value={password}
+                onChange={setPassword}
+                errors={errors.password !== "" ? errors.password : ''}
+            >
                 <div className="input-password__icon" onClick={togglePasswordVisibility}>
                     <Icon name={showPassword ? "eye-slash" : "eye"} />
                 </div>
-            </DivInput>
-            <DivInput className="regLog__input" label="Повторите пароль*">
-                <input type={showPassword_r ? "text" : "password"} placeholder="Повторите пароль" value={password_r} onChange={e => setPassword_r(e.target.value)} />
+            </Input>
+            <Input
+                type={showPassword_r ? "text" : "password"}
+                label="Пароль"
+                required
+                placeholder="Пароль"
+                value={password_r}
+                onChange={setPassword_r}
+                errors={errors.password_r !== "" ? errors.password_r : ''}
+            >
                 <div className="input-password__icon" onClick={togglePasswordVisibility_r}>
                     <Icon name={showPassword_r ? "eye-slash" : "eye"} />
                 </div>
-            </DivInput>
-
+            </Input>
         </FromRegLog>
 
     </>

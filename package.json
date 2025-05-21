@@ -23,7 +23,9 @@
     "react-dom": "^19.1.0",
     "react-hook-form": "^7.56.4",
     "react-id-swiper": "^4.0.0",
+    "react-input-mask": "^2.0.4",
     "react-router-dom": "^7.6.0",
+    "react-toastify": "^11.0.5",
     "swiper": "^11.2.6"
   },
   "devDependencies": {
