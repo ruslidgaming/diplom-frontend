@@ -54,6 +54,10 @@
         border: 1px solid rgb(169, 169, 169);
         border-radius: 5px;
 
+        &._error {
+            border: 1px solid red;
+        }
+
         & input,
         & textarea {
             width: 100%;
