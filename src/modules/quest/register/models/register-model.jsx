@@ -1,6 +1,7 @@
 import { makeAutoObservable } from "mobx";
 import { registerUser } from "../service/register-service";
 import { toast } from "react-toastify";
+import validator from "../../../../core/UIKit/Validator";
 
 class RegisterModel {
     constructor() {
@@ -16,6 +17,11 @@ class RegisterModel {
     _email = '';
     _password = '';
     _password_r = '';
+    _errors = [];
+
+    get errors() {
+        return this._errors;
+    }
 
     get name() {
         return this._name;
@@ -72,19 +78,42 @@ class RegisterModel {
     }
 
     setTelephon(telephon) {
+
         this._telephon = telephon;
+
+        if (telephon.length === 0) {
+            this._errors['telephon'] = 'Поле обязательно для заполнения';
+        }
     }
 
     setName(name) {
-        this._name = name;
+        if (name.length <= 30) {
+            this._name = name;
+            this._errors['name'] = '';
+        }
+        if (name.length < 2) {
+            this._errors['name'] = 'Минимум 2 символа';
+        }
+        if (name.length === 0) {
+            this._errors['name'] = 'Поле обязательно для заполнения';
+        }
     }
 
     setSurname(surname) {
-        this._surname = surname;
+        if (surname.length <= 30) {
+            this._surname = surname;
+            this._errors['surname'] = '';
+        }
+        if (surname.length < 2) {
+            this._errors['surname'] = 'Минимум 2 символа';
+        }
+        if (surname.length === 0) {
+            this._errors['surname'] = 'Поле обязательно для заполнения';
+        }
     }
 
 
-    register() {
+    setRegister() {
         const data = {
             name: this.name,
             surname: this.surname,
@@ -97,15 +126,21 @@ class RegisterModel {
             companyDescription: this.companyDescription,
 
             password: this.password,
-
-            password_r: this.password_r,
         }
+
 
         registerUser(data)
             .then(x => {
                 console.log(x)
-            }).catch((Errors) => {
-                const errorData = Errors.response.data.errors;
+            }).catch(error => {
+                const errorData = error.response.data.errors;
+
+                for (let key in errorData) {
+                    toast.error(errorData[key][0]);
+
+                    // console.log(errorData[key][0])
+                    // toast(errorData[key][0], { progressStyle: { background: "red" } })
+                }
             })
     }
 }

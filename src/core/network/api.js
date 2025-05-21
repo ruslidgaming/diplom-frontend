@@ -14,10 +14,32 @@ const instance = axios.create({
     },
 });
 
+instance.interceptors.request.use((config) => {
+    config.headers.Authorization = `Bearer ${localStorage.getItem('access_token')}`
+    return config;
+})
+
 instance.interceptors.response.use(function (response) {
+    response.headers.Authorization = `Bearer ${localStorage.getItem('access_token')}`
     return response;
 }, function (error) {
-    console.log(error);
+    const originalRequest = error.config
+    if (error.response && error.response.status === 401 && !error.config._isRetry) {
+        originalRequest._isRetry = true;
+        try {
+            const refreshToken = localStorage.getItem("refresh_token");
+            const response = axios.get < { jwtToken, refreshToken } > ('/Users/RefreshAuthorization', {
+                headers: {
+                    Authorization: `Bearer ${refreshToken}`
+                }
+            });
+            localStorage.setItem("jwtToken", response.data.jwtToken);
+            localStorage.setItem("refresh_token", response.data.refreshToken);
+            return instance.request(originalRequest)
+        } catch (refreshError) {
+            return Promise.reject(refreshError);
+        }
+    }
     throw error;
 });
 

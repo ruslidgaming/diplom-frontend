@@ -54,18 +54,14 @@ class LoginModel {
             email: this.email,
             password: this.password,
         }
-<<<<<<< HEAD
-
         loginUser(data)
-                    .then(x => {
-                        console.log(x)
-                    }).catch(() => {
-                        console.log('ошибка')
-                    })
+            .then(x => {
+                console.log(x)
+            }).catch(() => {
+                console.log('ошибка')
+            })
 
-        
-=======
->>>>>>> ba47323e7eb3792a32974aaed19cee43f3784db4
+
     }
 }
 
