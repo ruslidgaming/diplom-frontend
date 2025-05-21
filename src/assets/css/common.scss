@@ -301,6 +301,19 @@
     display: flex;
     gap: 15px;
 
+    &._active {
+        color: white;
+        background-color: var(--clr-blue);
+
+        & .cart-static__icon {
+            background-color: white;
+
+            & path {
+                fill: var(--clr-blue);
+            }
+        }
+    }
+
     &__icon {
         background-color: var(--clr-blue);
         display: flex;

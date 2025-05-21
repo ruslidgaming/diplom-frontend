@@ -1,12 +1,26 @@
-import Errors from "../../modules/quest/errors/error";
+// Шаблоны
+import Profile from "../../modules/layout/profile";
 import Layout from "../../modules/layout/main";
+
+// Ошибки
+import Errors from "../../modules/quest/errors/error";
+
+// Гость
 import Main from "../../modules/quest/main/view";
 import Login from "../../modules/quest/login/view";
 import Register from "../../modules/quest/register/view";
-import Profile from "../../modules/layout/profile";
+
+// Супер админ
 import ListAdmin from "../../modules/superAdmin/list-admin/view";
 import Feedback from "../../modules/superAdmin/feedback/view"
 import StatisticsMany from "../../modules/superAdmin/statisticsMany/view";
+import StatisticsUsers from "../../modules/superAdmin/statisticsUsers/view";
+import StatisticsCourses from "../../modules/superAdmin/courses/view";
+
+// Админ
+import AdminStatisticsUsers from "../../modules/admin/statisticsUsers/view";
+import AdminCourses from "../../modules/admin/courses/view";
+import AdminStatisticsMany from "../../modules/admin/statisticsMany/view";
 
 export {
     Errors,
@@ -17,5 +31,10 @@ export {
     Profile,
     ListAdmin,
     Feedback,
-    StatisticsMany
+    StatisticsMany,
+    StatisticsUsers,
+    StatisticsCourses,
+    AdminStatisticsUsers,
+    AdminCourses,
+    AdminStatisticsMany
 }

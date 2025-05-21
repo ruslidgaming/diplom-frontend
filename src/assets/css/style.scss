@@ -1316,3 +1316,38 @@
 
 .static-many {
 }
+
+.courses {
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    &__search {
+    }
+    &__add {
+        background-color: var(--clr-blue);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        border-radius: 8px;
+        padding: 8px 12px 8px 8px;
+        color: white;
+    }
+    &__items {
+    }
+    &__item {
+    }
+}
+.item-course {
+    &__img {
+    }
+    &__name {
+    }
+    &__text {
+    }
+    &__btns {
+    }
+    &__bnt {
+    }
+}

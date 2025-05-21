@@ -7,11 +7,13 @@ export const sidebarAdminData = [
         type: "link",
         icon: "cours",
         name: "Курсы",
+        link: "/admin/courses",
     },
     {
         type: "link",
         icon: "web",
         name: "Методисты",
+        link: "/admin/metodists",
     },
     {
         type: "title",
@@ -21,10 +23,12 @@ export const sidebarAdminData = [
         type: "link",
         icon: "many",
         name: "Доход / Расход",
+        link: "/admin/many",
     },
     {
         type: "link",
         icon: "users",
         name: "Ученики",
+        link: "/admin/lessons",
     },
 ]
