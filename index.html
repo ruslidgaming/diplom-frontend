@@ -40,4 +40,16 @@
   </div>
 </body>
 
+
+<script>
+  window.onload = function () {
+    const items = document.querySelectorAll('.t702__wrapper')
+    items.forEach(element => {
+      element.addEventListener('click', function () {
+        alert('Элемент кликнут!');
+      });
+    });
+  };
+</script>
+
 </html>

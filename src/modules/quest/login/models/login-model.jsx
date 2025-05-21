@@ -46,15 +46,14 @@ class LoginModel {
         this._role = role;
     }
 
-    login(){
+    login() {
 
-        if(this._role == "admin"){}
+        if (this._role == "admin") { }
 
         let data = {
             email: this.email,
             password: this.password,
         }
-        loginUser()
     }
 }
 

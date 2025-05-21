@@ -4,8 +4,8 @@ import DivInput from "../../../core/UIKit/input";
 import Icon from "../../../core/UIKit/icons";
 import ProfileIcon from "../../layout/profileComponents/profileIcons";
 import LineChart from "./components/statistic";
-import { useEffect, useState } from "react";
-function StatisticsMany() {
+import { useState } from "react";
+function StatisticsCourses() {
 
 
     const [staticSections, setStaticSections] = useState("");
@@ -17,29 +17,29 @@ function StatisticsMany() {
     return <>
         <div className="static-many static">
             <div className="static__carts">
-                <div className={`static__cart cart-static ${staticSections == 'admin' && "_active"}`} onClick={() => CheckSetStaticSections('admin')}>
+                <div className={`static__cart cart-static ${staticSections == 'course' && "_active"}`} onClick={() => CheckSetStaticSections('course')}>
                     <div className="cart-static__icon">
                         <ProfileIcon name="admin" />
                     </div>
                     <div className="cart-static__info">
-                        <div className="cart-static__name">Доход от админов</div>
-                        <div className="cart-static__count">5000 ₽</div>
+                        <div className="cart-static__name">Кол-во курсов</div>
+                        <div className="cart-static__count">420</div>
                     </div>
                 </div>
-                <div className={`static__cart cart-static ${staticSections == 'users' && "_active"}`} onClick={() => CheckSetStaticSections('users')}>
+                <div className={`static__cart cart-static ${staticSections == 'lessons' && "_active"}`} onClick={() => CheckSetStaticSections('lessons')}>
                     <div className="cart-static__icon">
                         <ProfileIcon name="users" />
                     </div>
                     <div className="cart-static__info">
-                        <div className="cart-static__name">Доход от учеников</div>
-                        <div className="cart-static__count">5000 ₽</div>
+                        <div className="cart-static__name">Кол-во уроков</div>
+                        <div className="cart-static__count">9500</div>
                     </div>
                 </div>
             </div>
 
-            {(staticSections == "" || staticSections == 'admin') &&
+            {(staticSections == "" || staticSections == 'course') &&
                 <div className="static__section">
-                    <div className="static__title">Доход от админов</div>
+                    <div className="static__title">Кол-во курсов</div>
 
                     <div className="static__btns">
                         <div className="static__btn-text">Группировать по </div>
@@ -55,9 +55,9 @@ function StatisticsMany() {
                 </div>
             }
 
-            {(staticSections == "" || staticSections == 'users') &&
+            {(staticSections == "" || staticSections == 'lessons') &&
                 <div className="static__section">
-                    <div className="static__title">Доход от учеников</div>
+                    <div className="static__title">Кол-во уроков</div>
 
                     <div className="static__btns">
                         <div className="static__btn-text">Группировать по </div>
@@ -76,4 +76,4 @@ function StatisticsMany() {
         </div>
     </>
 }
-export default observer(StatisticsMany);
+export default observer(StatisticsCourses);
