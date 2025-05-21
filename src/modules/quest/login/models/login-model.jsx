@@ -69,7 +69,12 @@ class LoginModel {
                     }
                 })
         }
-
+        loginUser(data)
+            .then(x => {
+                console.log(x)
+            }).catch(() => {
+                console.log('ошибка')
+            })
     }
 }
 
