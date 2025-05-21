@@ -1,5 +1,6 @@
 import { makeAutoObservable } from "mobx";
 import { registerUser } from "../service/register-service";
+import { toast } from "react-toastify";
 
 class RegisterModel {
     constructor() {
@@ -101,8 +102,8 @@ class RegisterModel {
         registerUser(data)
             .then(x => {
                 console.log(x)
-            }).catch(() => {
-                console.log('ошибка')
+            }).catch((Errors) => {
+                const errorData = Errors.response.data.errors;
             })
     }
 }
