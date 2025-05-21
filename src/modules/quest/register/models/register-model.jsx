@@ -126,6 +126,7 @@ class RegisterModel {
             companyDescription: this.companyDescription,
 
             password: this.password,
+            password_r: this.password_r,
         }
 
 
