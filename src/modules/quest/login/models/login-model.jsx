@@ -1,10 +1,13 @@
 import { makeAutoObservable } from "mobx";
 import { loginUser } from "../service/login-service";
 
+
+
 class LoginModel {
     constructor() {
         makeAutoObservable(this, {}, { autoBind: true })
     }
+
 
     _email = '';
     _password = '';
@@ -46,21 +49,26 @@ class LoginModel {
         this._role = role;
     }
 
-    login() {
+    login(signin) {
 
-        if (this._role == "admin") { }
+        if (this._role == "admin") {
+            const data = {
+                email: this.email,
+                password: this.password,
+            }
 
-        const data = {
-            email: this.email,
-            password: this.password,
+            loginUser(data)
+                .then(x => {
+                    signin(x.data);
+                    window.location.href = '/admin/courses';
+                }).catch(error => {
+                    const errorData = error.response.data.errors;
+
+                    for (let key in errorData) {
+                        toast.error(errorData[key][0]);
+                    }
+                })
         }
-        loginUser(data)
-            .then(x => {
-                console.log(x)
-            }).catch(() => {
-                console.log('ошибка')
-            })
-
 
     }
 }

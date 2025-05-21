@@ -20,8 +20,8 @@ export default function Input({
                 {label ? <label className="input__title" htmlFor={id ?? ""}> {label || ""} {required && <span style={{ color: "red" }}>*</span>}</label > : ""}
                 <div className={`input__input ${errors && "_error"}`}>
                     <input type={type || "text"} placeholder={placeholder} value={value} onChange={e => onChange(e.target.value)} />
+                    {children && children}
                 </div>
-                {children && children}
             </div>
 
             {errors && (<p style={{ color: "red" }}>{errors}</p>)}

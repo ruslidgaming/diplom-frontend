@@ -103,7 +103,7 @@ function Register() {
                 onChange={setCompanyName}
                 errors={errors.companyName !== "" ? errors.companyName : ''}
             />
-            <DivInput className="regLog__textarea" label="Описание училища*">
+            <DivInput className="regLog__textarea" label={<p>Описание училища <span style={{ color: "red" }}>*</span></p>}>
                 <textarea placeholder="Описание училища" onChange={e => setCompanyDescription(e.target.value)}>{companyDescription}</textarea>
             </DivInput>
 

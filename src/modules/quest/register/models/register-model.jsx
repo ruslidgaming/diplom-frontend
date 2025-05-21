@@ -53,7 +53,6 @@ class RegisterModel {
 
 
     setEmail(email) {
-        console.log(email)
         this._email = email;
     }
 
@@ -118,28 +117,23 @@ class RegisterModel {
             name: this.name,
             surname: this.surname,
             oldname: this.oldname,
-
             email: this.email,
             telephon: this.telephon,
-
             companyName: this.companyName,
             companyDescription: this.companyDescription,
-
             password: this.password,
+            password_r: this.password_r,
         }
 
 
         registerUser(data)
             .then(x => {
-                console.log(x)
+                window.location.href = '/login';
             }).catch(error => {
                 const errorData = error.response.data.errors;
 
                 for (let key in errorData) {
                     toast.error(errorData[key][0]);
-
-                    // console.log(errorData[key][0])
-                    // toast(errorData[key][0], { progressStyle: { background: "red" } })
                 }
             })
     }

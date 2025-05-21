@@ -5,6 +5,7 @@ import DivInput from "../../../core/UIKit/input.jsx";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import Icon from "../../../core/UIKit/icons.jsx";
+import { useAuth } from "../../../core/hoc/AuthProvider.jsx";
 
 function Login() {
     const { email,
@@ -17,6 +18,8 @@ function Login() {
         setRole,
     } = loginModel;
 
+    const { signin } = useAuth();
+
     const [showPassword, setShowPassword] = useState(false);
 
     const togglePasswordVisibility = () => {
@@ -25,7 +28,7 @@ function Login() {
 
     return <>
 
-        <FromRegLog className="regLog__form" formType="login" formTitle="Авторизация" submitText="Войти" onSubmit={login} disciption={
+        <FromRegLog className="regLog__form" formType="login" formTitle="Авторизация" submitText="Войти" onSubmit={() => login(signin)} disciption={
             <p className="regLog__description">
                 У вас нету аккаунта? <a href="/register">Зарегистрироваться</a>
                 <br />
@@ -47,7 +50,7 @@ function Login() {
                 }
 
             </DivInput>
-            <DivInput className="regLog__input" label="Пароль*">
+            <DivInput className="regLog__input" label="Пароль*" >
                 <input type={showPassword ? "text" : "password"} placeholder="Пароль" value={password} onChange={e => setPassword(e.target.value)} />
                 <div className="input-password__icon" onClick={togglePasswordVisibility}>
                     <Icon name={showPassword ? "eye-slash" : "eye"} />

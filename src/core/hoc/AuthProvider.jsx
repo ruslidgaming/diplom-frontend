@@ -2,18 +2,19 @@ import { createContext, useState, useContext } from 'react';
 
 const AuthContext = createContext({
   user: { role: 'main' },
-  signin: () => {},
-  signout: () => {},
+  signin: () => { },
+  signout: () => { },
 });
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(
-    JSON.parse(localStorage.getItem('user') || JSON.stringify({ role: 'main' }))
+    JSON.parse(localStorage.getItem('user') || JSON.stringify({ role: 'guest' }))
   );
 
   const signin = (newUser) => {
-    setUser(newUser);
-    localStorage.setItem('user', JSON.stringify(newUser));
+    localStorage.setItem('access_token', JSON.stringify(newUser.access_token));
+    localStorage.setItem('refresh_token ', JSON.stringify(newUser.refresh_token));
+    setUser(newUser.user);
   };
 
   const signout = () => {

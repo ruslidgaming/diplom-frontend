@@ -1,6 +1,6 @@
 export const UserRoutes = {
   Register: "/register",
-  Login: "/login",
+  AdminLogin: "/login",
 }
 
 export const MentorRoutes = {

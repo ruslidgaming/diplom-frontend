@@ -37,13 +37,6 @@
 }
 
 .input {
-    &__wrapper {
-        &._icon {
-            & .input__input {
-                gap: 8px;
-            }
-        }
-    }
     &__title {
         color: var(--clr-darkgray);
         margin-bottom: 5px;
@@ -53,6 +46,10 @@
     &__input {
         border: 1px solid rgb(169, 169, 169);
         border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
 
         &._error {
             border: 1px solid red;
@@ -70,6 +67,7 @@
     }
 
     &-password__icon {
+        margin-right: 10px;
         cursor: pointer;
     }
 }
