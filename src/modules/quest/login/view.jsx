@@ -25,7 +25,7 @@ function Login() {
 
     return <>
 
-        <FromRegLog className="regLog__form" formType="login" formTitle="Авторизация" submitText="Войти" onSubmit={""} disciption={
+        <FromRegLog className="regLog__form" formType="login" formTitle="Авторизация" submitText="Войти" onSubmit={login} disciption={
             <p className="regLog__description">
                 У вас нету аккаунта? <Link to="/register">Зарегистрироваться</Link>
                 <br />
