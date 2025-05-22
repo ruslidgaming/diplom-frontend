@@ -21,6 +21,7 @@ export const AuthProvider = ({ children }) => {
   const signout = () => {
     setUser({ role: 'main' });
     localStorage.removeItem('user');
+    window.location.href = '/';
   };
 
   return (

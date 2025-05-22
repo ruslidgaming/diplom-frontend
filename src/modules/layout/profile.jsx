@@ -16,9 +16,10 @@ export default function Profile() {
     const [active, setActive] = useState(1);
     const localUrl = useLocation()
 
-    const { user } = useAuth();
+    const { user, signout } = useAuth();
 
     useEffect(() => {
+        console.log(user)
         if (user.role === 'user') {
             setPanelData(sidebarUserData)
         }
@@ -33,7 +34,7 @@ export default function Profile() {
     return (
         <>
             <div className="profile">
-                <HeaderProfile />
+                <HeaderProfile name={user.name} />
 
                 <div className="profile__main">
                     <div className="profile__panel panel-profile">
@@ -55,7 +56,7 @@ export default function Profile() {
                                 }
                             })}
 
-                            <div className={`panel-profile__item item-profile`}>
+                            <div className={`panel-profile__item item-profile`} onClick={signout}>
                                 <div className="item-profile__icon">
                                     <ProfileIcon name="logout" />
                                 </div>
