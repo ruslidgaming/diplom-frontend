@@ -115,15 +115,15 @@ function Main() {
                         <img src={logo} alt="" />
                     </div>
                     <div className="item-projects__title">Компании</div>
-                    <p className="item-projects__text">Удобный личный кабинет для учеников Удобный личный кабинет для учеников Удобный личный кабинет для учениковУдобный личный кабинет для учеников Удобный личный кабинет для учеников Удобный личный кабинет для учеников Удобный личный кабинет для учениковУдобный личный кабинет для учеников</p>
+                    <p className="item-projects__text">Корпоративное обучение сотрудников. Создавайте онлайн-курсы и обучающие модули внутри вашей компании. Удобная аналитика, отслеживание прогресса и сертификация.</p>
                     <Link to="#" className='item-projects__btn _btn _blue-text'>Узнать тариф</Link>
                 </div>
                 <div className="projects__item item-projects">
                     <div className="item-projects__img">
                         <img src={logo} alt="" />
                     </div>
-                    <div className="item-projects__title">Компании</div>
-                    <p className="item-projects__text">Удобный личный кабинет для учеников Удобный личный кабинет для учеников Удобный личный кабинет для учениковУдобный личный кабинет для учеников Удобный личный кабинет для учеников Удобный личный кабинет для учеников Удобный личный кабинет для учениковУдобный личный кабинет для учеников</p>
+                    <div className="item-projects__title">Блогеры</div>
+                    <p className="item-projects__text">Прокачали свою экспертизу и готовы заработать на своих знаниях? Запускайте свою школу у нас!</p>
                     <Link to="#" className='item-projects__btn _btn _blue-text'>Узнать тариф</Link>
                 </div>
 
@@ -131,9 +131,9 @@ function Main() {
                     <div className="item-projects__img">
                         <img src={logo} alt="" />
                     </div>
-                    <div className="item-projects__title">Компании</div>
+                    <div className="item-projects__title">Эксперты и коучи</div>
                     <p className="item-projects__text">
-                        Прокачали свою экспертизу и готовы заработать на своих знаниях? Запускайте свою школу у нас!
+                        Монетизируйте свои знания. Создавайте обучающие программы, продвигайте личный бренд и привлекайте учеников. Никаких технических сложностей — только вы и ваши знания.
                     </p>
                     <Link to="#" className='item-projects__btn  _btn _blue-text'>Узнать тариф</Link>
                 </div>
@@ -141,9 +141,9 @@ function Main() {
                     <div className="item-projects__img">
                         <img src={logo} alt="" />
                     </div>
-                    <div className="item-projects__title">Компании</div>
+                    <div className="item-projects__title">Онлайн-школы и стартапы</div>
                     <p className="item-projects__text">
-                        Прокачали свою экспертизу и готовы заработать на своих знаниях? Запускайте свою школу у нас!
+                        Быстрый запуск образовательного продукта. Идеально подходит для запуска собственной онлайн-школы: всё от сайта до платформы для обучения уже готово.
                     </p>
                     <Link to="#" className='item-projects__btn  _btn _blue-text'>Узнать тариф</Link>
                 </div>
@@ -179,21 +179,21 @@ function Main() {
                             <div className="item-constructor__img">
                                 <img src={sliderContr} alt="" />
                             </div>
-                            <div className="item-constructor__number">01</div>
+                            <div className="item-constructor__number">02</div>
                             <p className="item-constructor__title">Выбор шаблона</p>
                         </SwiperSlide>
                         <SwiperSlide className="constructor__item item-constructor">
                             <div className="item-constructor__img">
                                 <img src={sliderContr} alt="" />
                             </div>
-                            <div className="item-constructor__number">01</div>
+                            <div className="item-constructor__number">03</div>
                             <p className="item-constructor__title">Выбор шаблона</p>
                         </SwiperSlide>
                         <SwiperSlide className="constructor__item item-constructor">
                             <div className="item-constructor__img">
                                 <img src={sliderContr} alt="" />
                             </div>
-                            <div className="item-constructor__number">01</div>
+                            <div className="item-constructor__number">04</div>
                             <p className="item-constructor__title">Выбор шаблона</p>
                         </SwiperSlide>
                     </Swiper>
@@ -268,7 +268,7 @@ function Main() {
 
                     <div className="rate__items">
                         <div className="rate__item item-rate">
-                            <div className="item-rate__name">Базовый</div>
+                            <div className="item-rate__name">Start</div>
                             <div className="item-rate__list">
                                 <div className="item-rate__list-item">
                                     <p>Кол-во курсов</p>
@@ -290,45 +290,45 @@ function Main() {
                             <Link to="#" className="item-rate__btn _btn _blue">Выбрать</Link>
                         </div>
                         <div className="rate__item item-rate">
-                            <div className="item-rate__name">Базовый</div>
+                            <div className="item-rate__name">Grow</div>
                             <div className="item-rate__list">
                                 <div className="item-rate__list-item">
                                     <p>Кол-во курсов</p>
-                                    <p>1 курс</p>
+                                    <p>до 5 курсов</p>
                                 </div>
                                 <div className="item-rate__list-item">
                                     <p>Нанимать ментора</p>
-                                    <p>0</p>
+                                    <p>1 на курс</p>
                                 </div>
                                 <div className="item-rate__list-item">
                                     <p>Кол-во уроков</p>
-                                    <p>15 уроков</p>
+                                    <p>50 уроков</p>
                                 </div>
                                 <div className="item-rate__list-item">
                                     <p>Статистика</p>
-                                    <p>нет</p>
+                                    <p>есть</p>
                                 </div>
                             </div>
                             <Link to="#" className="item-rate__btn _btn _blue">Выбрать</Link>
                         </div>
                         <div className="rate__item item-rate">
-                            <div className="item-rate__name">Базовый</div>
+                            <div className="item-rate__name">Pro</div>
                             <div className="item-rate__list">
                                 <div className="item-rate__list-item">
                                     <p>Кол-во курсов</p>
-                                    <p>1 курс</p>
+                                    <p>до 3 на курс</p>
                                 </div>
                                 <div className="item-rate__list-item">
                                     <p>Нанимать ментора</p>
-                                    <p>0</p>
+                                    <p>до 3 на курс</p>
                                 </div>
                                 <div className="item-rate__list-item">
                                     <p>Кол-во уроков</p>
-                                    <p>15 уроков</p>
+                                    <p>200 уроков</p>
                                 </div>
                                 <div className="item-rate__list-item">
                                     <p>Статистика</p>
-                                    <p>нет</p>
+                                    <p>есть</p>
                                 </div>
                             </div>
                             <Link to="#" className="item-rate__btn _btn _blue">Выбрать</Link>
