@@ -37,22 +37,26 @@ function Courses() {
 
             <div className="courses__items">
                 <div className="courses__item item-course">
-                    <div className="item-course__img">
-                        <img src={foto} alt="" />
+                    <div>
+                        <div className="item-course__img">
+                            <img src={foto} alt="" />
+                        </div>
+                        <h5 className="item-course__name">Социальная психология</h5>
+                        <p className="item-course__text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti nobis eligendi temporibus minus quibusdam laborum!</p>
                     </div>
-                    <h5 className="item-course__name">Социальная психология</h5>
-                    <p className="item-course__text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti nobis eligendi temporibus minus quibusdam laborum!</p>
                     <div className="item-course__btns">
                         <Link className="item-course__bnt _btn _blue" to={"/admin/courses/edit"}>Редактировать</Link>
                         <button className="item-course__bnt _btn _red">Удалить</button>
                     </div>
                 </div>
                 <div className="courses__item item-course">
-                    <div className="item-course__img">
-                        <img src={foto} alt="" />
+                    <div>
+                        <div className="item-course__img">
+                            <img src={foto} alt="" />
+                        </div>
+                        <h5 className="item-course__name">Социальная психология</h5>
+                        <p className="item-course__text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti nobis eligendi temporibus minus quibusdam laborum!</p>
                     </div>
-                    <h5 className="item-course__name">Социальная психология</h5>
-                    <p className="item-course__text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti nobis eligendi temporibus minus quibusdam laborum!</p>
                     <div className="item-course__btns">
                         <Link className="item-course__bnt _btn _blue" to={"/admin/courses/edit"}>Редактировать</Link>
                         <button className="item-course__bnt _btn _red">Удалить</button>
