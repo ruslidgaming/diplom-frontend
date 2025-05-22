@@ -1322,6 +1322,8 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+
+        margin-bottom: 20px;
     }
     &__search {
     }
@@ -1335,19 +1337,53 @@
         color: white;
     }
     &__items {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
     }
     &__item {
+        max-width: 450px;
+        height: 100%;
     }
 }
 .item-course {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
     &__img {
+        background-color: var(--clr-fon);
+        width: 100%;
+        height: 300px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 20px;
+
+        & img {
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+        }
     }
     &__name {
+        font-family: var(--font-unbounded);
+        font-size: 18px;
+        margin: 10px 0;
     }
     &__text {
+        font-size: 14px;
+        font-family: var(--font-inter);
     }
     &__btns {
+        display: flex;
+        gap: 10px;
+        margin-top: 15px;
     }
     &__bnt {
+        font-size: 14px !important;
+        padding: 5px 0;
+        width: 100%;
     }
 }

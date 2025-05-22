@@ -12,6 +12,7 @@ export const AuthProvider = ({ children }) => {
   );
 
   const signin = (newUser) => {
+    localStorage.setItem('user', JSON.stringify(newUser.user));
     localStorage.setItem('access_token', JSON.stringify(newUser.access_token));
     localStorage.setItem('refresh_token ', JSON.stringify(newUser.refresh_token));
     setUser(newUser.user);

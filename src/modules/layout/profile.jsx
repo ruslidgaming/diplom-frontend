@@ -8,6 +8,7 @@ import { sidebarUserData } from "./profileData/sidebar-user-data";
 import { sidebarSuperData } from "./profileData/sidebar-super-data";
 import { sidebarAdminData } from "./profileData/sidebar-admin-data";
 import { Link } from "react-router-dom"
+import { useAuth } from "../../core/hoc/AuthProvider"
 
 export default function Profile() {
 
@@ -15,18 +16,16 @@ export default function Profile() {
     const [active, setActive] = useState(1);
     const localUrl = useLocation()
 
+    const { user } = useAuth();
 
     useEffect(() => {
-
-        const role = "admin";
-
-        if (role === 'user') {
+        if (user.role === 'user') {
             setPanelData(sidebarUserData)
         }
-        if (role === 'super') {
+        if (user.role === 'super') {
             setPanelData(sidebarSuperData)
         }
-        if (role === 'admin') {
+        if (user.role === 'admin') {
             setPanelData(sidebarAdminData)
         }
     })

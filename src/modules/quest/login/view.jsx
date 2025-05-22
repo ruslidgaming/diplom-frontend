@@ -6,17 +6,10 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import Icon from "../../../core/UIKit/icons.jsx";
 import { useAuth } from "../../../core/hoc/AuthProvider.jsx";
+import { useForm } from "react-hook-form";
 
 function Login() {
-    const { email,
-        password,
-        role,
-        login,
-        setLogin,
-        setEmail,
-        setPassword,
-        setRole,
-    } = loginModel;
+    const { setLogin, role, setRole } = loginModel;
 
     const { signin } = useAuth();
 
@@ -26,9 +19,26 @@ function Login() {
         setShowPassword(prevState => !prevState);
     }
 
+    const {
+        register,
+        formState: {
+            errors,
+            isValid,
+            isSubmitting,
+        },
+        handleSubmit,
+        getValues,
+    } = useForm({
+        mode: "onSubmit",
+    });
+
+    const handleSubmitForm = (data) => {
+        setLogin(signin, data)
+    }
+
     return <>
 
-        <FromRegLog className="regLog__form" formType="login" formTitle="Авторизация" submitText="Войти" onSubmit={() => login(signin)} disciption={
+        <FromRegLog className="regLog__form" formType="login" formTitle="Авторизация" submitText="Войти" onSubmit={handleSubmit(handleSubmitForm)} disciption={
             <p className="regLog__description">
                 У вас нету аккаунта? <a href="/register">Зарегистрироваться</a>
                 <br />
@@ -41,21 +51,56 @@ function Login() {
                 <div className={`regLog__form-btn ${role == 'mentor' && '_active'}`} onClick={() => setRole("mentor")}>Ментор</div>
             </div>
 
-            <DivInput className="regLog__input" label={role == 'admin' ? "Почта*" : "Логин*"}>
+            <DivInput className="regLog__input" label={<p>{role == 'admin' ? "Почта" : "Логин"} <span style={{ color: "red" }}>*</span></p>}>
 
                 {role == 'admin' ?
-                    <input type="text" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
+                    <input placeholder="Почта"
+                        type="email"
+                        {...register('email', {
+                            required: "Поле обязательно",
+                            pattern: {
+                                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                                message: 'Не корректная почта',
+                            },
+                            maxLength: {
+                                value: 100,
+                                message: "Максимум 100 символов",
+                            }
+                        })} />
                     :
-                    <input type="text" placeholder="Логин" value={login} onChange={e => setLogin(e.target.value)} />
+                    <input placeholder="Логин"
+                        type="text"
+                        {...register('login', {
+                            required: "Поле обязательно",
+                            maxLength: {
+                                value: 100,
+                                message: "Максимум 100 символов",
+                            }
+                        })} />
                 }
 
             </DivInput>
-            <DivInput className="regLog__input" label="Пароль*" >
-                <input type={showPassword ? "text" : "password"} placeholder="Пароль" value={password} onChange={e => setPassword(e.target.value)} />
+            {errors?.email && (<p style={{ color: "red" }}>{errors?.email?.message}</p>)}
+
+            <DivInput className="regLog__textarea" label={<p>Пароль <span style={{ color: "red" }}>*</span></p>}>
+                <input type={showPassword ? "text" : "password"} placeholder="Название училища"
+                    {...register('password', {
+                        required: "Поле обязательно",
+                        maxLength: {
+                            value: 20,
+                            message: "Максимум 20 символов",
+                        },
+                        minLength: {
+                            value: 6,
+                            message: "Минимум 6 символов",
+                        }
+                    })} />
+
                 <div className="input-password__icon" onClick={togglePasswordVisibility}>
                     <Icon name={showPassword ? "eye-slash" : "eye"} />
                 </div>
             </DivInput>
+            {errors?.password && (<p style={{ color: "red" }}>{errors?.password?.message}</p>)}
 
         </FromRegLog>
 
