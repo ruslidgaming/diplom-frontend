@@ -17,6 +17,7 @@ import DivInput from '../../../core/UIKit/input';
 import FAQItem from './components/faqItem';
 import { faqQuestions } from './data/faq-data';
 import { Link } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 
 function Main() {
     const swiperRef = useRef(null)
@@ -54,7 +55,23 @@ function Main() {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    const { setName, setTelephone, telephone, name, sendMessage } = deedbackModel
+    const { sendMessage } = deedbackModel
+
+
+
+    const {
+        register,
+        formState: {
+            errors,
+            isValid,
+            isSubmitting,
+        },
+        handleSubmit,
+        getValues,
+    } = useForm({
+        mode: "onSubmit",
+    });
+
 
     return <>
         <section className="banner">
@@ -268,7 +285,7 @@ function Main() {
 
                     <div className="rate__items">
                         <div className="rate__item item-rate">
-                            <div className="item-rate__name">Start</div>
+                            <div className="item-rate__name">Курс</div>
                             <div className="item-rate__list">
                                 <div className="item-rate__list-item">
                                     <p>Кол-во курсов</p>
@@ -290,7 +307,7 @@ function Main() {
                             <Link to="#" className="item-rate__btn _btn _blue">Выбрать</Link>
                         </div>
                         <div className="rate__item item-rate">
-                            <div className="item-rate__name">Grow</div>
+                            <div className="item-rate__name">Школа</div>
                             <div className="item-rate__list">
                                 <div className="item-rate__list-item">
                                     <p>Кол-во курсов</p>
@@ -312,7 +329,7 @@ function Main() {
                             <Link to="#" className="item-rate__btn _btn _blue">Выбрать</Link>
                         </div>
                         <div className="rate__item item-rate">
-                            <div className="item-rate__name">Pro</div>
+                            <div className="item-rate__name">Академия</div>
                             <div className="item-rate__list">
                                 <div className="item-rate__list-item">
                                     <p>Кол-во курсов</p>
@@ -346,17 +363,44 @@ function Main() {
                         Оставьте заявку и наш менеджер свяжется с вами в ближайшее время
                     </p>
                 </div>
-                <div className="feedback__form">
+                <form className="feedback__form" onSubmit={handleSubmit(sendMessage)} >
                     <DivInput className={'feedback__input'} label='Ваше имя'>
-                        <input type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Имя" name="" id="" />
+                        <input type="text" placeholder="Имя" name="" id=""
+                            {...register('name', {
+                                required: "Поле обязательно",
+                                pattern: {
+                                    value: /^[А-яA-z]+$/,
+                                    message: "Разрешены только буквы"
+                                },
+                                maxLength: {
+                                    value: 20,
+                                    message: "Максимум 20 символов",
+                                }
+                            })} />
                     </DivInput>
 
                     <DivInput className={'feedback__input'} label='Номер телефона '>
-                        <input type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Имя" name="" id="" />
+                        <input type="text" placeholder="Имя" name="" id=""
+                            {...register('telephon', {
+                                required: "Поле обязательно",
+                                pattern: {
+                                    value: /^[\d\+][\d\(\)\ -]{4,14}\d$/,
+                                    message: "Введите корректный номер телефона"
+                                },
+                                minLength: {
+                                    value: 5,
+                                    message: "Номер слишком короткий"
+                                },
+                                maxLength: {
+                                    value: 20,
+                                    message: "Номер слишком длинный"
+                                }
+                            })}
+                        />
                     </DivInput>
-                    <button className='feedback__btn _btn _blue' onClick={sendMessage}>Отправить</button>
+                    <button className='feedback__btn _btn _blue'>Отправить</button>
                     <p className='feedback__discreption'>Нажимая кнопку, принимаю <Link to="#">условия политики</Link> и <Link to="#">пользовательского соглашения</Link></p>
-                </div>
+                </form>
             </div>
 
 

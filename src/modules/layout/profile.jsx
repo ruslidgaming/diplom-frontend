@@ -20,13 +20,14 @@ export default function Profile() {
 
     useEffect(() => {
         console.log(user)
-        if (user.role === 'user') {
-            setPanelData(sidebarUserData)
-        }
-        if (user.role === 'super') {
-            setPanelData(sidebarSuperData)
-        }
-        if (user.role === 'admin') {
+        // if (user.role === 'user') {
+        //     setPanelData(sidebarUserData)
+        // }
+        // if (user.role === 'super') {
+        //     setPanelData(sidebarSuperData)
+        // }
+        // if (user.role === 'admin') {
+        if (true) {
             setPanelData(sidebarAdminData)
         }
     })
