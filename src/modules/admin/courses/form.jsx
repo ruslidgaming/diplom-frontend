@@ -93,20 +93,26 @@ function CoursesForm() {
 
     const onSubmit = async () => {
         const formData = new FormData();
+
+        formData.append("title", data.title);
+        formData.append("price", data.price);
+        formData.append("cardDescription", data.cardDescription);
+        formData.append("slogan", data.slogan);
+        formData.append("aboutCourse", data.aboutCourse);
+        formData.append("courseCards", JSON.stringify(courseCards));
+        data.courseCards = courseCards
+        formData.append("mentorCards", JSON.stringify(mentorCards));
+        data.mentorCards = mentorCards
+
         formData.append("courseImage", getValues("courseImage")[0]);
-
-        // Добавляй остальные поля, если нужно
-        // formData.append("title", data.title);
-        // formData.append("price", data.price);
-        // и т.д.
-
-
-        console.log(getValues("courseImage")[0])
 
         try {
             const response = await fetch('http://127.0.0.1:8000/api/course/add', {
                 method: 'POST',
                 body: formData,
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+                }
             });
 
             const result = await response.json();
