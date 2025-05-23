@@ -91,20 +91,22 @@ function CoursesForm() {
     //     //     })
     // };
 
-    const onSubmit = async (data) => {
+    const onSubmit = async () => {
         const formData = new FormData();
-        formData.append("courseImage", data.courseImage[0]);
+        formData.append("courseImage", getValues("courseImage")[0]);
 
         // Добавляй остальные поля, если нужно
         // formData.append("title", data.title);
         // formData.append("price", data.price);
         // и т.д.
 
+
+        console.log(getValues("courseImage")[0])
+
         try {
-            const response = await fetch('/api/your-endpoint', {
+            const response = await fetch('http://127.0.0.1:8000/api/course/add', {
                 method: 'POST',
-                body: formData,  // передаем formData
-                // НЕ добавляй заголовок Content-Type, fetch сделает это сам
+                body: formData,
             });
 
             const result = await response.json();
@@ -385,7 +387,8 @@ function CoursesForm() {
                     </div>
                 </div>
 
-                <button type="submit" className="addcours__submit" onClick={handleSubmit(onSubmit)}>
+                {/* <button type="submit" className="addcours__submit" onClick={handleSubmit(onSubmit)}> */}
+                <button type="submit" className="addcours__submit" onClick={onSubmit}>
                     Сохранить курс
                 </button>
             </div>
