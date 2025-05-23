@@ -16,14 +16,6 @@ function CoursesForm() {
     const [courseImagePreview, setCourseImagePreview] = useState(null);
     const [mentorImagePreviews, setMentorImagePreviews] = useState({});
 
-    const [cardname, setCardname] = useState({});
-    const [cardText, setCardText] = useState({});
-
-    const [mentorName, setMentorName] = useState({});
-    const [mentorTitle, setMentorTitle] = useState({});
-
-
-
     const {
         register,
         control,
@@ -59,41 +51,69 @@ function CoursesForm() {
     };
 
     // Обработчик отправки формы
+    // const onSubmit = async (data) => {
+    //     const formData = new FormData();
+
+    //     // Основные данные
+    //     formData.append("title", data.title);
+    //     formData.append("price", data.price);
+    //     formData.append("cardDescription", data.cardDescription);
+    //     formData.append("slogan", data.slogan);
+    //     formData.append("aboutCourse", data.aboutCourse);
+
+    //     // Карточки курса
+    //     formData.append("courseCards", JSON.stringify(courseCards));
+    //     data.courseCards = courseCards
+    //     // Карточки менторов
+    //     formData.append("mentorCards", JSON.stringify(mentorCards));
+    //     data.mentorCards = mentorCards
+    //     // Изображение курса
+    //     // if (data.courseImage && data.courseImage[0]) {
+    //     //     formData.append("courseImage", data.courseImage[0]);
+    //     // }
+
+    //     formData.append("courseImage", data.courseImage[0]);
+
+    //     console.log(data.courseImage[0])
+
+    //     // courseCreate(formData)
+    //     //     .then(infomation => {
+    //     //         console.log(infomation)
+    //     //         alert("Курс успешно создан!");
+    //     //         reset();
+    //     //         setCourseCards([]);
+    //     //         setMentorCards([]);
+    //     //     })
+    //     //     .catch(error => {
+    //     //         console.error("Ошибка:", error);
+    //     //         alert("Произошла ошибка при отправке данных");
+
+    //     //     })
+    // };
+
     const onSubmit = async (data) => {
         const formData = new FormData();
+        formData.append("courseImage", data.courseImage[0]);
 
-        // Основные данные
-        formData.append("title", data.title);
-        formData.append("price", data.price);
-        formData.append("cardDescription", data.cardDescription);
-        formData.append("slogan", data.slogan);
-        formData.append("aboutCourse", data.aboutCourse);
+        // Добавляй остальные поля, если нужно
+        // formData.append("title", data.title);
+        // formData.append("price", data.price);
+        // и т.д.
 
-        // Карточки курса
-        formData.append("courseCards", JSON.stringify(courseCards));
-        data.courseCards = courseCards
-        // Карточки менторов
-        formData.append("mentorCards", JSON.stringify(mentorCards));
-        data.mentorCards = mentorCards
-        // Изображение курса
-        if (data.courseImage && data.courseImage[0]) {
-            formData.append("courseImage", data.courseImage[0]);
+        try {
+            const response = await fetch('/api/your-endpoint', {
+                method: 'POST',
+                body: formData,  // передаем formData
+                // НЕ добавляй заголовок Content-Type, fetch сделает это сам
+            });
+
+            const result = await response.json();
+            console.log('Server response:', result);
+        } catch (error) {
+            console.error('Error uploading file:', error);
         }
-
-        courseCreate(formData)
-            .then(infomation => {
-                console.log(infomation)
-                alert("Курс успешно создан!");
-                reset();
-                setCourseCards([]);
-                setMentorCards([]);
-            })
-            .catch(error => {
-                console.error("Ошибка:", error);
-                alert("Произошла ошибка при отправке данных");
-
-            })
     };
+
 
     // Добавление карточки курса
     const addCourseCard = (data) => {
