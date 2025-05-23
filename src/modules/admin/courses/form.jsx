@@ -91,7 +91,7 @@ function CoursesForm() {
     //     //     })
     // };
 
-    const onSubmit = async () => {
+    const onSubmit = async (data) => {
         const formData = new FormData();
 
         formData.append("title", data.title);
@@ -393,8 +393,8 @@ function CoursesForm() {
                     </div>
                 </div>
 
-                {/* <button type="submit" className="addcours__submit" onClick={handleSubmit(onSubmit)}> */}
-                <button type="submit" className="addcours__submit" onClick={onSubmit}>
+                {/* <button type="submit" className="addcours__submit" onClick={onSubmit}> */}
+                <button type="submit" className="addcours__submit" onClick={handleSubmit(onSubmit)}>
                     Сохранить курс
                 </button>
             </div>
