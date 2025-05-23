@@ -13,6 +13,6 @@ export const FeedbackRoute = {
 }
 
 export const MentorRoutes = {
-  
+
 }
 

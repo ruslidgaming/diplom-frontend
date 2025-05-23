@@ -135,7 +135,7 @@ function Register() {
                     {...register('companyName', {
                         required: "Поле обязательно",
                         pattern: {
-                            value: /^[А-яA-z]+$/,
+                            value: /^[А-яA-z\s]+$/,
                             message: "Разрешены только буквы"
                         },
                         maxLength: {
@@ -160,7 +160,7 @@ function Register() {
             {errors?.companyDescription && (<p style={{ color: "red" }}>{errors?.companyDescription?.message}</p>)}
 
             <DivInput className="regLog__textarea" label={<p>Пароль <span style={{ color: "red" }}>*</span></p>}>
-                <input type={showPassword ? "text" : "password"} placeholder="Название училища"
+                <input type={showPassword ? "text" : "password"} placeholder="Пароль"
                     {...register('password', {
                         required: "Поле обязательно",
                         maxLength: {
@@ -180,7 +180,7 @@ function Register() {
             {errors?.password && (<p style={{ color: "red" }}>{errors?.password?.message}</p>)}
 
             <DivInput className="regLog__textarea" label={<p>Повторите пароль <span style={{ color: "red" }}>*</span></p>}>
-                <input type={showPassword_r ? "text" : "password"} placeholder="Название училища"
+                <input type={showPassword_r ? "text" : "password"} placeholder="Повторите пароль"
                     {...register('password_r', {
                         required: "Поле обязательно",
                         validate: (value) => value === getValues('password') || "Пароли не совпадают",
