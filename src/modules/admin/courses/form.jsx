@@ -3,8 +3,13 @@ import { useEffect, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import DivInput from "../../../core/UIKit/input";
 import foto from "../../../assets/img/banner.png";
+import courseModal from "./models/course-modal";
+import { courseCreate } from "./service/course-service";
 
 function CoursesForm() {
+
+    const { setCourseData } = courseModal;
+
     // Модели данных
     const [courseCards, setCourseCards] = useState([]);
     const [mentorCards, setMentorCards] = useState([]);
@@ -75,26 +80,19 @@ function CoursesForm() {
             formData.append("courseImage", data.courseImage[0]);
         }
 
-        console.log(data)
-
-        try {
-            const response = await fetch("/api/courses", {
-                method: "POST",
-                body: formData,
-            });
-
-            if (response.ok) {
+        courseCreate(formData)
+            .then(infomation => {
+                console.log(infomation)
                 alert("Курс успешно создан!");
                 reset();
                 setCourseCards([]);
                 setMentorCards([]);
-            } else {
-                throw new Error("Ошибка при сохранении");
-            }
-        } catch (error) {
-            console.error("Ошибка:", error);
-            alert("Произошла ошибка при отправке данных");
-        }
+            })
+            .catch(error => {
+                console.error("Ошибка:", error);
+                alert("Произошла ошибка при отправке данных");
+
+            })
     };
 
     // Добавление карточки курса

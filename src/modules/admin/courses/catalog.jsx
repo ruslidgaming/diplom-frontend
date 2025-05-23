@@ -2,8 +2,6 @@ import { observer } from "mobx-react-lite";
 import { Link } from "react-router-dom";
 import DivInput from "../../../core/UIKit/input";
 import Icon from "../../../core/UIKit/icons";
-import ProfileIcon from "../../layout/profileComponents/profileIcons";
-import LineChart from "./components/statistic";
 import { useState } from "react";
 
 import foto from "../../../assets/img/banner.png";
