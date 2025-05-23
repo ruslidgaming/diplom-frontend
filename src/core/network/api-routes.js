@@ -1,9 +1,6 @@
 export const UserRoutes = {
   Register: "/admin/register",
   AdminLogin: "/admin/login",
-  MentorLogin: '/mentor/login',
-  MentorCreate: '/mentor/create',
-  MentorUpdate: '/mentor/update',
   StudentLogin: '/student/login',
   StudentRegister: '/student/register',
 }
@@ -13,6 +10,12 @@ export const FeedbackRoute = {
 }
 
 export const MentorRoutes = {
+<<<<<<< HEAD
 
+=======
+  MentorLogin: '/mentor/login',
+  MentorCreate: '/mentor/create',
+  MentorUpdate: '/mentor/update',
+>>>>>>> 8a5c713915d28f29c1cd83385cbe7906be6b76a8
 }
 
