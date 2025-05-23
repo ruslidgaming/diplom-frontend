@@ -44,7 +44,7 @@ function CoursesForm() {
                             <input className="addcours-info__inp" name="cours-name" placeholder="Название" value="" />
                         </DivInput>
 
-                        <DivInput className="addcours-info__text" label={<p>Описание для карточки</p>}>
+                        <DivInput className="addcours-info__text">
                             <textarea className="addcours-info__textarea" name="cours-discriptionMini" placeholder="Описание карточки"></textarea>
                         </DivInput>
                     </div>

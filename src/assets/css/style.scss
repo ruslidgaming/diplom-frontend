@@ -1527,13 +1527,21 @@
     &-info {
         &__items {
             display: grid;
-            grid-template-columns: repeat(4, minmax());
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 20px;
         }
         &__item {
+            background-color: var(--clr-fon);
+            border-radius: 20px;
         }
         &__title {
+            font-family: var(--clr-blue);
+            font-family: var(--font-unbounded);
+            font-size: 18px;
         }
         &__inp {
+            border: ;
+            border-bottom: 1px solid gray !important;
         }
         &__text {
         }

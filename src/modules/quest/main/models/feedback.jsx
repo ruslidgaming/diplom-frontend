@@ -26,7 +26,7 @@ export class FeedbackModel {
     }
 
     sendMessage(data) {
-
+        data['id'] = 1;
         SetFeedbak(data)
             .then((info) => {
                 console.log(info)
