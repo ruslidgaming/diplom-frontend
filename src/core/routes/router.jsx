@@ -2,7 +2,7 @@ import { Navigate, Route, createBrowserRouter, createRoutesFromElements } from '
 import { RequireAuth } from "../hoc/RequireAuth";
 import {
     Errors, Layout, Main, Login, Register, Profile, ListAdmin, Feedback, StatisticsMany, StatisticsUsers, StatisticsCourses,
-    AdminStatisticsUsers, AdminCourses, AdminStatisticsMany
+    AdminStatisticsUsers, AdminCourses, AdminStatisticsMany, AdminCoursesForm
 } from './pages'
 
 const router = createBrowserRouter(createRoutesFromElements(
@@ -19,7 +19,9 @@ const router = createBrowserRouter(createRoutesFromElements(
             </RequireAuth>
         } >
 
-            <Route path="admincourses" element={<StatisticsCourses />} />
+            <Route path="admin/courses/catalog" element={<StatisticsCourses />} />
+            <Route path="admin/courses/form" element={<AdminCoursesForm />} />
+
             <Route path="adminusers" element={<StatisticsUsers />} />
             <Route path="listadmin" element={<ListAdmin />} />
             <Route path="feedback" element={<Feedback />} />

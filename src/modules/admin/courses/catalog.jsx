@@ -29,10 +29,10 @@ function Courses() {
                     </div>
                 </DivInput>
 
-                <Link className="courses__add" to={"/admin/addcourse"}>
+                <a className="courses__add" href={"/profile/admin/courses/form"}>
                     <Icon className="courses__add__icon" name={"plus"} />
                     <span>Добавить</span>
-                </Link>
+                </a>
             </div>
 
             <div className="courses__items">

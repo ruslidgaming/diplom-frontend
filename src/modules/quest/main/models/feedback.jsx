@@ -1,4 +1,5 @@
 import { makeAutoObservable } from "mobx";
+import { SetFeedbak } from "../service/login-service";
 
 export class FeedbackModel {
     constructor() {
@@ -24,8 +25,15 @@ export class FeedbackModel {
         this._telephone = value
     }
 
-    sendMessage() {
-        console.log(`Отправить ${this.name} ${this.telephone}`);
+    sendMessage(data) {
+
+        SetFeedbak(data)
+            .then((info) => {
+                console.log(info)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
     }
 }
 

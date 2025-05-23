@@ -19,7 +19,8 @@ import StatisticsCourses from "../../modules/superAdmin/courses/view";
 
 // Админ
 import AdminStatisticsUsers from "../../modules/admin/statisticsUsers/view";
-import AdminCourses from "../../modules/admin/courses/view";
+import AdminCourses from "../../modules/admin/courses/catalog";
+import AdminCoursesForm from "../../modules/admin/courses/form";
 import AdminStatisticsMany from "../../modules/admin/statisticsMany/view";
 
 export {
@@ -36,5 +37,6 @@ export {
     StatisticsCourses,
     AdminStatisticsUsers,
     AdminCourses,
-    AdminStatisticsMany
+    AdminStatisticsMany,
+    AdminCoursesForm
 }

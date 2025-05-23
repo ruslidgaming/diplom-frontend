@@ -1335,6 +1335,16 @@
         border-radius: 8px;
         padding: 8px 12px 8px 8px;
         color: white;
+
+        & span {
+            color: white;
+        }
+
+        @media (min-width: em($mPoint-4, 16)) {
+            &:hover {
+                opacity: 0.7;
+            }
+        }
     }
     &__items {
         display: grid;
@@ -1385,5 +1395,216 @@
         font-size: 14px !important;
         padding: 5px 0;
         width: 100%;
+    }
+}
+
+._fonBack-navy__blue {
+    // background-color: var(--clr-fon);
+    background-color: white;
+}
+
+.addcours {
+    & input,
+    & textarea {
+        // background-color: white;
+        // background-color: var(--clr-fon);
+        // box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.818);
+        border: 1px solid rgb(157, 157, 157);
+        border-radius: 5px;
+        background-color: white;
+    }
+    &__inp {
+        & .input__input {
+            border: none !important;
+        }
+    }
+
+    &-cards {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        margin-bottom: 60px;
+    }
+
+    &__title {
+        font-size: 20px;
+        font-family: var(--font-unbounded);
+        margin-bottom: 30px;
+        margin-top: 70px;
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+
+    &-card {
+        padding: 30px;
+
+        &__face {
+            display: flex;
+            align-items: stretch;
+            gap: 40px;
+            padding: 40px;
+            background-color: var(--clr-fon);
+            border-radius: 30px;
+
+            &-inps {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                width: 100%;
+
+                & textarea {
+                    height: 150px;
+                }
+            }
+
+            @media (max-width: em($mPoint-2, 16)) {
+                flex-direction: column;
+            }
+        }
+
+        &__img {
+            width: min-content;
+            font-size: 35px;
+            color: white;
+
+            & label {
+                display: block;
+                width: em(300, 40);
+                height: em(300, 40);
+
+                max-width: 300px;
+                max-height: 300px;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                background-color: var(--clr-blue);
+                opacity: 0.9;
+                // background-color: white;
+                // background-color: var(--clr-fon);
+                // border: 1px solid rgb(209, 209, 209);
+                border: 3px solid var(--clr-blue);
+                border-radius: 20px;
+
+                font-family: var(--font-unbounded);
+                font-weight: 700;
+                cursor: pointer;
+
+                & img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+
+        &__slogan {
+            height: 100px;
+            width: 100%;
+        }
+
+        &__discription {
+            width: 100%;
+            height: 200px;
+        }
+
+        &__income {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 30px;
+
+            &-inp {
+                padding-bottom: 10px;
+                max-width: 300px;
+                width: 100%;
+            }
+        }
+    }
+
+    &-info {
+        &__items {
+            display: grid;
+            grid-template-columns: repeat(4, minmax());
+        }
+        &__item {
+        }
+        &__title {
+        }
+        &__inp {
+        }
+        &__text {
+        }
+        &__textarea {
+        }
+    }
+
+    &-telegram {
+        display: flex;
+        align-items: center;
+        gap: 50px;
+
+        & h3 {
+            margin: 0;
+        }
+
+        &__inp {
+            padding: 15px 30px;
+            font-family: "Unbounded";
+            font-weight: 700;
+            font-size: 18px;
+            width: 250px;
+        }
+    }
+
+    &-btn {
+        width: 100%;
+        padding: 15px;
+        margin-top: 60px;
+        margin-bottom: 50px;
+    }
+
+    @media (max-width: em($mPoint-4, 16)) {
+        &-card {
+            padding: 20px;
+
+            &__img {
+                font-size: 20px;
+            }
+
+            &__income {
+                padding: 20px;
+                &-name {
+                    font-size: 20px;
+                }
+                &-inp {
+                    font-size: 20px;
+                }
+            }
+        }
+
+        &-technologies {
+            &__card {
+                font-size: 16px;
+            }
+        }
+
+        &-telegram {
+            &__inp {
+                padding: 15px 15px;
+            }
+        }
+    }
+
+    @media (max-width: em($mPoint-5, 16)) {
+        &-telegram {
+            flex-direction: column;
+            align-items: start;
+            &__inp {
+                width: 100%;
+            }
+        }
     }
 }
