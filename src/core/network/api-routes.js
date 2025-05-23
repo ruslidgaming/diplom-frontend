@@ -9,7 +9,7 @@ export const UserRoutes = {
 }
 
 export const MentorRoutes = {
-
+  
 }
 
 
