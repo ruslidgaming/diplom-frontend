@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite";
 import logo from "../../../assets/img/logo.svg"
 
-export const HeaderProfile = observer(() => {
+export const HeaderProfile = observer(({ name }) => {
     return <>
         <header className="profile__header header-profile">
             <div className="header-profile__logo logo">
@@ -15,7 +15,7 @@ export const HeaderProfile = observer(() => {
                 <div className="header-profile__foto">
                     <img src={logo} alt="" />
                 </div>
-                <div className="header-profile__name">X’eriya Ponald</div>
+                <div className="header-profile__name">{name}</div>
             </div>
         </header>
     </>;
