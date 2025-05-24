@@ -104,20 +104,21 @@ function CoursesForm() {
         formData.append("mentorCards", JSON.stringify(mentorCards));
         data.mentorCards = mentorCards
 
-        // asd
-
         formData.append("courseImage", getValues("courseImage")[0]);
         console.log(getValues("courseImage")[0])
         formData.append(`testImg`, mentorCards[0].image);
 
-
+        let countImg = 0;
 
         mentorCards.forEach((mentor, index) => {
+            console.log(mentor)
             if (mentor.image) {
                 console.log(mentor.image)
                 formData.append(`mentorImage_${index}`, mentor.image);
+                countImg++;
             }
         });
+        formData.append(`count`, countImg);
 
         try {
             const response = await fetch('http://127.0.0.1:8000/api/course/add', {
