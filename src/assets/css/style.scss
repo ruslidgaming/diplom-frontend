@@ -1396,6 +1396,16 @@
         padding: 5px 0;
         width: 100%;
     }
+    &__link {
+        margin-top: 10px;
+        width: 100%;
+        padding: 5px;
+        background-color: #00ff48;
+        border-radius: 5px;
+        font-size: 14px !important;
+        
+        text-align: center;
+    }
 }
 
 ._fonBack-navy__blue {

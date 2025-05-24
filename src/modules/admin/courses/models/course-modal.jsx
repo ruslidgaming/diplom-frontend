@@ -14,10 +14,9 @@ class CourseModal {
         return this._courseCatalogList;
     }
 
-    getCourseAllData(idUser) {
+    getCourseAllData() {
 
-        console.log(idUser);
-        courseCatalog(idUser)
+        courseCatalog()
             .then(res => {
                 this._courseCatalogList = res.data;
                 console.log(this._courseCatalogList);

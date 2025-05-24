@@ -9,6 +9,6 @@ export const courseShow = (id) => {
     return instance.get(CourseRoute.Show, id)
 }
 
-export const courseCatalog = (id) => {
-    return instance.get(CourseRoute.Catalog, { id })
+export const courseCatalog = () => {
+    return instance.get(CourseRoute.Catalog)
 }
