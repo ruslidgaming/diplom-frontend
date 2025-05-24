@@ -105,13 +105,15 @@ function CoursesForm() {
         data.mentorCards = mentorCards
 
         formData.append("courseImage", getValues("courseImage")[0]);
-        // console.log(getValues("courseImage")[0])
-        // console.log(mentorCards)
+        console.log(getValues("courseImage")[0])
+        formData.append(`testImg`, mentorCards[0].image);
+
+
 
         mentorCards.forEach((mentor, index) => {
             if (mentor.image) {
-                console.log(`mentorImage_${index}`, mentor.image[0])
-                formData.append(`mentorImage_${index}`, mentor.image[0]); // ключ уникальный
+                console.log(mentor.image)
+                formData.append(`mentorImage_${index}`, mentor.image);
             }
         });
 
