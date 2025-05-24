@@ -2,12 +2,23 @@ import { observer } from "mobx-react-lite";
 import { Link } from "react-router-dom";
 import DivInput from "../../../core/UIKit/input";
 import Icon from "../../../core/UIKit/icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import foto from "../../../assets/img/banner.png";
+import courseModal from "./models/course-modal";
+import { useAuth } from "../../../core/hoc/AuthProvider";
 
 function Courses() {
 
+    const { getCourseAllData, courseCatalogList } = courseModal
+    const { user } = useAuth();
+
+    useEffect(() => {
+        console.log(user)
+
+        getCourseAllData(user.id)
+        console.log(courseCatalogList);
+    }, [])
 
     const [staticSections, setStaticSections] = useState("");
 
@@ -46,6 +57,7 @@ function Courses() {
                         <Link className="item-course__bnt _btn _blue" to={"/admin/courses/edit"}>Редактировать</Link>
                         <button className="item-course__bnt _btn _red">Удалить</button>
                     </div>
+                    <Link className="item-course__link" to={"/admin/courses/show/5"}>Подробнее</Link>
                 </div>
                 <div className="courses__item item-course">
                     <div>

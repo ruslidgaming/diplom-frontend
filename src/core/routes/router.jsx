@@ -21,6 +21,7 @@ const router = createBrowserRouter(createRoutesFromElements(
 
             <Route path="admin/courses/catalog" element={<StatisticsCourses />} />
             <Route path="admin/courses/form" element={<AdminCoursesForm />} />
+            <Route path="admin/courses/show/:idCourse" element={<AdminCoursesForm />} />
 
             <Route path="adminusers" element={<StatisticsUsers />} />
             <Route path="listadmin" element={<ListAdmin />} />

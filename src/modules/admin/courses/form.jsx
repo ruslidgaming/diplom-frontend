@@ -5,10 +5,13 @@ import DivInput from "../../../core/UIKit/input";
 import foto from "../../../assets/img/banner.png";
 import courseModal from "./models/course-modal";
 import { courseCreate } from "./service/course-service";
+import { useAuth } from "../../../core/hoc/AuthProvider";
 
 function CoursesForm() {
 
     const { setCourseData } = courseModal;
+    const { user } = useAuth();
+
 
     // Модели данных
     const [courseCards, setCourseCards] = useState([]);
@@ -119,7 +122,8 @@ function CoursesForm() {
             }
         });
         formData.append(`count`, countImg);
-
+        formData.append('idUser', user.id)
+        console.log(user.id)
         try {
             const response = await fetch('http://127.0.0.1:8000/api/course/add', {
                 method: 'POST',
@@ -131,6 +135,8 @@ function CoursesForm() {
 
             const result = await response.json();
             console.log('Server response:', result);
+            window.location.href = '/admin/courses';
+
         } catch (error) {
             console.error('Error uploading file:', error);
         }
