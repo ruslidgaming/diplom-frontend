@@ -105,6 +105,15 @@ function CoursesForm() {
         data.mentorCards = mentorCards
 
         formData.append("courseImage", getValues("courseImage")[0]);
+        // console.log(getValues("courseImage")[0])
+        // console.log(mentorCards)
+
+        mentorCards.forEach((mentor, index) => {
+            if (mentor.image) {
+                console.log(`mentorImage_${index}`, mentor.image[0])
+                formData.append(`mentorImage_${index}`, mentor.image[0]); // ключ уникальный
+            }
+        });
 
         try {
             const response = await fetch('http://127.0.0.1:8000/api/course/add', {
