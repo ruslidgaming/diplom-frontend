@@ -50,6 +50,7 @@ function Courses() {
 
             <div className="courses__items">
                 {
+                    courseCatalogList.length > 0 ??
                     courseCatalogList.map((item, index) => (
                         <div className="courses__item item-course" key={index}>
                             <div>
