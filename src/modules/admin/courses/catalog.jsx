@@ -7,13 +7,21 @@ import { useEffect, useState } from "react";
 import foto from "../../../assets/img/banner.png";
 import courseModal from "./models/course-modal";
 import { useAuth } from "../../../core/hoc/AuthProvider";
+import { courseCatalog } from "./service/course-service";
 
 function Courses() {
 
-    const { getCourseAllData, courseCatalogList } = courseModal
+    const { getCourseAllData, courseCatalogList, setCourseCatalogList } = courseModal
 
     useEffect(() => {
-        getCourseAllData()
+        courseCatalog()
+            .then(res => {
+                setCourseCatalogList(res.data);
+                console.log(res.data);
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }, [])
 
     const [staticSections, setStaticSections] = useState("");
