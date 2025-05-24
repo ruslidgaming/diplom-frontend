@@ -17,6 +17,12 @@ function Courses() {
         getCourseAllData(user.id)
     }, [])
 
+    const [staticSections, setStaticSections] = useState("");
+
+    const CheckSetStaticSections = (name) => {
+        setStaticSections(staticSections === name ? "" : name)
+    }
+
     return <>
         <div className="courses">
             <div className="courses__header">
