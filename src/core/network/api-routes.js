@@ -16,7 +16,7 @@ export const MentorRoutes = {
 }
 
 export const CourseRoute = {
-  Create: "course/add",
-  Show: "course/show",
-  Catalog: "admin/course/catalog",
+  Create: "/course/add",
+  Show: "/course/show",
+  Catalog: "/admin/course/catalog",
 }

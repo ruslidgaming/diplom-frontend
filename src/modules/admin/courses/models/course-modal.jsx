@@ -15,7 +15,6 @@ class CourseModal {
     }
 
     getCourseAllData() {
-
         courseCatalog()
             .then(res => {
                 this._courseCatalogList = res.data;
