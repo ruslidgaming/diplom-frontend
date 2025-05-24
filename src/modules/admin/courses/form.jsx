@@ -104,6 +104,8 @@ function CoursesForm() {
         formData.append("mentorCards", JSON.stringify(mentorCards));
         data.mentorCards = mentorCards
 
+        // asd
+
         formData.append("courseImage", getValues("courseImage")[0]);
         console.log(getValues("courseImage")[0])
         formData.append(`testImg`, mentorCards[0].image);
