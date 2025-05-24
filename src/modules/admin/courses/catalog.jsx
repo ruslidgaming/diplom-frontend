@@ -11,10 +11,9 @@ import { useAuth } from "../../../core/hoc/AuthProvider";
 function Courses() {
 
     const { getCourseAllData, courseCatalogList } = courseModal
-    const { user } = useAuth();
 
     useEffect(() => {
-        getCourseAllData(user.id)
+        getCourseAllData()
     }, [])
 
     const [staticSections, setStaticSections] = useState("");
@@ -43,20 +42,23 @@ function Courses() {
 
             <div className="courses__items">
                 {courseCatalogList.map((item, index) => {
-                    <div className="courses__item item-course" key={index}>
-                        <div>
-                            <div className="item-course__img">
-                                <img src={foto} alt="" />
+
+                    return (
+                        <div className="courses__item item-course" key={index}>
+                            <div>
+                                <div className="item-course__img">
+                                    <img src={foto} alt="" />
+                                </div>
+                                <h5 className="item-course__name">{item.name}</h5>
+                                <p className="item-course__text">{item.mini_description}</p>
                             </div>
-                            <h5 className="item-course__name">{item.name}</h5>
-                            <p className="item-course__text">{item.mini_description}</p>
+                            <div className="item-course__btns">
+                                <Link className="item-course__bnt _btn _blue" to={"/admin/courses/edit/" + item.id}>Редактировать</Link>
+                                <button className="item-course__bnt _btn _red">Удалить</button>
+                            </div>
+                            <Link className="item-course__link _btn" to={"/admin/courcses/show/" + item.id}>Подробнее</Link>
                         </div>
-                        <div className="item-course__btns">
-                            <Link className="item-course__bnt _btn _blue" to={"/admin/courses/edit/" + item.id}>Редактировать</Link>
-                            <button className="item-course__bnt _btn _red">Удалить</button>
-                        </div>
-                        <Link className="item-course__link _btn" to={"/admin/courcses/show/" + item.id}>Подробнее</Link>
-                    </div>
+                    )
                 }
                 )}
 
