@@ -55,7 +55,7 @@ function Courses() {
                         <div className="courses__item item-course" key={index}>
                             <div>
                                 <div className="item-course__img">
-                                    <img src={`http://127.0.0.1:8000/api/images/${item.image}`} alt="" />
+                                    <img src={`http://127.0.0.1:8000/storage/${item.image}`} alt="" />
                                 </div>
                                 <h5 className="item-course__name">{item.name}</h5>
                                 <p className="item-course__text">{item.mini_description}</p>
