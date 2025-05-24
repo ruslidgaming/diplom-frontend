@@ -9,7 +9,7 @@ function CoursesShow() {
 
     const { idCourse } = useParams();
     useEffect(() => {
-        courseShow({ idCourse: idCourse })
+        courseShow(idCourse)
             .then(res => {
                 console.log(res.data);
             })
