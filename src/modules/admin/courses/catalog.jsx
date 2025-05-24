@@ -15,7 +15,6 @@ function Courses() {
 
     useEffect(() => {
         getCourseAllData(user.id)
-        console.log(courseCatalogList);
     }, [])
 
     const [staticSections, setStaticSections] = useState("");
