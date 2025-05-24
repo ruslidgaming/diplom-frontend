@@ -64,7 +64,7 @@ function Courses() {
                                 <Link className="item-course__bnt _btn _blue" to={"/admin/courses/edit/" + item.id}>Редактировать</Link>
                                 <button className="item-course__bnt _btn _red">Удалить</button>
                             </div>
-                            <Link className="item-course__link _btn" to={"/admin/courcses/show/" + item.id}>Подробнее</Link>
+                            <Link className="item-course__link _btn" to={"/show/" + item.id}>Подробнее</Link>
                         </div>
                     ))}
 
