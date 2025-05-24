@@ -14,8 +14,6 @@ function Courses() {
     const { user } = useAuth();
 
     useEffect(() => {
-        console.log(user)
-
         getCourseAllData(user.id)
         console.log(courseCatalogList);
     }, [])
