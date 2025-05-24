@@ -1,12 +1,22 @@
 import { observer } from "mobx-react-lite";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Icon from "../../../core/UIKit/icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { courseShow } from "./service/course-service";
 
 
 function CoursesShow() {
 
-
+    const { idCourse } = useParams();
+    useEffect(() => {
+        courseShow(idCourse)
+            .then(res => {
+                console.log(res.idCourse);
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }, [])
 
     return <>
         <section class="banner">

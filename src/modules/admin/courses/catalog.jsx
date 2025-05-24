@@ -80,7 +80,7 @@ function Courses() {
                         <Link className="item-course__bnt _btn _blue" to={"/admin/courses/edit"}>Редактировать</Link>
                         <button className="item-course__bnt _btn _red">Удалить</button>
                     </div>
-                    <Link className="item-course__link _btn" to={"/admin/courcses/show/"}>Подробнее</Link>
+                    <Link className="item-course__link _btn" to={"show/2"}>Подробнее</Link>
                 </div>
                 <div className="courses__item item-course">
                     <div className="item-course__img">
@@ -92,7 +92,7 @@ function Courses() {
                         <Link className="item-course__bnt _btn _blue" to={"/admin/courses/edit"}>Редактировать</Link>
                         <button className="item-course__bnt _btn _red">Удалить</button>
                     </div>
-                    <Link className="item-course__link _btn" to={"/admin/courcses/show/"}>Подробнее</Link>
+                    <Link className="item-course__link _btn" to={"/admin/courcses/show/2"}>Подробнее</Link>
                 </div>
                 <div className="courses__item item-course">
                     <div className="item-course__img">

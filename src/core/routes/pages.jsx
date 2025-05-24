@@ -23,6 +23,8 @@ import AdminCourses from "../../modules/admin/courses/catalog";
 import AdminCoursesForm from "../../modules/admin/courses/form";
 import AdminStatisticsMany from "../../modules/admin/statisticsMany/view";
 
+import CoursesShow from "../../modules/admin/courses/show";
+
 export {
     Errors,
     Layout,
@@ -38,5 +40,6 @@ export {
     AdminStatisticsUsers,
     AdminCourses,
     AdminStatisticsMany,
-    AdminCoursesForm
+    AdminCoursesForm,
+    CoursesShow
 }
