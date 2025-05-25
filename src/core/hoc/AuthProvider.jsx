@@ -1,4 +1,5 @@
 import { createContext, useState, useContext } from 'react';
+import { logoutAdmin } from './logout';
 
 const AuthContext = createContext({
   user: { role: 'main' },
@@ -19,9 +20,12 @@ export const AuthProvider = ({ children }) => {
   };
 
   const signout = () => {
-    setUser({ role: 'main' });
-    localStorage.removeItem('user');
-    window.location.href = '/';
+    logoutAdmin()
+      .then(() => {
+        setUser({ role: 'main' });
+        localStorage.removeItem('user');
+        window.location.href = '/';
+      })
   };
 
   return (

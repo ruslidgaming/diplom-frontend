@@ -3,6 +3,7 @@ export const UserRoutes = {
   AdminLogin: "/admin/login",
   StudentLogin: '/student/login',
   StudentRegister: '/student/register',
+  Logout: '/admin/logout',
 }
 
 export const FeedbackRoute = {

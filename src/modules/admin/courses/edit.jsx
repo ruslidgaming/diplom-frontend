@@ -421,7 +421,7 @@ function CoursesEditForm() {
                         <button type="submit" className="addcours__submit" onClick={handleSubmit(onSubmit)}>
                             Сохранить курс
                         </button>
-                        <a href="../" className="addcours__submit _btn ">Отмена</a>
+                        <a href="../" className="addcours__submit _btn ">Назад</a>
                     </div>
                 </div>
             </>
