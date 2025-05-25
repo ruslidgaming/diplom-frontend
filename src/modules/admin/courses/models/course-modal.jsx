@@ -63,7 +63,7 @@ class CourseModal {
     setTeacherDelete(idTeacher) {
         teacherDelete({ idTeacher: idTeacher, idCourse: this._showCourseData['id'] })
             .then((data) => {
-                this._showCourseTeacherData = data.data
+                // this._showCourseTeacherData = data.data
             })
             .catch(err => {
                 console.log(err)
