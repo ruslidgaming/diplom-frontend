@@ -18,16 +18,37 @@ function CoursesEditForm() {
 
     const { isLoading, setLoadable } = loadableModel
 
+    const {
+        register,
+        control,
+        handleSubmit,
+        formState: { errors },
+        reset,
+        setValue,
+        getValues,
+        setValues
+    } = useForm({
+        defaultValues: {
+            title: "",
+            price: "",
+            cardDescription: "",
+            slogan: "",
+            aboutCourse: "",
+        },
+        mode: "onSubmit",
+    });
+
     useEffect(() => {
         courseShow(idCourse)
             .then(res => {
                 setShowCourseData(res)
+                console.log(res.data['course'])
                 setCourseCards(JSON.parse(res.data['course'].course_info))
-                setValues("title", res.data['course'].name)
-                setValues("price", res.data['course'].price)
-                setValues("cardDescription", res.data['course'].cardDescription)
-                setValues("slogan", res.data['course'].slogan)
-                setValues("aboutCourse", res.data['course'].aboutCourse)
+                setValue("title", res.data['course'].name)
+                setValue("price", res.data['course'].price)
+                setValue("cardDescription", res.data['course'].mini_description)
+                setValue("slogan", res.data['course'].slogan)
+                setValue("aboutCourse", res.data['course'].mini_description)
             })
             .catch(err => {
                 console.log(err)
@@ -42,24 +63,7 @@ function CoursesEditForm() {
     const [courseImagePreview, setCourseImagePreview] = useState(null);
     const [mentorImagePreviews, setMentorImagePreviews] = useState({});
 
-    const {
-        register,
-        control,
-        handleSubmit,
-        formState: { errors },
-        reset,
-        setValue,
-        getValues
-    } = useForm({
-        defaultValues: {
-            title: "",
-            price: "",
-            cardDescription: "",
-            slogan: "",
-            aboutCourse: "",
-        },
-        mode: "onChange",
-    });
+
 
     // Валидационные схемы
     const validationRules = {
@@ -89,9 +93,7 @@ function CoursesEditForm() {
         formData.append("mentorCards", JSON.stringify(mentorCards));
         data.mentorCards = mentorCards
 
-        formData.append("courseImage", getValues("courseImage")[0]);
-        console.log(getValues("courseImage")[0])
-        formData.append(`testImg`, mentorCards[0].image);
+        getValues("courseImage")[0] && formData.append("courseImage", getValues("courseImage")[0]);
 
         let countImg = 0;
 
@@ -104,8 +106,7 @@ function CoursesEditForm() {
             }
         });
         formData.append(`count`, countImg);
-        formData.append('idUser', user.id)
-        console.log(user.id)
+        formData.append('idCourse', showCourseData.id)
         try {
             const response = await fetch('http://127.0.0.1:8000/api/course/update', {
                 method: 'POST',
@@ -183,7 +184,6 @@ function CoursesEditForm() {
                                         style={{ display: "none" }}
                                         accept="image/*"
                                         {...register("courseImage", {
-                                            required: "Изображение обязательно",
                                             onChange: (e) => {
                                                 const file = e.target.files[0];
                                                 if (file) {
@@ -238,7 +238,6 @@ function CoursesEditForm() {
                                 <DivInput className="addcours__inp _textarea" label={<p>Описание для карточки</p>}>
                                     <textarea
                                         className="addcours-card__face-inp"
-                                        value={showCourseData.mini_description}
                                         placeholder="Описание карточки"
                                         {...register("cardDescription", validationRules.cardDescription)}
                                     />
@@ -254,7 +253,6 @@ function CoursesEditForm() {
                             <textarea
                                 className="addcours__about-textarea"
                                 placeholder="Слоган"
-                                value={showCourseData.slogan}
                                 {...register("slogan", validationRules.slogan)}
                             />
                         </div>
@@ -267,7 +265,6 @@ function CoursesEditForm() {
                             <textarea
                                 className="addcours__about-textarea"
                                 placeholder="О курсе"
-                                value={showCourseData.description}
                                 {...register("aboutCourse", validationRules.aboutCourse)}
                             />
                         </div>
