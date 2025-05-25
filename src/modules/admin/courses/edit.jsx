@@ -9,6 +9,7 @@ import { useAuth } from "../../../core/hoc/AuthProvider";
 import { useParams } from "react-router-dom";
 import loadableModel from "../../../core/UIKit/loadable/Loadable";
 import Example from "./components/LottieAnimation";
+import { toast } from "react-toastify";
 
 function CoursesEditForm() {
 
@@ -22,6 +23,11 @@ function CoursesEditForm() {
             .then(res => {
                 setShowCourseData(res)
                 setCourseCards(JSON.parse(res.data['course'].course_info))
+                setValues("title", res.data['course'].name)
+                setValues("price", res.data['course'].price)
+                setValues("cardDescription", res.data['course'].cardDescription)
+                setValues("slogan", res.data['course'].slogan)
+                setValues("aboutCourse", res.data['course'].aboutCourse)
             })
             .catch(err => {
                 console.log(err)
@@ -101,7 +107,7 @@ function CoursesEditForm() {
         formData.append('idUser', user.id)
         console.log(user.id)
         try {
-            const response = await fetch('http://127.0.0.1:8000/api/course/add', {
+            const response = await fetch('http://127.0.0.1:8000/api/course/update', {
                 method: 'POST',
                 body: formData,
                 headers: {
@@ -111,7 +117,8 @@ function CoursesEditForm() {
 
             const result = await response.json();
             console.log('Server response:', result);
-            window.location.href = '/admin/courses';
+            toast.success('Курсы обновлены')
+            // window.location.href = '/admin/courses';
 
         } catch (error) {
             console.error('Error uploading file:', error);
@@ -210,7 +217,6 @@ function CoursesEditForm() {
                                     <input
                                         className="addcours-card__face-inp"
                                         placeholder="Название"
-                                        value={showCourseData.name}
                                         {...register("title", validationRules.title)}
                                     />
                                 </DivInput>
@@ -222,7 +228,6 @@ function CoursesEditForm() {
                                         type="number"
                                         className="addcours-card__face-inp"
                                         placeholder="Цена"
-                                        value={showCourseData.price}
                                         {...register("price", validationRules.price)}
                                     />
                                 </DivInput>
