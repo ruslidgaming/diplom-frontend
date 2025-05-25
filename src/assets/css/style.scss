@@ -1693,6 +1693,12 @@
         font-family: var(--font-unbounded);
         background-color: rgb(46, 211, 46);
         color: white;
+        &._btn{
+            color: var(--clr-blue);
+            background-color: white;
+            font-size: 14px !important;
+            margin-top: 20px;
+        }
     }
 }
 

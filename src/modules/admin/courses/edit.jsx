@@ -48,7 +48,7 @@ function CoursesEditForm() {
                 setValue("price", res.data['course'].price)
                 setValue("cardDescription", res.data['course'].mini_description)
                 setValue("slogan", res.data['course'].slogan)
-                setValue("aboutCourse", res.data['course'].mini_description)
+                setValue("aboutCourse", res.data['course'].description)
             })
             .catch(err => {
                 console.log(err)
@@ -85,7 +85,7 @@ function CoursesEditForm() {
 
         formData.append("title", data.title);
         formData.append("price", data.price);
-        formData.append("cardDescription", data.cardDescription);
+        formData.append("cardDescription", data.description);
         formData.append("slogan", data.slogan);
         formData.append("aboutCourse", data.aboutCourse);
         formData.append("courseCards", JSON.stringify(courseCards));
@@ -421,6 +421,7 @@ function CoursesEditForm() {
                         <button type="submit" className="addcours__submit" onClick={handleSubmit(onSubmit)}>
                             Сохранить курс
                         </button>
+                        <a href="../" className="addcours__submit _btn ">Отмена</a>
                     </div>
                 </div>
             </>
