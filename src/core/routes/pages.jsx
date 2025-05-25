@@ -26,6 +26,9 @@ import AdminStatisticsMany from "../../modules/admin/statisticsMany/view";
 import CoursesShow from "../../modules/admin/courses/show";
 import AdminCoursesEditForm from "../../modules/admin/courses/edit";
 
+// методисты
+import MetodistiCatalog from "../../modules/admin/metodisti/catalog";
+
 export {
     Errors,
     Layout,
@@ -43,5 +46,6 @@ export {
     AdminStatisticsMany,
     AdminCoursesForm,
     CoursesShow,
-    AdminCoursesEditForm
+    AdminCoursesEditForm,
+    MetodistiCatalog
 }

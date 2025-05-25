@@ -1,5 +1,5 @@
 import { makeAutoObservable } from "mobx";
-import { courseCatalog, courseDelete, courseShow, teacherDelete } from "../service/course-service";
+import { courseCatalog, courseDelete, courseShow, teacherDelete } from "../service/metodist-service";
 
 
 

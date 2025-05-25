@@ -7,14 +7,13 @@ import { useEffect, useState } from "react";
 import foto from "../../../assets/img/banner.png";
 import courseModal from "./models/course-modal";
 import { useAuth } from "../../../core/hoc/AuthProvider";
-import { courseCatalog } from "./service/course-service";
+import { courseCatalog } from "./service/metodist-service";
 import Example from "./components/LottieAnimation";
 import loadableModel from "../../../core/UIKit/loadable/Loadable";
 import DeleteModal from "../../../core/UIKit/DeleteModal";
 
 function Metodisti() {
 
-    const { getCourseAllData, courseCatalogList, setCourseCatalogList, setCourseDelete, deleteCourseId } = courseModal
     const { isLoading, setLoadable } = loadableModel
 
     useEffect(() => {
@@ -30,27 +29,13 @@ function Metodisti() {
             })
     }, [])
 
-    const [staticSections, setStaticSections] = useState("");
-
-    const CheckSetStaticSections = (name) => {
-        setStaticSections(staticSections === name ? "" : name)
-    }
-
-
-    const handleOverlayClick = (e) => {
-        if (e.target === e.currentTarget) {
-            closeModal();
-        }
-    };
-
-
     return isLoading ?
         <Example /> :
         <>
             <div className="courses">
                 <div className="courses__header">
                     <DivInput className="courses__search search" >
-                        <input type="text" placeholder="Название училища" />
+                        <input type="text" placeholder="Имя методиста" />
                         {/* <input type="text" onChange={e => setSearch(e.target.value)} value={search} placeholder="Название училища" /> */}
 
                         <div className="search__icon">
@@ -58,7 +43,7 @@ function Metodisti() {
                         </div>
                     </DivInput>
 
-                    <a className="courses__add" href={"/admin/courses/form"}>
+                    <a className="courses__add" href={"/admin/metodists/create"}>
                         <Icon className="courses__add__icon" name={"plus"} />
                         <span>Добавить</span>
                     </a>

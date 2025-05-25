@@ -16,6 +16,13 @@ export const MentorRoutes = {
   MentorUpdate: '/mentor/update',
 }
 
+export const MetodistRoutes = {
+  Catalog: "",
+  Create: "",
+  Update: "",
+  Delete: "",
+}
+
 export const CourseRoute = {
   Create: "/course/add",
   Update: "/course/update",

@@ -13,7 +13,7 @@ export const sidebarAdminData = [
         type: "link",
         icon: "web",
         name: "Методисты",
-        link: "/admin/metodists",
+        link: "/admin/metodists/catalog",
     },
     {
         type: "title",
