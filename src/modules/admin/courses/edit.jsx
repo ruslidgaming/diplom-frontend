@@ -85,7 +85,7 @@ function CoursesEditForm() {
 
         formData.append("title", data.title);
         formData.append("price", data.price);
-        formData.append("cardDescription", data.description);
+        formData.append("cardDescription", data.cardDescription);
         formData.append("slogan", data.slogan);
         formData.append("aboutCourse", data.aboutCourse);
         formData.append("courseCards", JSON.stringify(courseCards));
