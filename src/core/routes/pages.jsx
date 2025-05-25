@@ -24,6 +24,7 @@ import AdminCoursesForm from "../../modules/admin/courses/form";
 import AdminStatisticsMany from "../../modules/admin/statisticsMany/view";
 
 import CoursesShow from "../../modules/admin/courses/show";
+import AdminCoursesEditForm from "../../modules/admin/courses/edit";
 
 export {
     Errors,
@@ -41,5 +42,6 @@ export {
     AdminCourses,
     AdminStatisticsMany,
     AdminCoursesForm,
-    CoursesShow
+    CoursesShow,
+    AdminCoursesEditForm
 }

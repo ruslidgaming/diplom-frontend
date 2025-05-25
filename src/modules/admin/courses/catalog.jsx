@@ -8,19 +8,25 @@ import foto from "../../../assets/img/banner.png";
 import courseModal from "./models/course-modal";
 import { useAuth } from "../../../core/hoc/AuthProvider";
 import { courseCatalog } from "./service/course-service";
+import Example from "./components/LottieAnimation";
+import loadableModel from "../../../core/UIKit/loadable/Loadable";
+import DeleteModal from "../../../core/UIKit/DeleteModal";
 
 function Courses() {
 
-    const { getCourseAllData, courseCatalogList, setCourseCatalogList } = courseModal
+    const { getCourseAllData, courseCatalogList, setCourseCatalogList, setCourseDelete, deleteCourseId } = courseModal
+    const { isLoading, setLoadable } = loadableModel
 
     useEffect(() => {
         courseCatalog()
             .then(res => {
                 setCourseCatalogList(res.data.courses);
-                console.log(res.data.courses);
             })
             .catch(err => {
                 console.log(err)
+            })
+            .finally(() => {
+                setLoadable(false)
             })
     }, [])
 
@@ -30,84 +36,61 @@ function Courses() {
         setStaticSections(staticSections === name ? "" : name)
     }
 
-    return <>
-        <div className="courses">
-            <div className="courses__header">
-                <DivInput className="courses__search search" >
-                    <input type="text" placeholder="Название училища" />
-                    {/* <input type="text" onChange={e => setSearch(e.target.value)} value={search} placeholder="Название училища" /> */}
 
-                    <div className="search__icon">
-                        <Icon name={"search"} />
-                    </div>
-                </DivInput>
+    const handleOverlayClick = (e) => {
+        if (e.target === e.currentTarget) {
+            closeModal();
+        }
+    };
 
-                <a className="courses__add" href={"/profile/admin/courses/form"}>
-                    <Icon className="courses__add__icon" name={"plus"} />
-                    <span>Добавить</span>
-                </a>
-            </div>
 
-            <div className="courses__items">
-                {
-                    courseCatalogList.length > 0 &&
-                    courseCatalogList.map((item, index) => (
-                        <div className="courses__item item-course" key={index}>
-                            <div>
-                                <div className="item-course__img">
-                                    <img src={`http://127.0.0.1:8000/storage/${item.image}`} alt="" />
+    return isLoading ?
+        <Example /> :
+        <>
+            <div className="courses">
+                <div className="courses__header">
+                    <DivInput className="courses__search search" >
+                        <input type="text" placeholder="Название училища" />
+                        {/* <input type="text" onChange={e => setSearch(e.target.value)} value={search} placeholder="Название училища" /> */}
+
+                        <div className="search__icon">
+                            <Icon name={"search"} />
+                        </div>
+                    </DivInput>
+
+                    <a className="courses__add" href={"/admin/courses/form"}>
+                        <Icon className="courses__add__icon" name={"plus"} />
+                        <span>Добавить</span>
+                    </a>
+                </div>
+
+                <div className="courses__items">
+                    {
+                        courseCatalogList.length > 0 &&
+                        courseCatalogList.map((item, index) => (
+                            <div className="courses__item item-course" key={index}>
+                                <div>
+                                    <div className="item-course__img">
+                                        <img src={`http://127.0.0.1:8000/storage/${item.image}`} alt="" />
+                                    </div>
+                                    <h5 className="item-course__name">{item.name}</h5>
+                                    <p className="item-course__text">{item.mini_description}</p>
                                 </div>
-                                <h5 className="item-course__name">{item.name}</h5>
-                                <p className="item-course__text">{item.mini_description}</p>
+                                <div className="item-course__btns">
+                                    <a className="item-course__bnt _btn _blue" href={"/admin/courses/edit/" + item.id}>Редактировать</a>
+                                    <DeleteModal classNameBtn={"item-course__bnt _btn _red"}
+                                        idInfo={item.id}
+                                        btnOnClick={deleteCourseId}
+                                        onConfirm={setCourseDelete}
+                                        onCancel={() => console.log('Удаление отменено')}
+                                        itemName="курс 'Введение в React'"
+                                    />
+                                </div>
+                                <a className="item-course__link _btn" href={"/admin/courses/show/" + item.id}>Подробнее</a>
                             </div>
-                            <div className="item-course__btns">
-                                <Link className="item-course__bnt _btn _blue" to={"/admin/courses/edit/" + item.id}>Редактировать</Link>
-                                <button className="item-course__bnt _btn _red">Удалить</button>
-                            </div>
-                            <Link className="item-course__link _btn" to={"/admin/courses/show/" + item.id}>Подробнее</Link>
-                        </div>
-                    ))}
-
-                <div className="courses__item item-course">
-                    <div>
-                        <div className="item-course__img">
-                            <img src={foto} alt="" />
-                        </div>
-                        <h5 className="item-course__name">Социальная психология</h5>
-                        <p className="item-course__text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti nobis eligendi temporibus minus quibusdam laborum!</p>
-                    </div>
-                    <div className="item-course__btns">
-                        <Link className="item-course__bnt _btn _blue" to={"/admin/courses/edit"}>Редактировать</Link>
-                        <button className="item-course__bnt _btn _red">Удалить</button>
-                    </div>
-                    <Link className="item-course__link _btn" to={"show/2"}>Подробнее</Link>
-                </div>
-                <div className="courses__item item-course">
-                    <div className="item-course__img">
-                        <img src={foto} alt="" />
-                    </div>
-                    <h5 className="item-course__name">Социальная психология</h5>
-                    <p className="item-course__text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti nobis eligendi temporibus minus quibusdam laborum!</p>
-                    <div className="item-course__btns">
-                        <Link className="item-course__bnt _btn _blue" to={"/admin/courses/edit"}>Редактировать</Link>
-                        <button className="item-course__bnt _btn _red">Удалить</button>
-                    </div>
-                    <Link className="item-course__link _btn" to={"/admin/courcses/show/2"}>Подробнее</Link>
-                </div>
-                <div className="courses__item item-course">
-                    <div className="item-course__img">
-                        <img src={foto} alt="" />
-                    </div>
-                    <h5 className="item-course__name">Социальная психология</h5>
-                    <p className="item-course__text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti nobis eligendi temporibus minus quibusdam laborum!</p>
-                    <div className="item-course__btns">
-                        <Link className="item-course__bnt _btn _blue" to={"/admin/courses/edit"}>Редактировать</Link>
-                        <button className="item-course__bnt _btn _red">Удалить</button>
-                    </div>
-                    <Link className="item-course__link _btn" to={"/admin/courcses/show/"}>Подробнее</Link>
+                        ))}
                 </div>
             </div>
-        </div>
-    </>
+        </>
 }
 export default observer(Courses);

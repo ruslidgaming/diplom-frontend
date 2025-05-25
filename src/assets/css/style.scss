@@ -1771,7 +1771,7 @@
 }
 
 // banner
-.banner {
+.banner-show {
     padding-top: 100px;
     position: relative;
     text-align: center;
@@ -2043,7 +2043,7 @@
     }
 }
 
-.banner {
+.banner-show {
     width: 100%;
     &._course {
         margin: 0;
@@ -2236,7 +2236,7 @@
 //         animation: banerErrow 2s infinite;
 //     }
 // }
-.banner {
+.banner-show {
     &__errow {
         display: flex;
         flex-direction: column;
@@ -2258,5 +2258,19 @@
     to {
         opacity: 0;
         transform: translateY(90px);
+    }
+}
+
+.userInfo__btn {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    @media (min-width: em($mPoint-4, 16)) {
+        &:hover {
+            & svg {
+                transform: translateX(-10px);
+            }
+        }
     }
 }

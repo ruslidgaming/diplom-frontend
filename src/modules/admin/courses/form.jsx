@@ -53,47 +53,6 @@ function CoursesForm() {
         aboutCourse: { required: "Описание курса обязательно" },
     };
 
-    // Обработчик отправки формы
-    // const onSubmit = async (data) => {
-    //     const formData = new FormData();
-
-    //     // Основные данные
-    //     formData.append("title", data.title);
-    //     formData.append("price", data.price);
-    //     formData.append("cardDescription", data.cardDescription);
-    //     formData.append("slogan", data.slogan);
-    //     formData.append("aboutCourse", data.aboutCourse);
-
-    //     // Карточки курса
-    //     formData.append("courseCards", JSON.stringify(courseCards));
-    //     data.courseCards = courseCards
-    //     // Карточки менторов
-    //     formData.append("mentorCards", JSON.stringify(mentorCards));
-    //     data.mentorCards = mentorCards
-    //     // Изображение курса
-    //     // if (data.courseImage && data.courseImage[0]) {
-    //     //     formData.append("courseImage", data.courseImage[0]);
-    //     // }
-
-    //     formData.append("courseImage", data.courseImage[0]);
-
-    //     console.log(data.courseImage[0])
-
-    //     // courseCreate(formData)
-    //     //     .then(infomation => {
-    //     //         console.log(infomation)
-    //     //         alert("Курс успешно создан!");
-    //     //         reset();
-    //     //         setCourseCards([]);
-    //     //         setMentorCards([]);
-    //     //     })
-    //     //     .catch(error => {
-    //     //         console.error("Ошибка:", error);
-    //     //         alert("Произошла ошибка при отправке данных");
-
-    //     //     })
-    // };
-
     const onSubmit = async (data) => {
         const formData = new FormData();
 
