@@ -1403,7 +1403,7 @@
         background-color: #00ff48;
         border-radius: 5px;
         font-size: 14px !important;
-        
+
         text-align: center;
     }
 }
@@ -1801,15 +1801,6 @@
         padding: 18px;
         max-width: 344px;
     }
-    &__errow {
-        display: flex;
-        flex-direction: column;
-        @include razmer("font-size", 32, 12);
-
-        & span {
-            animation: banerErrow 2s infinite;
-        }
-    }
 
     &__ellips {
         display: flex;
@@ -2049,5 +2040,223 @@
 
     &__card {
         max-width: 400px;
+    }
+}
+
+.banner {
+    width: 100%;
+    &._course {
+        margin: 0;
+        padding: 0;
+    }
+    &__word {
+        width: 100%;
+        padding: 50px 0 0 0;
+
+        font-family: var(--font-unbounded);
+        & h3 {
+            font-size: 16px;
+            color: var(--clr-blue);
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        & h2 {
+            max-width: 60%;
+        }
+
+        & a {
+            padding: 10px 20px;
+        }
+    }
+
+    &__about {
+        margin-top: 130px;
+        background-color: var(--clr-blue);
+        border-radius: 20px;
+        padding: 50px;
+
+        & h3 {
+            font-family: var(--font-unbounded);
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        & p {
+            color: white;
+        }
+    }
+
+    &__technologies {
+        margin-top: 130px;
+    }
+}
+
+.technologies {
+    &__title {
+        font-family: var(--font-unbounded);
+        font-size: 24px;
+        margin-bottom: 30px;
+        // & span {
+        //     color: var(--clr-blue);
+        // }
+
+        width: 350px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    &__cards {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    &__card {
+        background-color: var(--clr-fon);
+        border-radius: 20px;
+        cursor: pointer;
+        @media (min-width: em($mPoint-4, 16)) {
+            &:hover {
+                background-color: var(--clr-blue);
+
+                & h6 {
+                    color: white;
+                }
+
+                & p {
+                    color: white !important;
+                }
+            }
+        }
+    }
+    &__name {
+        font-family: var(--font-unbounded);
+        font-size: 16px;
+        color: var(--clr-blue);
+        font-weight: 600;
+    }
+}
+
+.lesson__cards {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    & .technologies__card {
+        padding: 20px;
+    }
+}
+
+// Блок с учителями
+.teacher {
+    &._adap {
+        padding: 0;
+    }
+
+    &__title {
+        text-align: center;
+    }
+
+    &__cards {
+        display: flex;
+        gap: 50px;
+
+        width: 100%;
+        overflow: scroll;
+        padding-bottom: 20px;
+    }
+
+    @media (max-width: em(1480, 16)) {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    @media (max-width: em($mPoint-5, 16)) {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+// Карточка с учителями
+.teacher-card {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    & p {
+        color: var(--clr-blue);
+        margin-bottom: 30px;
+    }
+
+    &__img {
+        width: 220px;
+        height: 220px;
+        overflow: hidden;
+        position: relative;
+        background-color: var(--clr-fon);
+        border-radius: 20px;
+
+        & img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__name {
+        font-family: var(--font-unbounded);
+        font-size: 14px;
+        text-align: center;
+        width: 100%;
+        margin: 15px auto 10px auto;
+    }
+    &__text {
+        text-align: center;
+        width: 100%;
+    }
+    &__work {
+        width: 80%;
+        max-width: 220px;
+    }
+}
+
+.teacher__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+// &__errow {
+//     display: flex;
+//     flex-direction: column;
+//     @include razmer("font-size", 32, 12);
+
+//     & span {
+//         animation: banerErrow 2s infinite;
+//     }
+// }
+.banner {
+    &__errow {
+        display: flex;
+        flex-direction: column;
+        @include razmer("font-size", 18, 12);
+
+        & span {
+            animation: banerErrow 2s infinite;
+        }
+    }
+}
+@keyframes banerErrow {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    50% {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        transform: translateY(90px);
     }
 }
