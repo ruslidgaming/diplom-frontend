@@ -14,6 +14,7 @@ class Modal {
     }
 
     _catalogList = [];
+    _deleteId = null;
 
     get catalogList() {
         return this._catalogList;
@@ -23,6 +24,25 @@ class Modal {
         this._catalogList = data
     }
 
+    deleteId(id) {
+        this._deleteId = id;
+    }
+
+    setDelete() {
+        metodistDelete(this._deleteId)
+            .then(() => {
+                courseCatalog()
+                    .then(res => {
+                        this.setCatalogList(res.data);
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }
 
 
     get showData() {
@@ -48,23 +68,7 @@ class Modal {
     //     this._courseCatalogList = data
     // }
 
-    // setDelete() {
-    //     courseDelete(this._deleteCourseId)
-    //         .then((data) => {
-    //             console.log(data)
 
-    //             courseCatalog()
-    //                 .then(res => {
-    //                     this.setCourseCatalogList(res.data.courses);
-    //                 })
-    //                 .catch(err => {
-    //                     console.log(err)
-    //                 })
-    //         })
-    //         .catch((err) => {
-    //             console.log(err)
-    //         })
-    // }
 }
 
 const modal = new Modal();
