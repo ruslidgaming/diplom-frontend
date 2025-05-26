@@ -30,7 +30,7 @@ export const Header = observer(() => {
                     <a href="/#projects" className="nav__item">Наши клиенты</a>
                     <a href="/#constructor" className="nav__item">Конструктор</a>
                     <a href="/#rate" className="nav__item">Тарифы</a>
-                    <a href="/login" className="nav__button _btn _blue">Войти</a>
+                    <a href="http://127.0.0.1:8000/login/admin" className="nav__button _btn _blue">Войти</a>
                 </div>
             </div>
             <div className={navSwitcher ? "nav__panel nav__pannel-active" : "nav__panel"}>
@@ -46,7 +46,7 @@ export const Header = observer(() => {
                     <a href="/#projects" className="nav__item">Наши клиенты</a>
                     <a href="/#constructor" className="nav__item">Конструктор</a>
                     <a href="/#rate" className="nav__item">Тарифы</a>
-                    <a href="/login" className="nav__button _btn _blue">Войти</a>
+                    <a href="http://127.0.0.1:8000/login/admin" className="nav__button _btn _blue">Войти</a>
                 </div>
             </div>
         </header>

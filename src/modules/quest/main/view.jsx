@@ -244,7 +244,6 @@ function Main() {
                                     onClick={() => setActiveIndex(index)}
                                 >
                                     <div className='item-system__icon'>
-
                                         {index == 0 ? <AboutIcons name="security-user" /> : ""}
                                         {index == 1 ? <AboutIcons name="teacher" /> : ""}
                                         {index == 2 ? <AboutIcons name="mentor" /> : ""}

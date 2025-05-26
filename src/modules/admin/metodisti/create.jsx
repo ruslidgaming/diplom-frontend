@@ -179,7 +179,7 @@ function MetodistCreare() {
                 <div className="medotisCourse__list">
 
 
-                    <Select handleChange={addItemsCourse} />
+                    {/* <Select handleChange={addItemsCourse} /> */}
 
                     <div className="medotisCourse__item">
                         <div className="medotisCourse__name">Курс 1</div>
