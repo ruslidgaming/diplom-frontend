@@ -69,7 +69,7 @@ function MetodistCreare() {
         activeCourses.forEach(element => {
             courseIds.push(element.id);
         });
-        formData.append("courses", courseIds);
+        formData.append("courses", JSON.stringify(courseIds));
 
         try {
             const response = await fetch('http://127.0.0.1:8000/api/mentor/create', {
