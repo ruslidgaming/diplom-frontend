@@ -16,6 +16,23 @@ class Modal {
     _catalogList = [];
     _deleteId = null;
 
+    _activeCourses = [];
+
+    get activeCourses() {
+        return this._activeCourses;
+    }
+
+    removeCourse(index) {
+        this._activeCourses = this._activeCourses.filter((_, i) => i !== index);
+    }
+
+    setActiveCourses(data) {
+        this._activeCourses = ([...this._activeCourses, data]);
+    }
+
+
+
+
     get catalogList() {
         return this._catalogList;
     }
@@ -44,29 +61,6 @@ class Modal {
             })
     }
 
-
-    get showData() {
-        // return this._showCourseData;
-    }
-
-    deleteId(id) {
-        // this._deleteCourseId = id;
-    }
-
-    setShowData(data) {
-        // this._showCourseTeacherData = data.data['teachers']
-        // this._showCourseData = data.data['course']
-
-        // this._showCourseData['course_info'] = JSON.parse(this._showCourseData.course_info)
-
-    }
-
-    // get courseCatalogList() {
-    //     return this._courseCatalogList;
-    // }
-    // setCatalogList(data) {
-    //     this._courseCatalogList = data
-    // }
 
 
 }

@@ -4,31 +4,30 @@ import { useForm, Controller } from "react-hook-form";
 import DivInput from "../../../core/UIKit/input";
 import { useAuth } from "../../../core/hoc/AuthProvider";
 import Icon from "../../../core/UIKit/icons";
+import { Select } from "../../../core/UIKit/select";
+import { getAllCourseAdmin } from "./service/metodist-service";
+import modal from "./models/modal";
 
 function MetodistCreare() {
 
     const { user } = useAuth();
     const [showPassword, setShowPassword] = useState(false);
     const [courseImagePreview, setCourseImagePreview] = useState(null);
+    const { catalogList, setCatalogList, activeCourses, setActiveCourses, removeCourse } = modal;
 
-    const [itemsCourse, setItemsCourse] = useState([]);
-    // Добавление карточки курса
-    const addItemsCourse = (data) => {
-        const newCard = {
-            title: getValues("courseCardTitle"),
-            description: getValues("courseCardDescription"),
-        };
-
-        if (newCard.title && newCard.description) {
-            setCourseCards([...courseCards, newCard]);
-            setValue("courseCardTitle", '')
-            setValue("courseCardDescription", '')
-        }
-    };
+    useEffect(() => {
+        getAllCourseAdmin()
+            .then(data => {
+                setCatalogList(data.data.courses);
+            }
+            )
+            .catch(err => console.log(err))
+    }, [])
 
     // Удаление карточки курса
     const removeItemsCourse = (index) => {
-        setCourseCards(courseCards.filter((_, i) => i !== index));
+        removeCourse(index);
+        console.log([activeCourses]);
     };
 
     const {
@@ -179,17 +178,21 @@ function MetodistCreare() {
                 <div className="medotisCourse__list">
 
 
-                    {/* <Select handleChange={addItemsCourse} /> */}
+                    <Select handleChange={setActiveCourses} items={catalogList} />
 
-                    <div className="medotisCourse__item">
-                        <div className="medotisCourse__name">Курс 1</div>
-                        <div className="medotisCourse__button">
-                            <svg width="78" height="54" viewBox="0 0 30 54" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M50.2184 18.4269L30.6217 38.0236C29.9521 38.6932 28.8416 38.6932 28.1721 38.0236C27.5025 37.3541 27.5025 36.2436 28.1721 35.574L47.7688 15.9773C48.4384 15.3077 49.5489 15.3077 50.2184 15.9773C50.888 16.6468 50.888 17.7573 50.2184 18.4269Z" fill="#F92626" />
-                                <path d="M50.2184 38.0227C49.5489 38.6923 48.4384 38.6923 47.7688 38.0227L28.1721 18.426C27.5025 17.7564 27.5025 16.6459 28.1721 15.9764C28.8416 15.3068 29.9521 15.3068 30.6217 15.9764L50.2184 35.5731C50.888 36.2427 50.888 37.3532 50.2184 38.0227Z" fill="#F92626" />
-                            </svg>
+
+                    {activeCourses && activeCourses.map((item) => (
+                        <div className="medotisCourse__item">
+                            <div className="medotisCourse__name">{item.name}</div>
+                            <div className="medotisCourse__button" onClick={() => removeItemsCourse(item.id)}>
+                                <svg width="78" height="54" viewBox="0 0 30 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M50.2184 18.4269L30.6217 38.0236C29.9521 38.6932 28.8416 38.6932 28.1721 38.0236C27.5025 37.3541 27.5025 36.2436 28.1721 35.574L47.7688 15.9773C48.4384 15.3077 49.5489 15.3077 50.2184 15.9773C50.888 16.6468 50.888 17.7573 50.2184 18.4269Z" fill="#F92626" />
+                                    <path d="M50.2184 38.0227C49.5489 38.6923 48.4384 38.6923 47.7688 38.0227L28.1721 18.426C27.5025 17.7564 27.5025 16.6459 28.1721 15.9764C28.8416 15.3068 29.9521 15.3068 30.6217 15.9764L50.2184 35.5731C50.888 36.2427 50.888 37.3532 50.2184 38.0227Z" fill="#F92626" />
+                                </svg>
+                            </div>
                         </div>
-                    </div>
+                    ))}
+
                 </div>
 
 

@@ -79,7 +79,7 @@ function Main() {
 
     return <>
 
-        <StudioEditor
+        {/* <StudioEditor
             options={{
                 licenseKey: 'DEMO_LOCALHOST_KEY',
                 theme: 'light',
@@ -101,7 +101,7 @@ function Main() {
                     autosaveIntervalMs: 10000
                 }
             }}
-        />
+        /> */}
 
 
         <section className="banner">

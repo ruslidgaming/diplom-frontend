@@ -16,3 +16,7 @@ export const metodistDelete = (id) => {
     return instance.get(CourseRoute.Delete, { params: { id } })
 }
 
+export const getAllCourseAdmin = () => {
+    return instance.get(CourseRoute.Catalog)
+}
+

@@ -1374,7 +1374,7 @@
         & img {
             height: 100%;
             width: 100%;
-            object-fit: contain;
+            object-fit: cover;
         }
     }
     &__name {
@@ -2371,11 +2371,55 @@
         padding: 5px 20px;
         border-radius: 40px;
         font-family: var(--font-unbounded);
+    }
 
-        &._select {
-            padding: 20px;
-            color: var(--clr-black);
+    &__select {
+        padding: 20px;
+        color: var(--clr-black);
+        background-color: var(--clr-fon);
+        border-radius: 40px;
+        font-family: var(--font-unbounded);
+        position: relative;
+
+        &._active {
+            border-radius: 40px 40px 0 0;
+        }
+
+        &-top {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        &-list {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            padding: 15px;
+            border-radius: 0 0 40px 40px;
             background-color: var(--clr-fon);
+        }
+
+        &-item {
+            cursor: pointer;
+        }
+
+        &-icons {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        &-chek {
+            width: 40px;
+            height: 40px;
+            border-radius: 100%;
+            background-color: var(--clr-blue);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     }
     &__name {

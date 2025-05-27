@@ -31,4 +31,5 @@ export const CourseRoute = {
   TeacherDelete: "/admin/course/teacher/delete",
   Show: "/admin/course/show",
   Catalog: "/admin/course/catalog",
+  
 }
