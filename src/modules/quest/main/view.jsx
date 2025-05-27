@@ -19,6 +19,10 @@ import { faqQuestions } from './data/faq-data';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
+
+import StudioEditor from '@grapesjs/studio-sdk/react';
+import '@grapesjs/studio-sdk/style';
+
 function Main() {
     const swiperRef = useRef(null)
     const [activeIndex, setActiveIndex] = useState(0)
@@ -74,6 +78,32 @@ function Main() {
 
 
     return <>
+
+        <StudioEditor
+            options={{
+                licenseKey: 'DEMO_LOCALHOST_KEY',
+                theme: 'light',
+                project: {
+                    type: 'web',
+                    // TODO: replace with a unique id for your projects. e.g. an uuid
+                    id: 'UNIQUE_PROJECT_ID'
+                },
+                identity: {
+                    // TODO: replace with a unique id for your end users. e.g. an uuid
+                    id: 'UNIQUE_END_USER_ID'
+                },
+                assets: {
+                    storageType: 'cloud'
+                },
+                storage: {
+                    type: 'cloud',
+                    autosaveChanges: 100,
+                    autosaveIntervalMs: 10000
+                }
+            }}
+        />
+
+
         <section className="banner">
             <div className="banner__container container">
                 <div className="banner__text">
