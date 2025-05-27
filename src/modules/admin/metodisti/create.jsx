@@ -27,7 +27,7 @@ function MetodistCreare() {
     // Удаление карточки курса
     const removeItemsCourse = (index) => {
         removeCourse(index);
-        console.log([activeCourses]);
+        console.log(index);
     };
 
     const {
@@ -63,12 +63,16 @@ function MetodistCreare() {
 
         formData.append("name", data.name);
         formData.append("login", data.login);
-        formData.append("courseImage", getValues("courseImage")[0]);
+        formData.append("password", data.password);
+        formData.append("image", getValues("courseImage")[0]);
+        let courseIds = [];
+        activeCourses.forEach(element => {
+            courseIds.push(element.id);
+        });
+        formData.append("courses", courseIds);
 
-        formData.append('idUser', user.id)
-        console.log(user.id)
         try {
-            const response = await fetch('http://127.0.0.1:8000/api/course/add', {
+            const response = await fetch('http://127.0.0.1:8000/api/mentor/create', {
                 method: 'POST',
                 body: formData,
                 headers: {
@@ -77,8 +81,7 @@ function MetodistCreare() {
             });
 
             const result = await response.json();
-            console.log('Server response:', result);
-            window.location.href = '/admin/courses';
+            window.location.href = '/admin/metodists/catalog';
 
         } catch (error) {
             console.error('Error uploading file:', error);
@@ -181,10 +184,10 @@ function MetodistCreare() {
                     <Select handleChange={setActiveCourses} items={catalogList} />
 
 
-                    {activeCourses && activeCourses.map((item) => (
+                    {activeCourses && activeCourses.map((item, key) => (
                         <div className="medotisCourse__item">
                             <div className="medotisCourse__name">{item.name}</div>
-                            <div className="medotisCourse__button" onClick={() => removeItemsCourse(item.id)}>
+                            <div className="medotisCourse__button" onClick={() => removeItemsCourse(key)}>
                                 <svg width="78" height="54" viewBox="0 0 30 54" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M50.2184 18.4269L30.6217 38.0236C29.9521 38.6932 28.8416 38.6932 28.1721 38.0236C27.5025 37.3541 27.5025 36.2436 28.1721 35.574L47.7688 15.9773C48.4384 15.3077 49.5489 15.3077 50.2184 15.9773C50.888 16.6468 50.888 17.7573 50.2184 18.4269Z" fill="#F92626" />
                                     <path d="M50.2184 38.0227C49.5489 38.6923 48.4384 38.6923 47.7688 38.0227L28.1721 18.426C27.5025 17.7564 27.5025 16.6459 28.1721 15.9764C28.8416 15.3068 29.9521 15.3068 30.6217 15.9764L50.2184 35.5731C50.888 36.2427 50.888 37.3532 50.2184 38.0227Z" fill="#F92626" />

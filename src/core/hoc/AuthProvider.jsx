@@ -21,11 +21,9 @@ export const AuthProvider = ({ children }) => {
 
   const signout = () => {
     logoutAdmin()
-      .then(() => {
-        setUser({ role: 'main' });
-        localStorage.removeItem('user');
-        window.location.href = '/';
-      })
+    setUser({ role: 'main' });
+    localStorage.removeItem('user');
+    window.location.href = '/';
   };
 
   return (

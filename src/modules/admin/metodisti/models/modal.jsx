@@ -23,15 +23,19 @@ class Modal {
     }
 
     removeCourse(index) {
-        this._activeCourses = this._activeCourses.filter((_, i) => i !== index);
+        let data = [];
+
+        this._activeCourses.forEach((item, idx) => {
+            if (idx !== index) {
+                data.push(item);
+            }
+        })
+        this._activeCourses = data;
     }
 
     setActiveCourses(data) {
         this._activeCourses = ([...this._activeCourses, data]);
     }
-
-
-
 
     get catalogList() {
         return this._catalogList;
@@ -61,6 +65,9 @@ class Modal {
             })
     }
 
+    setAdd(){
+
+    }
 
 
 }
