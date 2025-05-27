@@ -149,7 +149,7 @@ function MetodistCreare() {
                                 type="text"
                                 className="addcours-card__face-inp"
                                 placeholder="Логин"
-                                {...register("price", validationRules.login)}
+                                {...register("login", validationRules.login)}
                             />
                         </DivInput>
                         {errors.login && (
