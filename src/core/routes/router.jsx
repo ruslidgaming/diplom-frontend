@@ -43,6 +43,7 @@ const router = createBrowserRouter(createRoutesFromElements(
             {/* Методисты */}
             <Route path="metodists/catalog" element={<MetodistiCatalog />} />
             <Route path="metodists/create" element={<MetodistCreare />} />
+            <Route path="metodists/edit/:id" element={<MetodistCreare />} />
         </Route>
 
 

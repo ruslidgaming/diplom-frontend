@@ -14,7 +14,9 @@ export const MentorRoutes = {
   MentorLogin: '/mentor/login',
   MentorCreate: '/mentor/create',
   MentorUpdate: '/mentor/update',
-  MentorUpdate: '/mentor/catalog',
+  MentorCatalog: '/mentor/catalog',
+  Delete: '/mentor/delete',
+  Edit: '/mentor/edit',
 }
 
 

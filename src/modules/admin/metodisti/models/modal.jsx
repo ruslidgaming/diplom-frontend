@@ -43,6 +43,7 @@ class Modal {
 
     setCatalogList(data) {
         this._catalogList = data
+        console.log(data);
     }
 
     deleteId(id) {
@@ -52,7 +53,7 @@ class Modal {
     setDelete() {
         metodistDelete(this._deleteId)
             .then(() => {
-                courseCatalog()
+                metodistCatalog()
                     .then(res => {
                         this.setCatalogList(res.data);
                     })
