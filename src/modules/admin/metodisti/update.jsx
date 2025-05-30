@@ -79,6 +79,7 @@ function MetodistEdit() {
         console.log('asdasd')
         const formData = new FormData();
 
+        formData.append("id", id);
         formData.append("name", getValues('name'));
         formData.append("login", getValues('login'));
         formData.append("password", getValues('password'));
