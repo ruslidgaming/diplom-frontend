@@ -20,6 +20,13 @@ export const getMetodistEdit = (id) => {
     return instance.get(MentorRoutes.Edit, { params: { id } })
 }
 
+export const getMetodistCourseDelete = (id) => {
+    return instance.get(MentorRoutes.CourseDelete, { params: { id } })
+}
+export const getMetodistCourseAdd = (data) => {
+    return instance.post(MentorRoutes.CourseAdd, data)
+}
+
 export const getAllCourseAdmin = () => {
     return instance.get(CourseRoute.Catalog)
 }

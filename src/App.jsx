@@ -12,7 +12,9 @@ function App() {
       <AuthProvider>
         <RouterProvider router={router} />
       </AuthProvider>
-      <ToastContainer />
+      <ToastContainer
+        position="bottom-right"
+      />
     </>
   )
 }

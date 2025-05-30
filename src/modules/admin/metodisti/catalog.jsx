@@ -74,7 +74,7 @@ function Metodisti() {
                     <p>{item.name}</p>
                     <a
                       className="item-metodist__edit"
-                      href={`/edit/${item.id}`}
+                      href={`edit/${item.id}`}
                     >
                       <svg
                         width="42"
@@ -98,7 +98,7 @@ function Metodisti() {
                       </svg>
                     </a>
                   </div>
-                  <div className="item-metodist__text">{item.name}</div>
+                  <div className="item-metodist__text">{item.login}</div>
                 </div>
               </div>
             ))}

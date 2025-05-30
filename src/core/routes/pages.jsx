@@ -29,6 +29,7 @@ import AdminCoursesEditForm from "../../modules/admin/courses/edit";
 // методисты
 import MetodistiCatalog from "../../modules/admin/metodisti/catalog";
 import MetodistCreare from "../../modules/admin/metodisti/create";
+import MetodistUpdate from "../../modules/admin/metodisti/update";
 
 export {
     Errors,
@@ -49,5 +50,6 @@ export {
     CoursesShow,
     AdminCoursesEditForm,
     MetodistiCatalog,
-    MetodistCreare
+    MetodistCreare,
+    MetodistUpdate
 }

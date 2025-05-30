@@ -5,22 +5,18 @@ import DivInput from "../../../core/UIKit/input";
 import { useAuth } from "../../../core/hoc/AuthProvider";
 import Icon from "../../../core/UIKit/icons";
 import { Select } from "../../../core/UIKit/select";
-import { getAllCourseAdmin, metodistEdit } from "./service/metodist-service";
+import { getAllCourseAdmin, getMetodistCourseDelete, getMetodistCourseAdd } from "./service/metodist-service";
 import modal from "./models/modal";
+import { useParams } from "react-router-dom";
 
 function MetodistEdit() {
     const [showPassword, setShowPassword] = useState(false);
     const [courseImagePreview, setCourseImagePreview] = useState(null);
-    const { catalogList, setCatalogList, activeCourses, setActiveCourses, removeCourse } = modal;
+    const { editData, setEditData, setEdit } = modal;
     const { id } = useParams();
 
     useEffect(() => {
-        getMetodistEdit(id)
-            .then(data => {
-                setCatalogList(data.data.courses);
-            }
-            )
-            .catch(err => console.log(err))
+        setEditData(id)
     }, [])
 
     // Удаление карточки курса

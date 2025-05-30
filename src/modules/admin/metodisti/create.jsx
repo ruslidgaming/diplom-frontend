@@ -7,6 +7,7 @@ import Icon from "../../../core/UIKit/icons";
 import { Select } from "../../../core/UIKit/select";
 import { getAllCourseAdmin } from "./service/metodist-service";
 import modal from "./models/modal";
+import { toast } from "react-toastify";
 
 function MetodistCreare() {
 
@@ -81,7 +82,13 @@ function MetodistCreare() {
             });
 
             const result = await response.json();
-            window.location.href = '/admin/metodists/catalog';
+            if (response.ok) {
+                window.location.href = '/admin/metodists/catalog';
+            } else {
+                console.log(result.message)
+                toast.error(result.message);
+            }
+
 
         } catch (error) {
             console.error('Error uploading file:', error);

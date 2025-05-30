@@ -2323,7 +2323,8 @@
   }
   &__name {
     display: flex;
-    align-items: center;
+    align-items: start;
+    max-width: 220px;
     gap: 20px;
     font-family: var(--font-unbounded);
     font-size: 16px;
