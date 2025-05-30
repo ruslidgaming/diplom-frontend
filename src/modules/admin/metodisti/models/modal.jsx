@@ -2,9 +2,10 @@ import { makeAutoObservable } from "mobx";
 import {
     metodistCatalog,
     metodistCreate,
-    metodistUpdate,
     getMetodistEdit,
-    metodistDelete
+    metodistDelete,
+    getMetodistCourseDelete,
+    getMetodistCourseAdd
 } from "../service/metodist-service";
 
 
@@ -81,18 +82,6 @@ class Modal {
         this._editData = data;
     }
 
-    setEdit(id) {
-        getMetodistEdit(id)
-            .then(res => {
-                setEditData(res.data);
-
-            })
-            .catch(err => {
-                console.log(err);
-            })
-    }
-
-
     // Удаление курсов у методиста
     _metodistCourseList = [];
     get metodistCourseList() {
@@ -103,12 +92,26 @@ class Modal {
         this._metodistCourseList = data;
     }
 
+    // Удаление курса методиста
     deleteCourseMetodist(id, metodistId) {
         getMetodistCourseDelete({ idCourse: id, metodistId: metodistId })
             .then(res => {
-
+                this.setMetodistCourseList(res.data);
             })
-            .catch(err => { })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+
+    // Добавление курсов методисту
+    addCoursesMetodist(courseId, metodistId) {
+        getMetodistCourseAdd({ idCourse: courseId, metodistId: metodistId })
+            .then(res => {
+                this.setMetodistCourseList(res.data);
+            })
+            .catch(err => {
+                console.log(err);
+            })
     }
 }
 

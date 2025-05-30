@@ -19,7 +19,7 @@ export const Select = observer(({ items, handleChange }) => {
     const activeAction = () => {
         setValue({ name: "Курсов нету" })
         if (value?.id) {
-            handleChange(value)
+            handleChange(value?.id)
         }
         setIsOpen(false)
     }

@@ -126,7 +126,6 @@ function CoursesEditForm() {
         }
     };
 
-
     // Добавление карточки курса
     const addCourseCard = (data) => {
         const newCard = {
@@ -203,7 +202,9 @@ function CoursesEditForm() {
                                                 style={{ width: 350, height: 350, objectFit: 'cover' }}
                                             />
                                         ) : (
-                                            <img className="addcours-card__face-img" src={`http://127.0.0.1:8000/storage/${showCourseData.image}`} />
+                                            <img className="addcours-card__face-img" src={`http://127.0.0.1:8000/storage/${showCourseData.image}`}
+                                                style={{ width: 350, height: 350, objectFit: 'cover' }}
+                                            />
                                         )}
                                     </label>
                                     {errors.courseImage && (

@@ -8,9 +8,6 @@ export const metodistCatalog = () => {
 export const metodistCreate = (data) => {
     return instance.post(MentorRoutes.MentorCreate, data)
 }
-export const metodistUpdate = (data) => {
-    return instance.post(CourseRoute.Update, data)
-}
 
 export const metodistDelete = (id) => {
     return instance.get(MentorRoutes.Delete, { params: { id } })
@@ -20,8 +17,8 @@ export const getMetodistEdit = (id) => {
     return instance.get(MentorRoutes.Edit, { params: { id } })
 }
 
-export const getMetodistCourseDelete = (id) => {
-    return instance.get(MentorRoutes.CourseDelete, { params: { id } })
+export const getMetodistCourseDelete = (data) => {
+    return instance.post(MentorRoutes.CourseDelete, data)
 }
 export const getMetodistCourseAdd = (data) => {
     return instance.post(MentorRoutes.CourseAdd, data)

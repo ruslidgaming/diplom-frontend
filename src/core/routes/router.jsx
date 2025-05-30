@@ -45,6 +45,13 @@ const router = createBrowserRouter(createRoutesFromElements(
             <Route path="metodists/edit/:id" element={<MetodistUpdate />} />
         </Route>
 
+        <Route path="/lessons" element={
+            <RequireAuth role={['user']}>
+                <Profile />
+            </RequireAuth>
+        } >
+        </Route>
+
 
         <Route path='*' element={<Navigate to={"/error/404"} />} />
         <Route path='error/:codeNum' element={<Errors />} />

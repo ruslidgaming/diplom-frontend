@@ -87,6 +87,7 @@ function Courses() {
                                     />
                                 </div>
                                 <a className="item-course__link _btn" href={"/admin/courses/show/" + item.id}>Подробнее</a>
+                                <a className="item-course__link _btn" href={"/lessons/" + item.id}>Уроки</a>
                             </div>
                         ))}
                 </div>
