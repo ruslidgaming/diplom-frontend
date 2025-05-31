@@ -31,6 +31,12 @@ import MetodistiCatalog from "../../modules/admin/metodisti/catalog";
 import MetodistCreare from "../../modules/admin/metodisti/create";
 import MetodistUpdate from "../../modules/admin/metodisti/update";
 
+
+// Уроки
+import LessonsCatalog from "../../modules/Lessonse/catalog";
+
+// Конструктор
+import DesignerIndex from "../../modules/Designer/index";
 export {
     Errors,
     Layout,
@@ -51,5 +57,7 @@ export {
     AdminCoursesEditForm,
     MetodistiCatalog,
     MetodistCreare,
-    MetodistUpdate
+    MetodistUpdate,
+    LessonsCatalog,
+    DesignerIndex
 }

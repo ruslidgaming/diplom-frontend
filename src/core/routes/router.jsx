@@ -3,7 +3,10 @@ import { RequireAuth } from "../hoc/RequireAuth";
 import {
     Errors, Layout, Main, Login, Register, Profile, ListAdmin, Feedback, StatisticsMany, StatisticsUsers, StatisticsCourses,
     AdminStatisticsUsers, AdminCourses, AdminStatisticsMany, AdminCoursesForm, CoursesShow, AdminCoursesEditForm,
-    MetodistiCatalog, MetodistCreare, MetodistUpdate
+    MetodistiCatalog, MetodistCreare, MetodistUpdate,
+    LessonsCatalog,
+    DesignerIndex
+
 } from './pages'
 
 const router = createBrowserRouter(createRoutesFromElements(
@@ -13,6 +16,9 @@ const router = createBrowserRouter(createRoutesFromElements(
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
         </Route>
+
+
+        <Route path="designer" element={<DesignerIndex />} />
 
         <Route path="profile/" element={
             <RequireAuth role={['user']}>
@@ -45,11 +51,12 @@ const router = createBrowserRouter(createRoutesFromElements(
             <Route path="metodists/edit/:id" element={<MetodistUpdate />} />
         </Route>
 
-        <Route path="/lessons" element={
+        <Route path="/lessons/:idCourse" element={
             <RequireAuth role={['user']}>
                 <Profile />
             </RequireAuth>
         } >
+            <Route index element={<LessonsCatalog />} />
         </Route>
 
 
