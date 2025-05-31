@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@grapesjs/studio-sdk": "^1.0.45",
+    "@grapesjs/studio-sdk": "^1.0.46",
     "@types/react-router-dom": "^5.3.3",
     "@types/swiper": "^5.4.3",
     "apexcharts": "^4.7.0",
