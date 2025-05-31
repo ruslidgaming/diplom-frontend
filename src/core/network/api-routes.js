@@ -31,3 +31,13 @@ export const CourseRoute = {
   Catalog: "/admin/course/catalog",
 
 }
+
+export const Lessons = {
+  Catalog: '/lessons/catalog',
+  Show: '/lessons/show',
+  Create: '/lessons/create',
+  Update: '/lessons/update',
+  Edit: '/lessons/edit',
+  Delete: '/lessons/delete',
+  Passed: '/lessons/passed',
+}
