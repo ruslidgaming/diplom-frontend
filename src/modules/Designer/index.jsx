@@ -3,113 +3,87 @@ import StudioEditor from '@grapesjs/studio-sdk/react';
 import '@grapesjs/studio-sdk/style';
 
 const Designer = () => {
-  // Реализация логики загрузки файлов
-  const handleUpload = async (files) => {
-    const formData = new FormData();
-    for (const file of files) {
-        formData.append('files[]', file);
-    }
-
-    const res = await fetch('http://localhost:8000/api/assets/upload', {
-        method: 'POST',
-        body: formData,
-    });
-
-
-    if (!res.ok) throw new Error('Upload failed');
-
-        const data = await res.json();
-        return data; // массив ассетов с id, src и т.д.
-    };
-
-  // Реализация логики удаления файлов
-  const handleDelete = async (assets) => {
-    const res = await fetch('http://localhost:8000/api/assets/delete', {
-        method: 'DELETE',
-        headers: {
-        'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ assets }),
-    });
-
-    if (!res.ok) throw new Error('Delete failed');
-    };
+  const user = JSON.parse(localStorage.getItem('user'));
+  const token = localStorage.getItem('access_token');
+  const userId = user.id;
+  
 
   return (
     <StudioEditor
       options={{
-        pages: false,
-        assets: {
-          storageType: 'self', // Режим самостоятельного управления ассетами
-          async assets() {
-                const res = await fetch('http://localhost:8000/api/assets');
-                const data = await res.json();
-                return data; // массив ассетов
-            },
-          
-          // Обработчик загрузки
-          onUpload: async ({ files }) => {
-            try {
-              const uploadedAssets = await handleUpload(files);
-              console.log('Успешно загружено:', uploadedAssets);
-              return uploadedAssets;
-            } catch (error) {
-              console.error('Ошибка загрузки:', error);
-              return [];
-            }
-          },
-          
-          // Обработчик удаления
-          onDelete: async ({ assets }) => {
-            try {
-              await handleDelete(assets);
-              console.log('Ассеты успешно удалены');
-            } catch (error) {
-              console.error('Ошибка удаления:', error);
-              throw error; // Покажет ошибку в интерфейсе
-            }
-          },
-          
-          // Настройки интерфейса
-          uploadText: 'Перетащите файлы сюда',
-          dropzone: {
-            acceptedExtensions: ['image/*', 'video/*'],
-            maxFiles: 10,
-            maxSize: 10 * 1024 * 1024 // 10MB
-          }
-        },
-        
-        // Начальные данные проекта
+        // ...
         project: {
           type: 'web',
-          id: 'my-project',
-          default: {
-            assets: [
-              {
-                src: 'https://picsum.photos/300/200',
-                name: 'Пример изображения',
-                type: 'image/jpeg'
-              }
-            ],
-            pages: [
-              {
-                name: 'Главная',
-                component: `
-                  <div>
-                    <h1>Добро пожаловать!</h1>
-                    <img src="https://picsum.photos/300/200"/>
-                    <p>Используйте Asset Manager для загрузки своих файлов</p>
-                  </div>
-                `
-              }
-            ]
+          // The default project to use for new projects
+          id: `${userId}`
+        },
+        identity: {
+          id: `${userId}`
+        },
+        storage: {
+          type: 'self',
+          autosaveChanges: 5, // save after every 5 changes
+        
+          onSave: async ({ project }) => {
+          try {
+            const response = await fetch(`http://localhost:8000/api/projects/store/${userId}`, {  // укажите свой URL API Laravel
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Authorization': 'Bearer ' + token,
+              },
+              body: JSON.stringify({ project }),
+            });
+            console.log(response);
+
+            if (!response.ok) {
+              throw new Error('Ошибка при сохранении проекта');
+            }
+
+            const data = await response.json();
+            console.log('Project saved on server', data);
+            console.log(typeof project);
+          } catch (error) {
+            console.error('Failed to save project', error);
           }
         },
         
-        // Другие настройки
-        storage: {
-          type: 'local',
-          autosave: true
+          onLoad: async () => {
+          try {
+            const response = await fetch(`http://localhost:8000/api/projects/load/${userId}`, {
+              method: 'GET',
+              headers: {
+                'Accept': 'application/json',
+              },
+            });
+
+            console.log(response);
+
+            if (!response.ok) throw new Error('Failed to load project');
+
+            let data = await response.json();
+            data = JSON.parse(data);
+
+            return {
+              project: data || {
+                pages: [
+                  { name: 'Home', component: '<h1>New project</h1>' },
+                ],
+              },
+            };
+          } catch (error) {
+            console.error(error);
+
+            return {
+              project: {
+                pages: [
+                  { name: 'Home', component: '<h1>New project</h1>' },
+                ],
+              },
+            };
+          }
+        },
         }
       }}
     />
