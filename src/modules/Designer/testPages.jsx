@@ -32,12 +32,21 @@ const Testpages = () => {
             setHtml('<h1>Ошибка загрузки</h1>');
         });
     }, []);
+    console.log(html);
+    console.log(css);
   
     return (
-        <div>
-            <style>{css}</style>
+        <html>
+            <head>
+                <title>Home</title>
+                <meta charset="utf-8" />
+                <meta name="viewport" content="width=device-width,initial-scale=1" />
+                <meta name="robots" content="index,follow" />
+                <meta name="generator" content="GrapesJS Studio" />
+                <style>{css}</style>
+            </head>
             <div dangerouslySetInnerHTML={{ __html: html }} />
-        </div>
+        </html>
   )
 };
 export default Testpages;
