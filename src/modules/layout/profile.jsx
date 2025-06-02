@@ -27,6 +27,7 @@ export default function Profile() {
             setPanelData(sidebarSuperData)
         }
         if (user.role === 'admin') {
+            setPanelData(sidebarAdminData)
         }
     }, [])
 
