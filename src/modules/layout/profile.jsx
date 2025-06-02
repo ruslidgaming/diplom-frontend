@@ -20,8 +20,6 @@ export default function Profile() {
     const { user, signout } = useAuth();
 
     useEffect(() => {
-        user.role = "super";
-        console.log(user)
         if (user.role === 'user') {
             setPanelData(sidebarUserData)
         }
