@@ -63,5 +63,7 @@ export {
     MetodistUpdate,
     LessonsCatalog,
     DesignerIndex,
-    Testpages
+    Testpages,
+    LessonsCreate,
+    LessonsUpdate,
 }

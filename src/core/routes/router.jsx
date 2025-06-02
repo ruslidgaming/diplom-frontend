@@ -5,7 +5,7 @@ import {
     AdminStatisticsUsers, AdminCourses, AdminStatisticsMany, AdminCoursesForm, CoursesShow, AdminCoursesEditForm,
     MetodistiCatalog, MetodistCreare, MetodistUpdate,
     LessonsCatalog,
-    DesignerIndex, Testpages
+    DesignerIndex, Testpages, LessonsCreate, LessonsUpdate
 
 } from './pages'
 
