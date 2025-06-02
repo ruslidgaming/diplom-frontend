@@ -34,6 +34,8 @@ import MetodistUpdate from "../../modules/admin/metodisti/update";
 
 // Уроки
 import LessonsCatalog from "../../modules/Lessonse/catalog";
+import LessonsCreate from "../../modules/Lessonse/create";
+import LessonsUpdate from "../../modules/Lessonse/update";
 
 // Конструктор
 import DesignerIndex from "../../modules/Designer/index";

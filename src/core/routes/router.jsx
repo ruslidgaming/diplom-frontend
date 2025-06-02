@@ -58,8 +58,11 @@ const router = createBrowserRouter(createRoutesFromElements(
             </RequireAuth>
         } >
             <Route index element={<LessonsCatalog />} />
-        </Route>
 
+            <Route path="create" element={<LessonsCreate />} />
+            <Route path="update/:lessonId" element={<LessonsUpdate />} />
+            <Route path="show/:lessonId" element={<LessonsCatalog />} />
+        </Route>
 
         <Route path='*' element={<Navigate to={"/error/404"} />} />
         <Route path='error/:codeNum' element={<Errors />} />

@@ -7,7 +7,8 @@ export const UserRoutes = {
 }
 
 export const FeedbackRoute = {
-  SetFeedbak: '/feedback'
+  SetFeedbak: '/feedback',
+  Delete: '/feedback/delete'
 }
 
 export const MentorRoutes = {
@@ -36,8 +37,14 @@ export const Lessons = {
   Catalog: '/lessons/catalog',
   Show: '/lessons/show',
   Create: '/lessons/create',
-  Update: '/lessons/update',
+  Update: '/lessons/show',
   Edit: '/lessons/edit',
   Delete: '/lessons/delete',
   Passed: '/lessons/passed',
+}
+
+
+export const ListRoute = {
+  Admin: '/list/admin',
+  Feedback: '/list/feedback',
 }

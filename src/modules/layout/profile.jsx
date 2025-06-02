@@ -9,6 +9,7 @@ import { sidebarSuperData } from "./profileData/sidebar-super-data";
 import { sidebarAdminData } from "./profileData/sidebar-admin-data";
 import { Link } from "react-router-dom"
 import { useAuth } from "../../core/hoc/AuthProvider"
+import { ProfileTitles } from "./data/ProfileTitles"
 
 export default function Profile() {
 
@@ -19,17 +20,17 @@ export default function Profile() {
     const { user, signout } = useAuth();
 
     useEffect(() => {
-        // if (user.role === 'user') {
-        //     setPanelData(sidebarUserData)
-        // }
-        // if (user.role === 'super') {
-        //     setPanelData(sidebarSuperData)
-        // }
-        // if (user.role === 'admin') {
-        if (true) {
-            setPanelData(sidebarAdminData)
+        user.role = "super";
+        console.log(user)
+        if (user.role === 'user') {
+            setPanelData(sidebarUserData)
         }
-    })
+        if (user.role === 'super') {
+            setPanelData(sidebarSuperData)
+        }
+        if (user.role === 'admin') {
+        }
+    }, [])
 
     return (
         <>
@@ -66,7 +67,7 @@ export default function Profile() {
                         </div>
                     </div>
                     <div className="profile__window window-profile">
-                        <div className="window-profile__title h4">Мой профиль</div>
+                        <div className="window-profile__title h4">{localUrl.pathname + " " + ProfileTitles[localUrl.pathname]}</div>
                         <div className="window-profile__bady">
                             <Outlet />
                         </div>

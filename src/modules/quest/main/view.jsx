@@ -59,9 +59,7 @@ function Main() {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    const { sendMessage } = deedbackModel
-
-
+    const { sendMessage, isSent } = deedbackModel
 
     const {
         register,
@@ -387,48 +385,76 @@ function Main() {
         <section className='white-fon'>
             <div className="feedback">
                 <div className="feedback__text">
-                    <p className="feedback__title h2">Есть вопросы?</p>
-                    <p className="feedback__subtitle">
-                        Оставьте заявку и наш менеджер свяжется с вами в ближайшее время
-                    </p>
+                    {isSent
+                        ? <>
+                            <p className="feedback__title h2">Есть вопросы?</p>
+                            <p className="feedback__subtitle">
+                                Оставьте заявку и наш менеджер свяжется с вами в ближайшее время
+                            </p>
+                        </>
+                        :
+                        <>
+                            <p className="feedback__title h2">Благодарим за доверие </p>
+                            <p className="feedback__subtitle">
+                                Наш менеджер свяжется с вами в ближайшее время!
+                            </p>
+                        </>
+                    }
                 </div>
                 <form className="feedback__form" onSubmit={handleSubmit(sendMessage)} >
-                    <DivInput className={'feedback__input'} label='Ваше имя'>
-                        <input type="text" placeholder="Имя" name="" id=""
-                            {...register('name', {
-                                required: "Поле обязательно",
-                                pattern: {
-                                    value: /^[А-яA-z]+$/,
-                                    message: "Разрешены только буквы"
-                                },
-                                maxLength: {
-                                    value: 20,
-                                    message: "Максимум 20 символов",
-                                }
-                            })} />
-                    </DivInput>
+                    {isSent ?
+                        <>
+                            <DivInput className={'feedback__input'} label='Ваше имя'>
+                                <input type="text" placeholder="Имя" name="" id=""
+                                    {...register('name', {
+                                        required: "Поле обязательно",
+                                        pattern: {
+                                            value: /^[А-яA-z]+$/,
+                                            message: "Разрешены только буквы"
+                                        },
+                                        maxLength: {
+                                            value: 20,
+                                            message: "Максимум 20 символов",
+                                        }
+                                    })} />
+                            </DivInput>
 
-                    <DivInput className={'feedback__input'} label='Номер телефона '>
-                        <input type="text" placeholder="Имя" name="" id=""
-                            {...register('telephon', {
-                                required: "Поле обязательно",
-                                pattern: {
-                                    value: /^[\d\+][\d\(\)\ -]{4,14}\d$/,
-                                    message: "Введите корректный номер телефона"
-                                },
-                                minLength: {
-                                    value: 5,
-                                    message: "Номер слишком короткий"
-                                },
-                                maxLength: {
-                                    value: 20,
-                                    message: "Номер слишком длинный"
-                                }
-                            })}
-                        />
-                    </DivInput>
-                    <button className='feedback__btn _btn _blue'>Отправить</button>
-                    <p className='feedback__discreption'>Нажимая кнопку, принимаю <Link to="#">условия политики</Link> и <Link to="#">пользовательского соглашения</Link></p>
+                            <DivInput className={'feedback__input'} label='Номер телефона '>
+                                <input type="text" placeholder="Имя" name="" id=""
+                                    {...register('telephon', {
+                                        required: "Поле обязательно",
+                                        pattern: {
+                                            value: /^[\d\+][\d\(\)\ -]{4,14}\d$/,
+                                            message: "Введите корректный номер телефона"
+                                        },
+                                        minLength: {
+                                            value: 5,
+                                            message: "Номер слишком короткий"
+                                        },
+                                        maxLength: {
+                                            value: 20,
+                                            message: "Номер слишком длинный"
+                                        }
+                                    })}
+                                />
+                            </DivInput>
+
+                            <button className='feedback__btn _btn _blue'>Отправить</button>
+                            <p className='feedback__discreption'>Нажимая кнопку, принимаю <Link to="#">условия политики</Link> и <Link to="#">пользовательского соглашения</Link></p>
+
+                        </>
+                        :
+                        <>
+                            <div className='feedback__svg'>
+                                <svg width="130" height="130" viewBox="0 0 130 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="130" height="130" rx="65" fill="#00B533" />
+                                    <path d="M51.1303 93.5304C48.5457 93.5304 45.961 92.5693 43.9206 90.5098L30.3173 76.78C26.3723 72.7983 25.0397 69.887 28.9846 65.9054C32.9296 61.9237 37.0661 64.6977 41.0111 68.6794L51.1303 80.5304L90.7334 41.5302C94.6783 37.5485 97.3509 34.3018 101.296 38.2834C105.241 42.2651 103.095 45.3386 99.1498 49.3203L58.34 90.5098C56.2995 92.5693 53.7149 93.5304 51.1303 93.5304Z" fill="white" />
+                                </svg>
+                            </div>
+
+                            <p className='feedback__messsage'>Форма отправлена</p>
+                        </>
+                    }
                 </form>
             </div>
 
