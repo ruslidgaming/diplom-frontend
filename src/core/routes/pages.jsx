@@ -37,6 +37,7 @@ import LessonsCatalog from "../../modules/Lessonse/catalog";
 
 // Конструктор
 import DesignerIndex from "../../modules/Designer/index";
+import Testpages from "../../modules/Designer/testPages";
 export {
     Errors,
     Layout,
@@ -59,5 +60,6 @@ export {
     MetodistCreare,
     MetodistUpdate,
     LessonsCatalog,
-    DesignerIndex
+    DesignerIndex,
+    Testpages
 }

@@ -5,7 +5,7 @@ import {
     AdminStatisticsUsers, AdminCourses, AdminStatisticsMany, AdminCoursesForm, CoursesShow, AdminCoursesEditForm,
     MetodistiCatalog, MetodistCreare, MetodistUpdate,
     LessonsCatalog,
-    DesignerIndex
+    DesignerIndex, Testpages
 
 } from './pages'
 
@@ -19,6 +19,7 @@ const router = createBrowserRouter(createRoutesFromElements(
 
 
         <Route path="designer" element={<DesignerIndex />} />
+        <Route path="testpages" element={<Testpages />} />
 
         <Route path="profile/" element={
             <RequireAuth role={['user']}>
