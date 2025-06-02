@@ -4,7 +4,7 @@ import {
     Errors, Layout, Main, Login, Register, Profile, ListAdmin, Feedback, StatisticsMany, StatisticsUsers, StatisticsCourses,
     AdminStatisticsUsers, AdminCourses, AdminStatisticsMany, AdminCoursesForm, CoursesShow, AdminCoursesEditForm,
     MetodistiCatalog, MetodistCreare, MetodistUpdate,
-    LessonsCatalog,
+    LessonsCatalog, LessonsCreate, LessonsUpdate,
     DesignerIndex
 
 } from './pages'
@@ -18,7 +18,7 @@ const router = createBrowserRouter(createRoutesFromElements(
         </Route>
 
 
-        <Route path="designer" element={<DesignerIndex />} />
+        <Route path="designer/:projectId" element={<DesignerIndex />} />
 
         <Route path="profile/" element={
             <RequireAuth role={['user']}>
@@ -57,8 +57,11 @@ const router = createBrowserRouter(createRoutesFromElements(
             </RequireAuth>
         } >
             <Route index element={<LessonsCatalog />} />
-        </Route>
 
+            <Route path="create" element={<LessonsCreate />} />
+            <Route path="update/:lessonId" element={<LessonsUpdate />} />
+            <Route path="show/:lessonId" element={<LessonsCatalog />} />
+        </Route>
 
         <Route path='*' element={<Navigate to={"/error/404"} />} />
         <Route path='error/:codeNum' element={<Errors />} />

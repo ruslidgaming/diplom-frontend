@@ -1,7 +1,8 @@
 import { makeAutoObservable } from "mobx";
-import { listAdmin } from "../service/service"
+import { FeedbackRoute, ListRoute } from "../../../../core/network/api-routes";
+import instance from "../../../../core/network/api";
 
-class ListAdminModel {
+class ListModel {
     constructor() {
         makeAutoObservable(this, {}, { autoBind: true })
     }
@@ -41,7 +42,7 @@ class ListAdminModel {
     }
 
     apiListData(setLoadable) {
-        listAdmin()
+        instance.get(ListRoute.Feedback)
             .then((res) => {
                 this._list = res.data
             })
@@ -49,10 +50,24 @@ class ListAdminModel {
                 console.log('err', err)
             })
             .finally(() => {
-                setLoadable(false)
+                setLoadable && setLoadable(false)
+            })
+    }
+
+
+    // Удаление
+    _deleteCourseId = {};
+    deleteCourseId(id) {
+        this._deleteCourseId = id;
+    }
+    setDelete() {
+        instance.get(FeedbackRoute.Delete, { params: { id: this._deleteCourseId } })
+            .then((data) => {
+                console.log(data)
+                this.apiListData(data);
             })
     }
 }
 
-const listAdminModel = new ListAdminModel();
-export default listAdminModel;
+const listModel = new ListModel();
+export default listModel;

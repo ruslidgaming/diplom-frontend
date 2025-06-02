@@ -236,6 +236,8 @@
 }
 
 .search {
+    max-width: 400px;
+
     & .input__input {
         display: flex;
         align-items: center;
@@ -245,6 +247,8 @@
         cursor: pointer;
         transform: translateY(3px);
     }
+
+    flex-wrap: wrap;
 }
 
 .static {

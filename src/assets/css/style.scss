@@ -872,6 +872,18 @@
     margin-bottom: 15px;
   }
 
+  &__messsage {
+    text-align: center;
+    font-size: 24px;
+    width: min-content;
+    margin: 0 auto;
+  }
+
+  &__svg {
+    width: fit-content;
+    margin: 0 auto 10px auto;
+  }
+
   &__subtitle {
     font-size: 18px;
   }
@@ -2449,9 +2461,15 @@
   &__add {
   }
   &__items {
+    visibility: hidden;
+    &:hover > :not(:hover) {
+      opacity: 0.5;
+    }
   }
   &__item {
     margin-bottom: 20px;
+    visibility: visible;
+    cursor: pointer;
 
     &:last-child {
       margin-bottom: 0;
@@ -2468,8 +2486,6 @@
 
   background: #f5f5f5;
   border-radius: 20px;
-
-  &:ho
 
   &__name {
     font-weight: 500;
@@ -2511,4 +2527,34 @@
   &__delete {
     cursor: pointer;
   }
+}
+
+.learing {
+  &__inp {
+    margin: 20px 0;
+
+    & input {
+      text-align: center;
+      font-family: var(--font-unbounded);
+    }
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  &__title {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  &__view {
+    font-size: 14px !important;
+    padding: 5px 10px;
+  }
+}
+
+#fr-logo {
+  display: none !important;
 }

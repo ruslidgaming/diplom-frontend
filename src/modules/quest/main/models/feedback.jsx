@@ -8,9 +8,13 @@ export class FeedbackModel {
 
     _name = "";
     _telephone = "";
+    _isSent = true;
 
     get name() {
         return this._name;
+    }
+    get isSent() {
+        return this._isSent;
     }
 
     get telephone() {
@@ -29,6 +33,7 @@ export class FeedbackModel {
         data['id'] = 1;
         SetFeedbak(data)
             .then((info) => {
+                this._isSent = false
                 console.log(info)
             })
             .catch((err) => {
