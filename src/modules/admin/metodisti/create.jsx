@@ -163,7 +163,7 @@ function MetodistCreare() {
                             <p style={{ color: "red" }}>{errors.login.message}</p>
                         )}
                         <DivInput className="regLog__textarea" label={<p>Пароль <span style={{ color: "red" }}>*</span></p>}>
-                            <input type={showPassword ? "text" : "password"} placeholder="Название училища"
+                            <input type={showPassword ? "text" : "password"} placeholder="Пароль"
                                 {...register('password', {
                                     required: "Поле обязательно",
                                     maxLength: {

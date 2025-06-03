@@ -33,16 +33,7 @@ function Metodisti() {
   ) : (
     <div className="courses">
       <div className="courses__header">
-        <DivInput className="courses__search search">
-          <input type="text" placeholder="Поиск..." />
-          {/* <input type="text" onChange={e=> setSearch(e.target.value)} value={search}
-                placeholder="Название училища" /> */}
-
-          <div className="search__icon">
-            <Icon name={"search"} />
-          </div>
-        </DivInput>
-
+        <div></div>
         <a className="courses__add" href={"/admin/metodists/create"}>
           <Icon className="courses__add__icon" name={"plus"} />
           <span>Добавить</span>

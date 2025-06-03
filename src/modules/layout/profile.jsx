@@ -9,7 +9,7 @@ import { sidebarSuperData } from "./profileData/sidebar-super-data";
 import { sidebarAdminData } from "./profileData/sidebar-admin-data";
 import { Link } from "react-router-dom"
 import { useAuth } from "../../core/hoc/AuthProvider"
-import { ProfileTitles } from "./data/ProfileTitles"
+import { getProfileTitle, ProfileTitles } from "./data/ProfileTitles"
 
 export default function Profile() {
 
@@ -20,6 +20,17 @@ export default function Profile() {
     const { user, signout } = useAuth();
 
     useEffect(() => {
+        // console.log(user)
+
+
+        if (user.role === 'mentor') {
+            setPanelData([{
+                type: "link",
+                icon: "cours",
+                name: "Курсы",
+                link: "/mentor",
+            }])
+        }
         if (user.role === 'user') {
             setPanelData(sidebarUserData)
         }
@@ -46,7 +57,7 @@ export default function Profile() {
                                     )
                                 } else if (item.type == "link") {
                                     return (
-                                        <Link to={item.link} className={`panel-profile__item item-profile ${localUrl.pathname == item.link ? "_active" : ""}`} onClick={() => setActive(i)} >
+                                        <Link to={item.link} target={item.new ? "_blank" : ""} className={`panel-profile__item item-profile ${localUrl.pathname == item.link ? "_active" : ""}`} onClick={() => setActive(i)} >
                                             <div className="item-profile__icon">
                                                 <ProfileIcon name={item.icon} />
                                             </div>
@@ -66,7 +77,7 @@ export default function Profile() {
                         </div>
                     </div>
                     <div className="profile__window window-profile">
-                        <div className="window-profile__title h4">{localUrl.pathname + " " + ProfileTitles[localUrl.pathname]}</div>
+                        <div className="window-profile__title h4">{localUrl.pathname + " " + getProfileTitle(localUrl.pathname)}</div>
                         <div className="window-profile__bady">
                             <Outlet />
                         </div>

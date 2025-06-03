@@ -1,5 +1,5 @@
 import { observer } from "mobx-react-lite";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Icon from "../../../core/UIKit/icons";
 import { useEffect, useRef, useState } from "react";
 import { courseShow } from "./service/course-service";
@@ -13,8 +13,9 @@ import loadableModel from "../../../core/UIKit/loadable/Loadable";
 
 function CoursesShow() {
 
-    const { showCourseData, setShowCourseData, showCourseTeacherData } = courseModal;
+    const { showCourseData, setShowCourseData, showCourseTeacherData, showCourseLessons } = courseModal;
     const { isLoading, setLoadable } = loadableModel
+    const navigate = useNavigate();
 
     const { idCourse } = useParams();
     useEffect(() => {
@@ -79,33 +80,28 @@ function CoursesShow() {
                 </section>
             }
 
-            <section class="banner-show__technologies _content _py">
-                <h2 class="technologies__title _700">Вас ждут <span>8</span>
-                    {/* <?php if (count($listTheory) == 1) {
-                echo "урок";
-            } else if (count($listTheory) > 1 && count($listTheory) < 5) {
-                echo "урока";
-            } else {
-                echo "уроков";
-            }
-            ?> */}
-                </h2>
+            {showCourseLessons.length > 0
+                &&
 
-                <div class="lesson__cards">
-                    <div class="technologies__card _fonBack-navy__blue _hover">
-                        <p class="_text-lvl_3">Урок  1</p>
+
+                <section class="banner-show__technologies _content _py">
+                    <h2 class="technologies__title _700">Вас ждут <span>{
+                        showCourseLessons.length == 1 ? "урок" : (showCourseLessons.length > 1 && showCourseLessons.length < 5 ? "урока" : "уроков")
+                    }</span>
+
+                    </h2>
+
+                    <div class="lesson__cards">
+                        {showCourseLessons.map((item, index) => (
+                            <div key={index} class="technologies__card _fonBack-navy__blue _hover">
+                                <p class="_text-lvl_3">{item.name}</p>
+                            </div>
+                        ))}
                     </div>
-                    <div class="technologies__card _fonBack-navy__blue _hover">
-                        <p class="_text-lvl_3">Урок  1</p>
-                    </div>
-                    <div class="technologies__card _fonBack-navy__blue _hover">
-                        <p class="_text-lvl_3">Урок  1</p>
-                    </div>
-                    <div class="technologies__card _fonBack-navy__blue _hover">
-                        <p class="_text-lvl_3">Урок  1</p>
-                    </div>
-                </div>
-            </section>
+                </section>
+            }
+
+
             {<section class="banner-show__technologies _py" id="teacher">
                 <div className="teacher__header">
                     <h2 class="technologies__title _700"><span>Ваши</span> наставники</h2>
@@ -156,7 +152,7 @@ function CoursesShow() {
 
 
             <div class="userInfo__btns _infoUser">
-                <a class="userInfo__btn _btn _notBack" href="../">
+                <a class="userInfo__btn _btn _notBack" onClick={() => navigate(-1)}>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M9.56994 18.82C9.37994 18.82 9.18994 18.75 9.03994 18.6L2.96994 12.53C2.67994 12.24 2.67994 11.76 2.96994 11.47L9.03994 5.4C9.32994 5.11 9.80994 5.11 10.0999 5.4C10.3899 5.69 10.3899 6.17 10.0999 6.46L4.55994 12L10.0999 17.54C10.3899 17.83 10.3899 18.31 10.0999 18.6C9.95994 18.75 9.75994 18.82 9.56994 18.82Z" fill="#292D32" />
                         <path d="M20.4999 12.75H3.66992C3.25992 12.75 2.91992 12.41 2.91992 12C2.91992 11.59 3.25992 11.25 3.66992 11.25H20.4999C20.9099 11.25 21.2499 11.59 21.2499 12C21.2499 12.41 20.9099 12.75 20.4999 12.75Z" fill="#292D32" />

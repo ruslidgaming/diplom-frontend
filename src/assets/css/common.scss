@@ -117,6 +117,18 @@
             }
         }
     }
+
+    &._redBack {
+        background-color: #b2b2b2;
+        color: white;
+        border-radius: 4px;
+
+        @media (min-width: em($mPoint-4, 16)) {
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+    }
 }
 
 .h1 {
@@ -234,7 +246,18 @@
         background-color: var(--clr-fon);
     }
 }
+.icon-delete {
+    cursor: pointer;
 
+    &._hover:hover {
+        & svg path {
+            fill: white;
+        }
+
+        background-color: red;
+        border-radius: 100%;
+    }
+}
 .search {
     max-width: 400px;
 
@@ -354,5 +377,34 @@
         font-family: var(--font-unbounded);
         font-size: 20px;
         font-weight: 500;
+    }
+}
+
+.error {
+    flex: 1 1 100%;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 32px;
+    font-weight: 600;
+    font-family: var(--font-unbounded);
+
+    &__num {
+        font-size: 2em;
+        text-align: center;
+    }
+
+    &__page {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        height: 100%;
+        width: 100%;
     }
 }

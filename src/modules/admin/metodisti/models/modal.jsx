@@ -44,8 +44,8 @@ class Modal {
     }
 
     setCatalogList(data) {
-        this._catalogList = data
         console.log(data);
+        this._catalogList = data
     }
 
     // Удаление

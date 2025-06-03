@@ -1,6 +1,24 @@
 export const sidebarAdminData = [
     {
         type: "title",
+        name: "Сайт",
+    },
+    {
+        type: "link",
+        icon: "designer",
+        name: "Конструктор",
+        link: "/designer",
+        new: "/",
+    },
+    {
+        type: "link",
+        icon: "web",
+        name: "Страница",
+        link: "/testpages",
+        new: "/",
+    },
+    {
+        type: "title",
         name: "Образование",
     },
     {
@@ -11,7 +29,7 @@ export const sidebarAdminData = [
     },
     {
         type: "link",
-        icon: "web",
+        icon: "mentors",
         name: "Методисты",
         link: "/admin/metodists/catalog",
     },
@@ -22,7 +40,7 @@ export const sidebarAdminData = [
     {
         type: "link",
         icon: "many",
-        name: "Доход / Расход",
+        name: "Доходы",
         link: "/admin/many",
     },
     {

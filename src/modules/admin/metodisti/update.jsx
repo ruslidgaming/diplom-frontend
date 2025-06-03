@@ -31,8 +31,8 @@ function MetodistEdit() {
         mode: "onChange",
     });
 
-    const funcAddCoursesMetodist = (idCourse) => {
-        addCoursesMetodist(idCourse, id)
+    const funcAddCoursesMetodist = (course) => {
+        addCoursesMetodist(course.id, id)
     }
 
     const funcDeleteCourseMetodist = (idCourse) => {
@@ -179,7 +179,7 @@ function MetodistEdit() {
                                 <p style={{ color: "red" }}>{errors.login.message}</p>
                             )}
                             <DivInput className="regLog__textarea" label={<p>Пароль <span style={{ color: "red" }}>*</span></p>}>
-                                <input type={showPassword ? "text" : "password"} placeholder="Название училища"
+                                <input type={showPassword ? "text" : "password"} placeholder="Пароль"
                                     {...register('password', {
                                         maxLength: {
                                             value: 20,

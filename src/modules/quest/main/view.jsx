@@ -420,7 +420,7 @@ function Main() {
                             </DivInput>
 
                             <DivInput className={'feedback__input'} label='Номер телефона '>
-                                <input type="text" placeholder="Имя" name="" id=""
+                                <input type="text" placeholder="Телефон" name="" id=""
                                     {...register('telephon', {
                                         required: "Поле обязательно",
                                         pattern: {

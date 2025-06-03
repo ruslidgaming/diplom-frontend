@@ -32,6 +32,7 @@ function Login() {
     });
 
     const handleSubmitForm = (data) => {
+        console.log(data)
         setLogin(signin, data)
     }
 
@@ -47,7 +48,7 @@ function Login() {
 
             <div className="regLog__form-btns">
                 <div className={`regLog__form-btn ${role == 'admin' && '_active'}`} onClick={() => setRole("admin")}>Админ</div>
-                <div className={`regLog__form-btn ${role == 'mentor' && '_active'}`} onClick={() => setRole("mentor")}>Ментор</div>
+                <div className={`regLog__form-btn ${role == 'mentor' && '_active'}`} onClick={() => setRole("mentor")}>Методист</div>
             </div>
 
             <DivInput className="regLog__input" label={<p>{role == 'admin' ? "Почта" : "Логин"} <span style={{ color: "red" }}>*</span></p>}>
@@ -82,7 +83,7 @@ function Login() {
             {errors?.email && (<p style={{ color: "red" }}>{errors?.email?.message}</p>)}
 
             <DivInput className="regLog__textarea" label={<p>Пароль <span style={{ color: "red" }}>*</span></p>}>
-                <input type={showPassword ? "text" : "password"} placeholder="Название училища"
+                <input type={showPassword ? "text" : "password"} placeholder="Пароль"
                     {...register('password', {
                         required: "Поле обязательно",
                         maxLength: {

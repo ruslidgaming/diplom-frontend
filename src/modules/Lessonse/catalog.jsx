@@ -13,7 +13,7 @@ import { useParams } from "react-router-dom";
 function Catalog() {
     const { user } = useAuth();
     const { idCourse } = useParams();
-    const { apiCatalog, catalogList, deleteId, setDelete } = model;
+    const { apiCatalog, catalogList, deleteId, setDelete, title } = model;
     const { isLoading, setLoadable } = loadableModel;
 
 
@@ -27,7 +27,7 @@ function Catalog() {
         <>
             <div className="lessons">
                 <div className="lessons__header">
-                    <div className="lessons__title">Курс программирования Курс программирования</div>
+                    <div className="lessons__title">{title}</div>
                     <a className="courses__add" href={`/lessons/${idCourse}/create`}>
                         <Icon className="courses__add__icon" name={"plus"} />
                         <span>Добавить</span>

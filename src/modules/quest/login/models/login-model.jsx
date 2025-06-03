@@ -1,5 +1,5 @@
 import { makeAutoObservable } from "mobx";
-import { loginUser } from "../service/login-service";
+import { loginMetodist, loginUser } from "../service/login-service";
 
 
 
@@ -31,7 +31,7 @@ class LoginModel {
             loginUser(body)
                 .then(x => {
                     signin(x.data);
-                    window.location.href = '/admin/courses';
+                    window.location.href = '/profile/listadmin';
                 })
                 .catch(error => {
                     const errorData = error.response.data.errors;
@@ -42,9 +42,11 @@ class LoginModel {
                 })
         }
         if (this._role == "mentor") {
-            loginUser(body)
+            loginMetodist(body)
                 .then(x => {
                     console.log(x)
+                    // signin(x.data);
+                    // window.location.href = '/admin/courses';
                 }).catch(() => {
                     console.log('ошибка')
                 })

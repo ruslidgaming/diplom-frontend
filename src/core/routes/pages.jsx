@@ -1,6 +1,7 @@
 // Шаблоны
 import Profile from "../../modules/layout/profile";
 import Layout from "../../modules/layout/main";
+import StudRegLog from "../../modules/layout/studRegLog";
 
 // Ошибки
 import Errors from "../../modules/quest/errors/error";
@@ -9,6 +10,8 @@ import Errors from "../../modules/quest/errors/error";
 import Main from "../../modules/quest/main/view";
 import Login from "../../modules/quest/login/view";
 import Register from "../../modules/quest/register/view";
+import StudentLogin from "../../modules/quest/student/student";
+import StudentRegister from "../../modules/quest/student/view";
 
 // Супер админ
 import ListAdmin from "../../modules/superAdmin/list-admin/view";
@@ -40,6 +43,10 @@ import LessonsUpdate from "../../modules/Lessonse/update";
 // Конструктор
 import DesignerIndex from "../../modules/Designer/index";
 import Testpages from "../../modules/Designer/testPages";
+
+// Покупка
+import Pay from "../../modules/Pay/view";
+
 export {
     Errors,
     Layout,
@@ -66,4 +73,8 @@ export {
     Testpages,
     LessonsCreate,
     LessonsUpdate,
+    StudentLogin,
+    StudentRegister,
+    StudRegLog,
+    Pay
 }

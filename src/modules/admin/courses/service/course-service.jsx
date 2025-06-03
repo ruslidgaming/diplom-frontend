@@ -1,5 +1,5 @@
 import instance from "../../../../core/network/api";
-import { CourseRoute } from "../../../../core/network/api-routes";
+import { CourseRoute, MentorRoutes } from "../../../../core/network/api-routes";
 
 
 export const courseCreate = (data) => {
@@ -22,4 +22,8 @@ export const teacherDelete = (data) => {
 
 export const courseCatalog = () => {
     return instance.get(CourseRoute.Catalog)
+}
+
+export const courseCatalogMentor = () => {
+    return instance.get(MentorRoutes.Catalog)
 }

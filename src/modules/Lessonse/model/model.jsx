@@ -9,7 +9,11 @@ class Model {
     }
     // Каталог
     _catalogList = [];
+    _title = "";
 
+    get title() {
+        return this._title;
+    }
     get catalogList() {
         return this._catalogList;
     }
@@ -23,7 +27,8 @@ class Model {
         apiLessonsCatalog({ id: id })
             .then(res => {
                 console.log(res.data)
-                this.setCatalogList(res.data)
+                this._title = res.data.title
+                this.setCatalogList(res.data.lessons)
             })
             .catch(err => console.log(err))
             .finally(() => setLoadable && setLoadable(false));

@@ -1,29 +1,25 @@
-import React from 'react';
-import Chart from 'react-apexcharts';
 
-const LineChart = () => {
+import { observer } from 'mobx-react-lite';
+import React, { useEffect } from 'react';
+import Chart from 'react-apexcharts';
+const LineChart = observer(({ data }) => {
     const options = {
         chart: {
-            type: 'line',
+            type: data.chart.type,
         },
-        series: [{
-            name: 'sales',
-            data: [30, 40, 35, 50, 49, 60, 70, 91, 125],
-        }],
+        series: data.series,
         colors: ['#1e5eff'],
-        xaxis: {
-            categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999],
-        },
+        xaxis: data.xaxis
     };
 
-    return (
+    return (data &&
         <Chart
             options={options}
             series={options.series}
-            type="line"
+            type={'line'}
             height={350}
         />
     );
-};
+});
 
 export default LineChart;

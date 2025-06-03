@@ -5,7 +5,19 @@ import Icon from "../../../core/UIKit/icons";
 import ProfileIcon from "../../layout/profileComponents/profileIcons";
 import LineChart from "./components/statistic";
 import { useState } from "react";
+import { platformStats } from "./components/dataStatistic";
+import model from "./models/listuser-model";
 function StatisticsUsers() {
+
+    const { graphSectionsAdmin,
+        graphSectionsMentor,
+        graphSectionsUser,
+        filterTypeAdmin,
+        filterTypeMentor,
+        filterTypeUser,
+        setGraphSectionsAdmin,
+        setGraphSectionsMentor,
+        setGraphSectionsUser } = model;
 
     const [staticSections, setStaticSections] = useState("");
 
@@ -22,7 +34,7 @@ function StatisticsUsers() {
                     </div>
                     <div className="cart-static__info">
                         <div className="cart-static__name">Кол-во админов</div>
-                        <div className="cart-static__count">350</div>
+                        <div className="cart-static__count">{platformStats.cards.admins.total}</div>
                     </div>
                 </div>
                 <div className={`static__cart cart-static ${staticSections == 'mentors' && "_active"}`} onClick={() => CheckSetStaticSections('mentors')}>
@@ -31,7 +43,7 @@ function StatisticsUsers() {
                     </div>
                     <div className="cart-static__info">
                         <div className="cart-static__name">Кол-во менторов</div>
-                        <div className="cart-static__count">150</div>
+                        <div className="cart-static__count">{platformStats.cards.mentors.total}</div>
                     </div>
                 </div>
                 <div className={`static__cart cart-static ${staticSections == 'users' && "_active"}`} onClick={() => CheckSetStaticSections('users')}>
@@ -40,7 +52,7 @@ function StatisticsUsers() {
                     </div>
                     <div className="cart-static__info">
                         <div className="cart-static__name">Кол-во учеников</div>
-                        <div className="cart-static__count">9500</div>
+                        <div className="cart-static__count">{platformStats.cards.users.total}</div>
                     </div>
                 </div>
             </div>
@@ -51,17 +63,16 @@ function StatisticsUsers() {
 
                     <div className="static__btns">
                         <div className="static__btn-text">Группировать по </div>
-                        <div className="static__btn">дням</div>
-                        <div className="static__btn">неделям</div>
-                        <div className="static__btn">меясцам</div>
-                        <div className="static__btn">годам</div>
+                        <div className={`static__btn ${filterTypeAdmin == "daily" && "_active"}`} onClick={() => setGraphSectionsAdmin('daily')}>дням</div>
+                        <div className={`static__btn ${filterTypeAdmin == "weekly" && "_active"}`} onClick={() => setGraphSectionsAdmin('weekly')}>неделям</div>
+                        <div className={`static__btn ${filterTypeAdmin == "monthly" && "_active"}`} onClick={() => setGraphSectionsAdmin('monthly')}>меясцам</div>
+                        <div className={`static__btn ${filterTypeAdmin == "yearly" && "_active"}`} onClick={() => setGraphSectionsAdmin('yearly')}>годам</div>
                     </div>
 
                     <div className="static__chart">
-                        <LineChart />
+                        <LineChart data={JSON.parse(JSON.stringify(graphSectionsAdmin))} />
                     </div>
                 </div>
-
             }
 
             {(staticSections == "" || staticSections == 'mentors') &&
@@ -70,14 +81,14 @@ function StatisticsUsers() {
 
                     <div className="static__btns">
                         <div className="static__btn-text">Группировать по </div>
-                        <div className="static__btn">дням</div>
-                        <div className="static__btn">неделям</div>
-                        <div className="static__btn">меясцам</div>
-                        <div className="static__btn">годам</div>
+                        <div className={`static__btn ${filterTypeMentor == "daily" && "_active"}`} onClick={() => setGraphSectionsMentor('daily')}>дням</div>
+                        <div className={`static__btn ${filterTypeMentor == "weekly" && "_active"}`} onClick={() => setGraphSectionsMentor('weekly')}>неделям</div>
+                        <div className={`static__btn ${filterTypeMentor == "monthly" && "_active"}`} onClick={() => setGraphSectionsMentor('monthly')}>меясцам</div>
+                        <div className={`static__btn ${filterTypeMentor == "yearly" && "_active"}`} onClick={() => setGraphSectionsMentor('yearly')}>годам</div>
                     </div>
 
                     <div className="static__chart">
-                        <LineChart />
+                        <LineChart data={JSON.parse(JSON.stringify(graphSectionsMentor))} />
                     </div>
                 </div>
             }
@@ -88,14 +99,14 @@ function StatisticsUsers() {
 
                     <div className="static__btns">
                         <div className="static__btn-text">Группировать по </div>
-                        <div className="static__btn _active">дням</div>
-                        <div className="static__btn">неделям</div>
-                        <div className="static__btn">меясцам</div>
-                        <div className="static__btn">годам</div>
+                        <div className={`static__btn ${filterTypeUser == "daily" && "_active"}`} onClick={() => setGraphSectionsUser('daily')}>дням</div>
+                        <div className={`static__btn ${filterTypeUser == "weekly" && "_active"}`} onClick={() => setGraphSectionsUser('weekly')}>неделям</div>
+                        <div className={`static__btn ${filterTypeUser == "monthly" && "_active"}`} onClick={() => setGraphSectionsUser('monthly')}>меясцам</div>
+                        <div className={`static__btn ${filterTypeUser == "yearly" && "_active"}`} onClick={() => setGraphSectionsUser('yearly')}>годам</div>
                     </div>
 
                     <div className="static__chart">
-                        <LineChart />
+                        <LineChart data={JSON.parse(JSON.stringify(graphSectionsUser))} />
                     </div>
                 </div>
             }

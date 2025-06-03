@@ -20,8 +20,8 @@ export const MentorRoutes = {
   Edit: '/mentor/edit',
   CourseDelete: '/mentor/course/delete',
   CourseAdd: '/mentor/course/add',
+  Catalog: '/mentor/course',
 }
-
 
 export const CourseRoute = {
   Create: "/course/add",
@@ -42,7 +42,6 @@ export const Lessons = {
   Delete: '/lessons/delete',
   Passed: '/lessons/passed',
 }
-
 
 export const ListRoute = {
   Admin: '/list/admin',

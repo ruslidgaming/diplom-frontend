@@ -1,24 +1,59 @@
 import { makeAutoObservable } from "mobx";
+import { incomeStatistics } from "../components/dataStatistic";
 
-class ListAdminModel {
+class Model {
     constructor() {
         makeAutoObservable(this, {}, { autoBind: true })
     }
 
-    _search = '';
-
-    get search() {
-        return this._search;
+    _filterTypeAdmin = "daily"
+    _filterTypeUser = "daily"
+    
+    _graphSectionsAdmin = {
+        chart: incomeStatistics.chartOptions.line.chart,
+        series: incomeStatistics.experts["daily"].series,
+        xaxis: incomeStatistics.experts["daily"].xaxis,
+    }
+    _graphSectionsUser = {
+        chart: incomeStatistics.chartOptions.line.chart,
+        series: incomeStatistics.students["daily"].series,
+        xaxis: incomeStatistics.students["daily"].xaxis,
     }
 
-    setSearch(search) {
-        this._search = search;
+    get graphSectionsAdmin() {
+        return this._graphSectionsAdmin;
     }
 
-    searchInfo() {
-        console.log('search', this._search)
+    get graphSectionsUser() {
+        return this._graphSectionsUser
+    }
+
+    get filterTypeAdmin() {
+        return this._filterTypeAdmin;
+    }
+
+    get filterTypeUser() {
+        return this._filterTypeUser
+    }
+
+    setGraphSectionsAdmin(data) {
+        this._filterTypeAdmin = data
+        this._graphSectionsAdmin = {
+            chart: incomeStatistics.chartOptions.line.chart,
+            series: incomeStatistics.experts[data].series,
+            xaxis: incomeStatistics.experts[data].xaxis,
+        }
+    }
+
+    setGraphSectionsUser(data) {
+        this._filterTypeUser = data
+        this._graphSectionsUser = {
+            chart: incomeStatistics.chartOptions.line.chart,
+            series: incomeStatistics.students[data].series,
+            xaxis: incomeStatistics.students[data].xaxis,
+        }
     }
 }
 
-const listAdminModel = new ListAdminModel();
-export default listAdminModel;
+const model = new Model();
+export default model;

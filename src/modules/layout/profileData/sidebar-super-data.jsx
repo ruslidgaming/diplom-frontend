@@ -22,7 +22,7 @@ export const sidebarSuperData = [
     {
         type: "link",
         icon: "many",
-        name: "Доход / Расход",
+        name: "Доходы",
         link: "/profile/many",
     },
     {

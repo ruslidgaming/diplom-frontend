@@ -8,9 +8,37 @@ class CourseModal {
         makeAutoObservable(this, {}, { autoBind: true })
     }
 
+    //  Работа с поиском
+    _searchedModel = [];
+    _searchValue = "";
+    _isSearch = false;
+
+    get search() {
+
+        return this._searchValue;
+    }
+    get isSearch() {
+        return this._isSearch;
+    }
+    get searchedModel() {
+        return this._searchedModel;
+    }
+
+    setSearch(value) {
+        this._searchValue = value;
+        this._isSearch = value != "";
+
+        this._searchedModel = this._courseCatalogList.filter((item) => {
+            return `${item.name} ${item.mini_description}`.toLowerCase().includes(value.toLowerCase());
+        })
+    }
+
+    // Прочее
+
     _courseCatalogList = [];
 
     _showCourseData = {};
+    _showCourseLessons = {};
     _showCourseTeacherData = {};
 
     _deleteCourseId = {};
@@ -18,6 +46,9 @@ class CourseModal {
 
     get showCourseData() {
         return this._showCourseData;
+    }
+    get showCourseLessons() {
+        return this._showCourseLessons;
     }
     get showCourseTeacherData() {
         return this._showCourseTeacherData;
@@ -28,7 +59,9 @@ class CourseModal {
     }
 
     setShowCourseData(data) {
+
         this._showCourseTeacherData = data.data['teachers']
+        this._showCourseLessons = data.data['lessons']
         this._showCourseData = data.data['course']
 
         this._showCourseData['course_info'] = JSON.parse(this._showCourseData.course_info)

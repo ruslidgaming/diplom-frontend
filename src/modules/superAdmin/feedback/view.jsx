@@ -27,7 +27,7 @@ function Feedback() {
                         <a href="tel:" className="item-feedback__tel">{item.telephon}</a>
                     </div>
                     <div className="item-feedback__right">
-                        <DeleteModal classNameBtn={"item-course__bnt _btn _red"}
+                        <DeleteModal classNameBtn={"item-course__bnt _hover"}
                             idInfo={item.id}
                             btnOnClick={deleteCourseId}
                             onConfirm={setDelete}
