@@ -27,6 +27,8 @@ export const getProfileTitle = (path) => {
         return "Редактирование ментора";
     } else if (path.startsWith("/lessons")) {
         return "Уроки";
+    } else if (path.startsWith("/courses/show")) {
+        return "Об курсе";
     } else if (path.endsWith("/pay")) {
         return "Покупка";
     }
