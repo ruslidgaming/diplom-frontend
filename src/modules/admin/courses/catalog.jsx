@@ -76,10 +76,15 @@ function Courses() {
                         </div>
                     </DivInput>
 
-                    <a className="courses__add" href={"/admin/courses/form"}>
-                        <Icon className="courses__add__icon" name={"plus"} />
-                        <span>Добавить</span>
-                    </a>
+                    {user.role == "admin" ? (
+                        <a className="courses__add" href={"/admin/courses/form"}>
+                            <Icon className="courses__add__icon" name={"plus"} />
+                            <span>Добавить</span>
+                        </a>
+                    )
+                        : <div></div>
+                    }
+
                 </div>
 
                 <div className="courses__items">

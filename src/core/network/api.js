@@ -28,12 +28,12 @@ instance.interceptors.response.use(function (response) {
         originalRequest._isRetry = true;
         try {
             const refreshToken = localStorage.getItem("refresh_token");
-            const response = axios.get < { jwtToken, refreshToken } > ('/Users/RefreshAuthorization', {
+            const response = axios.get < { access_token, refreshToken } > ('/Users/RefreshAuthorization', {
                 headers: {
                     Authorization: `Bearer ${refreshToken}`
                 }
             });
-            localStorage.setItem("jwtToken", response.data.jwtToken);
+            localStorage.setItem("access_token", response.data.access_token);
             localStorage.setItem("refresh_token", response.data.refreshToken);
             return instance.request(originalRequest)
         } catch (refreshError) {
