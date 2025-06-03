@@ -21,14 +21,11 @@ class LoginModel {
     }
 
     setLogin(signin, data) {
-
-        const body = {
-            email: data.email,
-            password: data.password,
-        }
-
         if (this._role == "admin") {
-            loginUser(body)
+            loginUser({
+                email: data.email,
+                password: data.password,
+            })
                 .then(x => {
                     signin(x.data);
                     if (x.data.user.role == "admin") {
@@ -47,13 +44,16 @@ class LoginModel {
         }
 
 
-        body = {
-            login: data.login,
-            password: data.password,
-        }
-
         if (this._role == "mentor") {
-            loginMetodist(body)
+            console.log({
+                login: data.login,
+                password: data.password,
+            })
+
+            loginMetodist({
+                login: data.login,
+                password: data.password,
+            })
                 .then(x => {
                     console.log(x)
                     // signin(x.data);

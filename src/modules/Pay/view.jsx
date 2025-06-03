@@ -17,6 +17,49 @@ function Pay() {
         apiData(idCourse, setLoadable)
     }, [])
 
+
+
+    // Состояния для полей формы
+    const [cardNumber, setCardNumber] = useState('');
+    const [cardName, setCardName] = useState('');
+    const [expiryDate, setExpiryDate] = useState('');
+    const [cvc, setCvc] = useState('');
+
+    // Форматирование номера карты
+    const formatCardNumber = (value) => {
+        const cleaned = value.replace(/\D/g, '');
+        const limited = cleaned.substring(0, 16);
+        const formatted = limited.replace(/(\d{4})/g, '$1 ').trim();
+        setCardNumber(formatted);
+    };
+
+    // Форматирование имени владельца
+    const formatCardName = (value) => {
+        const cleaned = value.replace(/[^a-zA-Z\s]/g, '');
+        const formatted = cleaned.toUpperCase();
+        setCardName(formatted);
+    };
+
+    // Форматирование даты
+    const formatExpiryDate = (value) => {
+        const cleaned = value.replace(/\D/g, '');
+        let formatted = cleaned;
+
+        if (cleaned.length > 2) {
+            formatted = `${cleaned.substring(0, 2)}/${cleaned.substring(2, 4)}`;
+        }
+
+        setExpiryDate(formatted.substring(0, 5));
+    };
+
+    // Форматирование CVC
+    const formatCvc = (value) => {
+        const cleaned = value.replace(/\D/g, '');
+        setCvc(cleaned.substring(0, 3));
+    };
+
+
+
     return isLoading ?
         <Example /> :
         <>
@@ -39,30 +82,54 @@ function Pay() {
                             </div>
                         </div>
                     </div>
-                    <div class="buy__pay buy__card">
-                        <div class="buy__inpBlock">
-                            <p class="_text-lvl_3">Номер карты</p>
-                            <input class="buy__input _text-lvl_3 _input" type="text" name="number" placeholder="1234 1234 1234 1234"
-                                id="creditCardInput" value="" />
+                    <div className="buy__pay buy__card">
+                        <div className="buy__inpBlock">
+                            <p className="_text-lvl_3">Номер карты</p>
+                            <input
+                                className="buy__input _text-lvl_3 _input"
+                                type="text"
+                                name="number"
+                                placeholder="1234 1234 1234 1234"
+                                value={cardNumber}
+                                onChange={(e) => formatCardNumber(e.target.value)}
+                            />
                         </div>
 
-                        <div class="buy__inpBlock">
-                            <p class="_text-lvl_3">ФИ владельца</p>
-                            <input class="buy__input _text-lvl_3" type="text" name="name" placeholder="ИМЯ ФАМИЛИЯ" id="userNameInput"
-                                value="" />
+                        <div className="buy__inpBlock">
+                            <p className="_text-lvl_3">ФИ владельца</p>
+                            <input
+                                className="buy__input _text-lvl_3"
+                                type="text"
+                                name="name"
+                                placeholder="ИМЯ ФАМИЛИЯ"
+                                value={cardName}
+                                onChange={(e) => formatCardName(e.target.value)}
+                            />
                         </div>
 
-                        <div class="buy__inpBlocks">
-                            <div class="buy__inpBlock">
-                                <p class="_text-lvl_3">Дата</p>
-                                <input class="buy__input _text-lvl_3" type="text" name="date" id="expirationDateInput" placeholder="__/__"
-                                    value="" />
+                        <div className="buy__inpBlocks">
+                            <div className="buy__inpBlock">
+                                <p className="_text-lvl_3">Дата</p>
+                                <input
+                                    className="buy__input _text-lvl_3"
+                                    type="text"
+                                    name="date"
+                                    placeholder="__/__"
+                                    value={expiryDate}
+                                    onChange={(e) => formatExpiryDate(e.target.value)}
+                                />
                             </div>
 
-                            <div class="buy__inpBlock">
-                                <p class="_text-lvl_3">CVC</p>
-                                <input class="buy__input _text-lvl_3" type="number" name="cvc" placeholder="***" id="numberInput"
-                                    value="" />
+                            <div className="buy__inpBlock">
+                                <p className="_text-lvl_3">CVC</p>
+                                <input
+                                    className="buy__input _text-lvl_3"
+                                    type="password"
+                                    name="cvc"
+                                    placeholder="***"
+                                    value={cvc}
+                                    onChange={(e) => formatCvc(e.target.value)}
+                                />
                             </div>
                         </div>
                     </div>
