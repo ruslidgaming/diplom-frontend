@@ -55,9 +55,8 @@ class LoginModel {
                 password: data.password,
             })
                 .then(x => {
-                    console.log(x)
-                    // signin(x.data);
-                    // window.location.href = '/admin/courses';
+                    signin(x.data);
+                    window.location.href = 'mentor/';
                 }).catch(() => {
                     console.log('ошибка')
                 })
