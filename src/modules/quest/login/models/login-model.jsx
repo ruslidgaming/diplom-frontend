@@ -45,6 +45,13 @@ class LoginModel {
                     }
                 })
         }
+
+
+        body = {
+            login: data.login,
+            password: data.password,
+        }
+
         if (this._role == "mentor") {
             loginMetodist(body)
                 .then(x => {
