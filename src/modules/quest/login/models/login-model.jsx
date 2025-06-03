@@ -31,7 +31,11 @@ class LoginModel {
             loginUser(body)
                 .then(x => {
                     signin(x.data);
-                    window.location.href = '/profile/listadmin';
+                    if (x.data.role == "admin") {
+                        window.location.href = '/admin/courses';
+                    } else {
+                        window.location.href = '/profile/listadmin';
+                    }
                 })
                 .catch(error => {
                     const errorData = error.response.data.errors;
