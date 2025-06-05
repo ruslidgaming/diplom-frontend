@@ -57,9 +57,9 @@ function Pay() {
 
     useEffect(() => {
         if (type == "course") {
-            apiData(idCourse, setLoadable)
+            apiData(id, setLoadable)
         } else if (type == "tariff") {
-            apiDataTariff(idCourse, user.id, setLoadable)
+            apiDataTariff(id, user.id, setLoadable)
         }
     }, [])
 
@@ -69,14 +69,16 @@ function Pay() {
             <div className="list-feedback list-column">
                 <div class="buy__cards">
                     <div class="buy__info buy__card _fonBack-navy__blue">
-                        <div class="buy__info-top">
-                            <div className="buy__img">
-                                <img src={"http://127.0.0.1:8000/storage/" + list.image} alt="course" />
+                        {type == "course" &&
+                            <div class="buy__info-top">
+                                <div className="buy__img">
+                                    <img src={"http://127.0.0.1:8000/storage/" + list.image} alt="course" />
+                                </div>
                             </div>
-                        </div>
+                        }
                         <div class="buy__info-word">
                             <div class="buy__info-text">
-                                <p class="_text-lvl_2">Курс</p>
+                                <p class="_text-lvl_2">{type == "course" ? "Курс" : "Тариф"}</p>
                                 <p class="_text-lvl_2">{list.name}</p>
                             </div>
                             <div class="buy__info-text _down">
@@ -139,7 +141,7 @@ function Pay() {
                 </div>
 
                 <div class="buy__btns">
-                    <button class="buy__btn _btn _notBack _blue" name="pay">Купить</button>
+                    <button class="buy__btn _btn _notBack _blue" name="pay" onClick={() => apiPayTariff(id, user.id)}>Купить</button>
                     <a class="buy__btn _btn _redBack " onClick={() => navigate(-1)}>Назад</a>
                 </div>
             </div>

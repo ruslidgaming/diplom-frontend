@@ -54,3 +54,8 @@ export const ListRoute = {
   Admin: '/list/admin',
   Feedback: '/list/feedback',
 }
+
+
+export const Student = {
+  Pay: "/student/pay",
+}
