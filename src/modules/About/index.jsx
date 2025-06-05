@@ -12,7 +12,6 @@ const About = () => {
     return (
 
         <div>
-
             <div className="adminAbout__section">
                 <div className="adminAbout__title">О себе</div>
                 <div className="adminAbout__items">
@@ -104,7 +103,7 @@ const About = () => {
                                     <p>есть</p>
                                 </div>
                             </div>
-                            <a href="/login" className="item-rate__btn _btn _blue">Купить</a>
+                            <a href={`/pay/tariff/${2}`} className="item-rate__btn _btn _blue">Купить</a>
                         </div>
                         <div className="rate__item item-rate">
                             <div className="item-rate__name">Академия</div>
@@ -126,7 +125,7 @@ const About = () => {
                                     <p>есть</p>
                                 </div>
                             </div>
-                            <a href="/login" className="item-rate__btn _btn _blue">Купить</a>
+                            <a href={`/pay/tariff/${3}`} className="item-rate__btn _btn _blue">Купить</a>
                         </div>
                     </div>
                 </div>

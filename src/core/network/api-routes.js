@@ -46,7 +46,7 @@ export const Lessons = {
 export const Tariff = {
   Catalog: '/tariff/catalog',
   Show: '/tariff/show',
-  Pay: '/tariff/pay',
+  Pay : '/tariff/pay',
 }
 
 
