@@ -21,6 +21,7 @@ import StatisticsUsers from "../../modules/superAdmin/statisticsUsers/view";
 import StatisticsCourses from "../../modules/superAdmin/courses/view";
 
 // Админ
+import AdminAbout from "../../modules/About/index";
 import AdminStatisticsUsers from "../../modules/admin/statisticsUsers/view";
 import AdminCourses from "../../modules/admin/courses/catalog";
 import AdminCoursesForm from "../../modules/admin/courses/form";
@@ -76,5 +77,6 @@ export {
     StudentLogin,
     StudentRegister,
     StudRegLog,
-    Pay
+    Pay,
+    AdminAbout
 }

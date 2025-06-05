@@ -88,13 +88,16 @@ function Metodisti() {
                     </svg>
                   </a>
                 </div>
-                <div className="item-metodist__text">{item.login}</div>
+
+                <div className="item-metodist__text _login">
+                  {item.login}
+                </div>
+
               </div>
             </div>
           ))}
       </div>
     </div>
-
   );
 }
 export default observer(Metodisti);

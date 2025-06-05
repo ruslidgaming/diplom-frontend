@@ -4,7 +4,7 @@ import {
     Errors, Layout, Main, Login, Register, Profile, ListAdmin, Feedback, StatisticsMany, StatisticsUsers, StatisticsCourses,
     AdminStatisticsUsers, AdminCourses, AdminStatisticsMany, AdminCoursesForm, CoursesShow, AdminCoursesEditForm,
     MetodistiCatalog, MetodistCreare, MetodistUpdate,
-    LessonsCatalog, StudRegLog,
+    LessonsCatalog, StudRegLog, AdminAbout,
     DesignerIndex, Testpages, LessonsCreate, LessonsUpdate,
     StudentLogin, StudentRegister, Pay
 } from './pages'
@@ -18,7 +18,7 @@ const router = createBrowserRouter(createRoutesFromElements(
         </Route>
 
 
-        <Route path="student" element={<StudRegLog />} >
+        <Route path="student/:id" element={<StudRegLog />} >
             <Route path="login" element={<StudentLogin />} />
             <Route path="register" element={<StudentRegister />} />
 
@@ -26,7 +26,7 @@ const router = createBrowserRouter(createRoutesFromElements(
         </Route>
 
         <Route path="designer" element={<DesignerIndex />} />
-        <Route path="testpages" element={<Testpages />} />
+        <Route path="testpages/:id" element={<Testpages />} />
 
         <Route path="profile/" element={
             <RequireAuth role={['super']}>
@@ -42,19 +42,21 @@ const router = createBrowserRouter(createRoutesFromElements(
         </Route>
 
 
-        <Route path="courses/show/:idCourse" element={<Profile />} >
-            <Route index element={<CoursesShow />} />
-
-            <Route path="pay" element={<Pay />} />
+        <Route path="pay/:type/:id" element={<Profile />} >
+            <Route index element={<Pay />} />
         </Route>
+
+
 
         <Route path="admin/" element={
             <RequireAuth role={['admin']}>
                 <Profile />
             </RequireAuth>
         } >
+            <Route path="about" element={<AdminAbout />} />
             <Route path="courses/form" element={<AdminCoursesForm />} />
             <Route path="courses/edit/:idCourse" element={<AdminCoursesEditForm />} />
+            <Route path='courses/show/:idCourse' element={<CoursesShow />} />
             <Route path="courses" element={<AdminCourses />} />
             <Route path="many" element={<AdminStatisticsMany />} />
             <Route path="lessons" element={<AdminStatisticsUsers />} />

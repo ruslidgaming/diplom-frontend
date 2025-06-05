@@ -11,6 +11,7 @@ import { Link } from "react-router-dom"
 import { useAuth } from "../../core/hoc/AuthProvider"
 import { getProfileTitle, ProfileTitles } from "./data/ProfileTitles"
 
+
 export default function Profile() {
 
     const [panelData, setPanelData] = useState([]);
@@ -57,7 +58,7 @@ export default function Profile() {
                                     )
                                 } else if (item.type == "link") {
                                     return (
-                                        <Link to={item.link} target={item.new ? "_blank" : ""} className={`panel-profile__item item-profile ${localUrl.pathname == item.link ? "_active" : ""}`} onClick={() => setActive(i)} >
+                                        <Link to={item.link != "/testpages" ? item.link : item.link + "/" + user.id} target={item.new ? "_blank" : ""} className={`panel-profile__item item-profile ${localUrl.pathname == item.link ? "_active" : ""}`} onClick={() => setActive(i)} >
                                             <div className="item-profile__icon">
                                                 <ProfileIcon name={item.icon} />
                                             </div>
@@ -77,7 +78,8 @@ export default function Profile() {
                         </div>
                     </div>
                     <div className="profile__window window-profile">
-                        <div className="window-profile__title h4">{localUrl.pathname + " " + getProfileTitle(localUrl.pathname)}</div>
+                        <div className="window-profile__title h4">{getProfileTitle(localUrl.pathname)}</div>
+                        {/* <div className="window-profile__title h4">{localUrl.pathname + " " + getProfileTitle(localUrl.pathname)}</div> */}
                         <div className="window-profile__bady">
                             <Outlet />
                         </div>

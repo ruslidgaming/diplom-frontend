@@ -7,18 +7,6 @@ import Example from "../admin/metodisti/components/LottieAnimation";
 
 function Pay() {
 
-    const { apiData, list } = listModel
-    const { idCourse } = useParams();
-    const { isLoading, setLoadable } = loadableModel
-    const navigate = useNavigate();
-
-
-    useEffect(() => {
-        apiData(idCourse, setLoadable)
-    }, [])
-
-
-
     // Состояния для полей формы
     const [cardNumber, setCardNumber] = useState('');
     const [cardName, setCardName] = useState('');
@@ -59,6 +47,21 @@ function Pay() {
     };
 
 
+
+    const { apiData, list, apiDataTariff } = listModel
+    const { type, id } = useParams();
+    const { isLoading, setLoadable } = loadableModel
+    const user = JSON.parse(localStorage.getItem('user'));
+    const navigate = useNavigate();
+
+
+    useEffect(() => {
+        if (type == "course") {
+            apiData(idCourse, setLoadable)
+        } else if (type == "tariff") {
+            apiDataTariff(idCourse, user.id, setLoadable)
+        }
+    }, [])
 
     return isLoading ?
         <Example /> :

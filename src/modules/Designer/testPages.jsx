@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import loadableModel from '../../core/UIKit/loadable/Loadable';
 import Example from '../admin/metodisti/components/LottieAnimation';
+import { useParams } from 'react-router-dom';
 
 const Testpages = () => {
 
     const [html, setHtml] = useState('<h1>Загрузка...</h1>');
     const [css, setCss] = useState('');
 
+    const { id } = useParams();
+
     const { isLoading, setLoadable } = loadableModel;
 
 
     useEffect(() => {
-        const user = JSON.parse(localStorage.getItem('user'));
         const token = localStorage.getItem('access_token');
-        const userId = user.id;
 
-        fetch(`http://localhost:8000/api/projects/load/${userId}`, {
+        fetch(`http://localhost:8000/api/projects/load/${id}`, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',

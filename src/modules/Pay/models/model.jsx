@@ -1,5 +1,5 @@
 import { makeAutoObservable } from "mobx";
-import { CourseRoute, ListRoute } from "../../../core/network/api-routes";
+import { CourseRoute, ListRoute, Tariff } from "../../../core/network/api-routes";
 import instance from "../../../core/network/api";
 // import { FeedbackRoute, ListRoute } from "../../../../core/network/api-routes";
 // import instance from "../../../../core/network/api";
@@ -30,6 +30,19 @@ class ListModel {
             })
     }
 
+
+    apiDataTariff(id, userId, setLoadable) {
+        instance.get(Tariff.Show, { params: { idTariff: id, idAdmin: userId } })
+            .then((res) => {
+                this._list = res.data.list
+            })
+            .catch((err) => {
+                console.log('err', err)
+            })
+            .finally(() => {
+                setLoadable && setLoadable(false)
+            })
+    }
 
     // Удаление
     _deleteCourseId = {};

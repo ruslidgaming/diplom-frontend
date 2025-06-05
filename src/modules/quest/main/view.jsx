@@ -2,6 +2,19 @@ import banner from '../../../assets/img/banner.png';
 import AboutIcons from './components/about-icons';
 import logo from "../../../assets/img/logo.svg";
 import sliderContr from "../../../assets/img/swiper-constr.jpg";
+import foto_1 from "../../../assets/img/media/photo_2025-06-03_06-18-03.jpg";
+import foto_2 from "../../../assets/img/media/photo_2025-06-03_06-18-47.jpg";
+import foto_3 from "../../../assets/img/media/photo_2025-06-03_06-18-50.jpg";
+import foto_4 from "../../../assets/img/media/photo_2025-06-03_06-18-53.jpg";
+
+import slider_1 from "../../../assets/img/media/Group1025.png";
+import slider_2 from "../../../assets/img/media/Group1026.png";
+import slider_3 from "../../../assets/img/media/photo_2025-06-03_06-33-48.jpg";
+import slider_4 from "../../../assets/img/media/photo_2025-06-03_06-27-19.jpg";
+
+import fotka_1 from "../../../assets/img/media/photo_2025-06-03_08-00-15.jpg";
+import fotka_2 from "../../../assets/img/media/photo_2025-06-03_08-00-13.jpg";
+
 
 // ===Swiper===
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -76,37 +89,11 @@ function Main() {
 
 
     return <>
-
-        {/* <StudioEditor
-            options={{
-                licenseKey: 'DEMO_LOCALHOST_KEY',
-                theme: 'light',
-                project: {
-                    type: 'web',
-                    // TODO: replace with a unique id for your projects. e.g. an uuid
-                    id: 'UNIQUE_PROJECT_ID'
-                },
-                identity: {
-                    // TODO: replace with a unique id for your end users. e.g. an uuid
-                    id: 'UNIQUE_END_USER_ID'
-                },
-                assets: {
-                    storageType: 'cloud'
-                },
-                storage: {
-                    type: 'cloud',
-                    autosaveChanges: 100,
-                    autosaveIntervalMs: 10000
-                }
-            }}
-        /> */}
-
-
         <section className="banner">
             <div className="banner__container container">
                 <div className="banner__text">
                     <h1 className='h1'>Сделай знания доступными с помощью платформы <span> Фенек</span ></h1 >
-                    <Link to="" className='banner__btn _btn _blue' >Открыть курс</Link>
+                    <a href="/login" className='banner__btn _btn _blue' >Открыть курс</a>
                 </div >
                 <div className="banner__left">
                     <div className="banner__img">
@@ -157,40 +144,40 @@ function Main() {
             <div className="projects__items">
                 <div className="projects__item item-projects">
                     <div className="item-projects__img">
-                        <img src={logo} alt="" />
+                        <img src={foto_3} alt="" />
                     </div>
                     <div className="item-projects__title">Компании</div>
                     <p className="item-projects__text">Корпоративное обучение сотрудников. Создавайте онлайн-курсы и обучающие модули внутри вашей компании. Удобная аналитика, отслеживание прогресса и сертификация.</p>
-                    <Link to="#" className='item-projects__btn _btn _blue-text'>Узнать тариф</Link>
+                    <a href="#rate" className='item-projects__btn _btn _blue-text'>Узнать тариф</a>
                 </div>
                 <div className="projects__item item-projects">
                     <div className="item-projects__img">
-                        <img src={logo} alt="" />
+                        <img src={foto_2} alt="" />
                     </div>
                     <div className="item-projects__title">Блогеры</div>
                     <p className="item-projects__text">Прокачали свою экспертизу и готовы заработать на своих знаниях? Запускайте свою школу у нас!</p>
-                    <Link to="#" className='item-projects__btn _btn _blue-text'>Узнать тариф</Link>
+                    <a href="#rate" className='item-projects__btn _btn _blue-text'>Узнать тариф</a>
                 </div>
 
                 <div className="projects__item item-projects">
                     <div className="item-projects__img">
-                        <img src={logo} alt="" />
+                        <img src={foto_1} alt="" />
                     </div>
                     <div className="item-projects__title">Эксперты и коучи</div>
                     <p className="item-projects__text">
                         Монетизируйте свои знания. Создавайте обучающие программы, продвигайте личный бренд и привлекайте учеников. Никаких технических сложностей — только вы и ваши знания.
                     </p>
-                    <Link to="#" className='item-projects__btn  _btn _blue-text'>Узнать тариф</Link>
+                    <a href="#rate" className='item-projects__btn  _btn _blue-text'>Узнать тариф</a>
                 </div>
                 <div className="projects__item item-projects">
                     <div className="item-projects__img">
-                        <img src={logo} alt="" />
+                        <img src={foto_4} alt="" />
                     </div>
                     <div className="item-projects__title">Онлайн-школы и стартапы</div>
                     <p className="item-projects__text">
                         Быстрый запуск образовательного продукта. Идеально подходит для запуска собственной онлайн-школы: всё от сайта до платформы для обучения уже готово.
                     </p>
-                    <Link to="#" className='item-projects__btn  _btn _blue-text'>Узнать тариф</Link>
+                    <a href="#rate" className='item-projects__btn  _btn _blue-text'>Узнать тариф</a>
                 </div>
             </div>
         </section>
@@ -215,31 +202,31 @@ function Main() {
                     >
                         <SwiperSlide className="constructor__item item-constructor">
                             <div className="item-constructor__img">
-                                <img src={sliderContr} alt="" />
+                                <img src={slider_4} alt="" />
                             </div>
                             <div className="item-constructor__number">01</div>
-                            <p className="item-constructor__title">Выбор шаблона</p>
+                            <p className="item-constructor__title">Свободное пространство для фантазии</p>
                         </SwiperSlide>
                         <SwiperSlide className="constructor__item item-constructor">
                             <div className="item-constructor__img">
-                                <img src={sliderContr} alt="" />
+                                <img src={slider_1} alt="" />
                             </div>
                             <div className="item-constructor__number">02</div>
-                            <p className="item-constructor__title">Выбор шаблона</p>
+                            <p className="item-constructor__title">Большой каталог готовых компонентов для сборки </p>
                         </SwiperSlide>
                         <SwiperSlide className="constructor__item item-constructor">
                             <div className="item-constructor__img">
-                                <img src={sliderContr} alt="" />
+                                <img src={slider_2} alt="" />
                             </div>
                             <div className="item-constructor__number">03</div>
-                            <p className="item-constructor__title">Выбор шаблона</p>
+                            <p className="item-constructor__title">Большие возможности стилистики</p>
                         </SwiperSlide>
                         <SwiperSlide className="constructor__item item-constructor">
                             <div className="item-constructor__img">
-                                <img src={sliderContr} alt="" />
+                                <img src={slider_3} alt="" />
                             </div>
                             <div className="item-constructor__number">04</div>
-                            <p className="item-constructor__title">Выбор шаблона</p>
+                            <p className="item-constructor__title">Возможность просмотра кода страницы</p>
                         </SwiperSlide>
                     </Swiper>
 
@@ -292,12 +279,12 @@ function Main() {
 
                             {activeIndex === 0 &&
                                 <div className="system__img">
-                                    <img src={sliderContr} alt="" />
+                                    <img src={fotka_1} alt="" />
                                 </div>
                             }
                             {activeIndex === 1 &&
                                 <div className="system__img">
-                                    <img src={sliderContr} alt="" />
+                                    <img src={fotka_2} alt="" />
                                 </div>
                             }
                             {activeIndex === 2 &&
@@ -331,7 +318,7 @@ function Main() {
                                     <p>нет</p>
                                 </div>
                             </div>
-                            <Link to="#" className="item-rate__btn _btn _blue">Выбрать</Link>
+                            <a href="/login" className="item-rate__btn _btn _blue">Выбрать</a>
                         </div>
                         <div className="rate__item item-rate">
                             <div className="item-rate__name">Школа</div>
@@ -353,7 +340,7 @@ function Main() {
                                     <p>есть</p>
                                 </div>
                             </div>
-                            <Link to="#" className="item-rate__btn _btn _blue">Выбрать</Link>
+                            <a href="/login" className="item-rate__btn _btn _blue">Выбрать</a>
                         </div>
                         <div className="rate__item item-rate">
                             <div className="item-rate__name">Академия</div>
@@ -375,7 +362,7 @@ function Main() {
                                     <p>есть</p>
                                 </div>
                             </div>
-                            <Link to="#" className="item-rate__btn _btn _blue">Выбрать</Link>
+                            <a href="/login" className="item-rate__btn _btn _blue">Выбрать</a>
                         </div>
                     </div>
                 </section>

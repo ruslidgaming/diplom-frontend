@@ -41,8 +41,6 @@ function Login() {
         <FromRegLog className="regLog__form" formType="login" formTitle="Авторизация" submitText="Войти" onSubmit={handleSubmit(handleSubmitForm)} disciption={
             <p className="regLog__description">
                 У вас нету аккаунта? <a href="/register">Зарегистрироваться</a>
-                <br />
-                или <a href="/profile">Войти</a>
             </p>
         }>
 

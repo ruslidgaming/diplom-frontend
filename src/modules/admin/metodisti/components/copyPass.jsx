@@ -1,11 +1,9 @@
 import { observer } from 'mobx-react-lite';
 import { useState } from 'react';
 
-const SecretField = observer(({ value }) => {
+const SecretField = observer(({ value, className }) => {
     const [visible, setVisible] = useState(false);
     const [copied, setCopied] = useState(false);
-
-
 
 
     const copyToClipboard = () => {
@@ -18,7 +16,7 @@ const SecretField = observer(({ value }) => {
 
     return (
         <>
-            <p>{visible ? value : '*'.repeat(value?.length || 0)}</p>
+            <p className='className'>value</p>
             <button className="item-metodist__copy"
                 onClick={copyToClipboard}
                 disabled={!value}

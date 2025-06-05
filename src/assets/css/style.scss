@@ -493,7 +493,8 @@
   &__img {
     position: absolute;
     top: -50px;
-    background-color: rgb(236, 236, 236);
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 5px 3px rgba(222, 222, 222, 0.621);
     padding: 5px;
 
     width: 80px;
@@ -507,7 +508,7 @@
     & img {
       height: 100%;
       width: 100%;
-      object-fit: contain;
+      object-fit: cover;
     }
   }
   &__title {
@@ -616,6 +617,7 @@
 
   &__img {
     width: 100%;
+    height: 350px !important;
     height: auto;
     overflow: hidden;
     display: flex;
@@ -626,7 +628,7 @@
     & img {
       height: 100%;
       width: 100%;
-      object-fit: contain;
+      object-fit: cover;
     }
   }
   &__number {
@@ -2739,6 +2741,92 @@
       & input {
         padding: 10px 10px;
       }
+    }
+  }
+}
+
+.adminAbout {
+  &__section {
+    margin-bottom: 40px;
+  }
+  &__title {
+    font-size: 24px;
+    margin-bottom: 15px;
+    font-family: var(--font-unbounded);
+  }
+  &__items {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+
+    &._margin-top {
+      margin-top: 20px !important;
+    }
+  }
+  &__text {
+    & .input__input {
+      padding: 10px 10px 10px 10px;
+    }
+  }
+
+  &__company {
+    &-name {
+      grid-column: 1/4;
+    }
+    &-description {
+      grid-column: 1/4;
+      height: 300px;
+      margin-top: 20px;
+
+      & .input__input {
+        height: 260px;
+
+        & textarea {
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  &__key {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    font-size: 18px;
+
+    &-left {
+    }
+    &-rigth {
+      & ._field {
+        position: relative;
+
+        & .item-metodist__copy {
+          position: absolute;
+          right: -10%;
+          top: 0;
+          & path {
+            fill: var(--clr-blue);
+          }
+        }
+      }
+    }
+  }
+  &__rate {
+    & .rate__items {
+      justify-content: space-between;
+    }
+
+    & .item-rate {
+      background-color: var(--clr-fon);
+    }
+
+    & .item-rate__list-item {
+      color: var(--clr-black);
+    }
+
+    & .item-rate__name{
+      background-color: var(--clr-blue);
+      color: white;
     }
   }
 }

@@ -1,21 +1,13 @@
 export const sidebarAdminData = [
     {
         type: "title",
-        name: "Сайт",
+        name: "О себе",
     },
     {
         type: "link",
-        icon: "designer",
-        name: "Конструктор",
-        link: "/designer",
-        new: "/",
-    },
-    {
-        type: "link",
-        icon: "web",
-        name: "Страница",
-        link: "/testpages",
-        new: "/",
+        icon: "me",
+        name: "Профиль",
+        link: "/admin/about",
     },
     {
         type: "title",
@@ -35,6 +27,24 @@ export const sidebarAdminData = [
     },
     {
         type: "title",
+        name: "Сайт",
+    },
+    {
+        type: "link",
+        icon: "designer",
+        name: "Конструктор",
+        link: "/designer",
+        new: "/",
+    },
+    {
+        type: "link",
+        icon: "web",
+        name: "Страница",
+        link: "/testpages",
+        new: "/",
+    },
+    {
+        type: "title",
         name: "Статистика",
     },
     {
@@ -48,5 +58,9 @@ export const sidebarAdminData = [
         icon: "users",
         name: "Ученики",
         link: "/admin/lessons",
+    },
+    {
+        type: "title",
+        name: "Выход",
     },
 ]

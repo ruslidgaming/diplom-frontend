@@ -43,6 +43,13 @@ export const Lessons = {
   Passed: '/lessons/passed',
 }
 
+export const Tariff = {
+  Catalog: '/tariff/catalog',
+  Show: '/tariff/show',
+  Pay: '/tariff/pay',
+}
+
+
 export const ListRoute = {
   Admin: '/list/admin',
   Feedback: '/list/feedback',
