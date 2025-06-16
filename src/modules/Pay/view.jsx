@@ -48,7 +48,7 @@ function Pay() {
 
 
 
-    const { apiData, list, apiDataTariff } = listModel
+    const { apiData, list, apiDataTariff, apiPayCourse, apiPayTariff } = listModel
     const { type, id } = useParams();
     const { isLoading, setLoadable } = loadableModel
     const user = JSON.parse(localStorage.getItem('user'));
@@ -141,7 +141,11 @@ function Pay() {
                 </div>
 
                 <div class="buy__btns">
-                    <button class="buy__btn _btn _notBack _blue" name="pay" onClick={() => apiPayTariff(id, user.id)}>Купить</button>
+                    {type == "course" ?
+                        <button class="buy__btn _btn _notBack _blue" name="pay" onClick={() => apiPayCourse(id, user.id, user.admin_id)}>Купить</button>
+                        :
+                        <button class="buy__btn _btn _notBack _blue" name="pay" onClick={() => apiPayTariff(id, user.id)}>Купить</button>
+                    }
                     <a class="buy__btn _btn _redBack " onClick={() => navigate(-1)}>Назад</a>
                 </div>
             </div>

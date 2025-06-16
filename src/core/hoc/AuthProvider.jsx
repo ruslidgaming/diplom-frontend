@@ -22,8 +22,14 @@ export const AuthProvider = ({ children }) => {
   const signout = () => {
     logoutAdmin()
       .then(() => {
+        const userInfo = JSON.parse(localStorage.getItem('user'));
+        const userCopy = JSON.parse(JSON.stringify(userInfo));
         localStorage.removeItem('user');
-        window.location.href = '/';
+        if (userInfo.role == "student") {
+          window.location.href = `/student/${userInfo.admin_id}/login`;
+        } else {
+          window.location.href = '/';
+        }
       })
   };
 

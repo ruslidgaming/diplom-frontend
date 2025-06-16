@@ -7,6 +7,12 @@ class RegisterModel {
         makeAutoObservable(this, {}, { autoBind: true })
     }
 
+    admminId = ''
+
+    setAdmminId(id) {
+        this.admminId = id
+    }
+
     setRegister(data) {
         const body = {
             name: data.name,
@@ -16,11 +22,12 @@ class RegisterModel {
             email: data.email,
             password: data.password,
             password_r: data.password_r,
+            id: this.admminId,
         }
 
         registerUser(body)
             .then(x => {
-                window.location.href = '/sudent/login';
+                window.location.href = `/sudent/${this.admminId}/login`;
             }).catch(error => {
                 const errorData = error.response.data.errors;
 

@@ -193,6 +193,7 @@ function Main() {
 
                 <section className='constructor' id='constructor'>
                     <div className="constructor__title h2">Создай свой лендинг на простом <span>конструкторе</span></div>
+
                     <Swiper
                         ref={swiperRef}
                         spaceBetween={slidesPerBetween}
@@ -230,6 +231,7 @@ function Main() {
                         </SwiperSlide>
                     </Swiper>
 
+                    
                     <div className="constructor__btns">
                         <button className="constructor__btn btn-prev" onClick={slideClickPrev}>
                             <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -276,7 +278,6 @@ function Main() {
                         </div>
 
                         <div className="system__media">
-
                             {activeIndex === 0 &&
                                 <div className="system__img">
                                     <img src={fotka_1} alt="" />
@@ -307,7 +308,7 @@ function Main() {
                                 </div>
                                 <div className="item-rate__list-item">
                                     <p>Нанимать ментора</p>
-                                    <p>0</p>
+                                    <p>нельзя</p>
                                 </div>
                                 <div className="item-rate__list-item">
                                     <p>Кол-во уроков</p>
@@ -315,7 +316,7 @@ function Main() {
                                 </div>
                                 <div className="item-rate__list-item">
                                     <p>Статистика</p>
-                                    <p>нет</p>
+                                    <p>есть</p>
                                 </div>
                             </div>
                             <a href="/login" className="item-rate__btn _btn _blue">Выбрать</a>
@@ -325,15 +326,15 @@ function Main() {
                             <div className="item-rate__list">
                                 <div className="item-rate__list-item">
                                     <p>Кол-во курсов</p>
-                                    <p>до 5 курсов</p>
+                                    <p>5 курсов</p>
                                 </div>
                                 <div className="item-rate__list-item">
                                     <p>Нанимать ментора</p>
-                                    <p>1 на курс</p>
+                                    <p>3 ментора</p>
                                 </div>
                                 <div className="item-rate__list-item">
                                     <p>Кол-во уроков</p>
-                                    <p>50 уроков</p>
+                                    <p>100 уроков</p>
                                 </div>
                                 <div className="item-rate__list-item">
                                     <p>Статистика</p>
@@ -347,15 +348,15 @@ function Main() {
                             <div className="item-rate__list">
                                 <div className="item-rate__list-item">
                                     <p>Кол-во курсов</p>
-                                    <p>до 3 на курс</p>
+                                    <p>15 курсов</p>
                                 </div>
                                 <div className="item-rate__list-item">
                                     <p>Нанимать ментора</p>
-                                    <p>до 3 на курс</p>
+                                    <p>10 менторов</p>
                                 </div>
                                 <div className="item-rate__list-item">
                                     <p>Кол-во уроков</p>
-                                    <p>200 уроков</p>
+                                    <p>500 уроков</p>
                                 </div>
                                 <div className="item-rate__list-item">
                                     <p>Статистика</p>

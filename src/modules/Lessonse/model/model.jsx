@@ -1,5 +1,7 @@
 import { makeAutoObservable } from "mobx";
-import { apiLessonsCatalog, apiLessonsDelete, apiLessonsUpdate } from "../service/lessons-service";
+import { apiLessonsCatalog, apiLessonsCatalogStudent, apiLessonsDelete, apiLessonsUpdate } from "../service/lessons-service";
+import { StudentFinish } from "../../Student/service";
+import { info } from "sass";
 
 
 
@@ -34,6 +36,17 @@ class Model {
             .finally(() => setLoadable && setLoadable(false));
     }
 
+    apiLessons(id, setLoadable = null) {
+        apiLessonsCatalogStudent(id)
+            .then(res => {
+                console.log(res.data)
+                this._title = res.data.title
+                this.setCatalogList(res.data.lessonsList)
+            })
+            .catch(err => console.log(err))
+            .finally(() => setLoadable && setLoadable(false));
+    }
+
     // Удаление
     _deleteId = null;
 
@@ -63,13 +76,24 @@ class Model {
     apiEditData(id, setLoadable) {
         apiLessonsUpdate({ id: id })
             .then(res => {
-                console.log(res.data)
                 this.setEditData(res.data);
             })
             .catch(err => console.log(err))
             .finally(() => {
                 setLoadable(false)
             });
+    }
+
+
+
+    setFinishLearn(data) {
+        StudentFinish(data)
+            .then(info => {
+                window.location.href = '/lessons/' + data.idCourse + "/update/" + info.data.finish;
+            })
+            .catch(
+                err => console.log(err)
+            )
     }
 }
 

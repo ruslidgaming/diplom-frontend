@@ -21,9 +21,6 @@ export default function Profile() {
     const { user, signout } = useAuth();
 
     useEffect(() => {
-        // console.log(user)
-
-
         if (user.role === 'mentor') {
             setPanelData([{
                 type: "link",
@@ -32,8 +29,14 @@ export default function Profile() {
                 link: "/mentor",
             }])
         }
-        if (user.role === 'user') {
-            setPanelData(sidebarUserData)
+        if (user.role === 'student') {
+            console.log(user)
+            const updatedSidebar = sidebarUserData.map(item => ({
+                ...item,
+                link: `/student/${user.admin_id}${item.link.replace('/student', '')}`
+            }));
+
+            setPanelData(updatedSidebar);
         }
         if (user.role === 'super') {
             setPanelData(sidebarSuperData)
@@ -51,6 +54,8 @@ export default function Profile() {
                 <div className="profile__main">
                     <div className="profile__panel panel-profile">
                         <div className="panel-profile__items">
+
+                            
                             {panelData.map((item, i) => {
                                 if (item.type == "title") {
                                     return (
@@ -58,7 +63,7 @@ export default function Profile() {
                                     )
                                 } else if (item.type == "link") {
                                     return (
-                                        <Link to={item.link != "/testpages" ? item.link : item.link + "/" + user.id} target={item.new ? "_blank" : ""} className={`panel-profile__item item-profile ${localUrl.pathname == item.link ? "_active" : ""}`} onClick={() => setActive(i)} >
+                                        <Link to={item.link != "/page" ? item.link : item.link + "/" + user.id} target={item.new ? "_blank" : ""} className={`panel-profile__item item-profile ${localUrl.pathname == item.link ? "_active" : ""}`} onClick={() => setActive(i)} >
                                             <div className="item-profile__icon">
                                                 <ProfileIcon name={item.icon} />
                                             </div>
@@ -79,14 +84,13 @@ export default function Profile() {
                     </div>
                     <div className="profile__window window-profile">
                         <div className="window-profile__title h4">{getProfileTitle(localUrl.pathname)}</div>
-                        {/* <div className="window-profile__title h4">{localUrl.pathname + " " + getProfileTitle(localUrl.pathname)}</div> */}
                         <div className="window-profile__bady">
                             <Outlet />
                         </div>
                     </div>
                 </div>
 
-            </div>
+            </div >
             <Footer />
         </>
     )

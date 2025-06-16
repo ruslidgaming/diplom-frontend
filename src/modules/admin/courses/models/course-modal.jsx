@@ -7,42 +7,19 @@ class CourseModal {
     constructor() {
         makeAutoObservable(this, {}, { autoBind: true })
     }
-
-    //  Работа с поиском
-    _searchedModel = [];
-    _searchValue = "";
-    _isSearch = false;
-
-    get search() {
-
-        return this._searchValue;
-    }
-    get isSearch() {
-        return this._isSearch;
-    }
-    get searchedModel() {
-        return this._searchedModel;
-    }
+    _searchedModel = []; _searchValue = ""; _isSearch = false;
+    get search() { return this._searchValue; }
+    get isSearch() { return this._isSearch; }
+    get searchedModel() { return this._searchedModel; }
 
     setSearch(value) {
         this._searchValue = value;
         this._isSearch = value != "";
-
         this._searchedModel = this._courseCatalogList.filter((item) => {
             return `${item.name} ${item.mini_description}`.toLowerCase().includes(value.toLowerCase());
         })
     }
-
-    // Прочее
-
-    _courseCatalogList = [];
-
-    _showCourseData = {};
-    _showCourseLessons = {};
-    _showCourseTeacherData = {};
-
-    _deleteCourseId = {};
-
+    _courseCatalogList = []; _showCourseData = {}; _showCourseLessons = {}; _showCourseTeacherData = {}; _deleteCourseId = {};
 
     get showCourseData() {
         return this._showCourseData;
@@ -53,11 +30,9 @@ class CourseModal {
     get showCourseTeacherData() {
         return this._showCourseTeacherData;
     }
-
     deleteCourseId(id) {
         this._deleteCourseId = id;
     }
-
     setShowCourseData(data) {
 
         this._showCourseTeacherData = data.data['teachers']
@@ -67,14 +42,12 @@ class CourseModal {
         this._showCourseData['course_info'] = JSON.parse(this._showCourseData.course_info)
 
     }
-
     get courseCatalogList() {
         return this._courseCatalogList;
     }
     setCourseCatalogList(data) {
         this._courseCatalogList = data
     }
-
     setCourseDelete() {
         courseDelete(this._deleteCourseId)
             .then((data) => {
@@ -92,7 +65,6 @@ class CourseModal {
                 console.log(err)
             })
     }
-
     setTeacherDelete(idTeacher) {
         teacherDelete({ idTeacher: idTeacher, idCourse: this._showCourseData['id'] })
             .then((data) => {

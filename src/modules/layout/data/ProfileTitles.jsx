@@ -32,6 +32,11 @@ export const getProfileTitle = (path) => {
         return "Об курсе";
     } else if (path.endsWith("/pay")) {
         return "Покупка";
+    } else if (path.startsWith("/student") && path.endsWith("courses/my")) {
+        return "Мои курсы";
+    } else if (path.startsWith("/student") && path.endsWith("courses/all")) {
+        return "Каталог";
+    } else if (path.startsWith("/student") && path.endsWith("courses/end")) {
+        return "Пройденные курсы";
     }
-
 };

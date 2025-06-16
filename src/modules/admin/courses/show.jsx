@@ -44,12 +44,11 @@ function CoursesShow() {
         <Example />
         :
         <>
-
             <section class="banner-show _course" >
                 <div class="banner-show__word  _py">
                     <h3>{showCourseData["name"]}</h3>
                     <h2>{showCourseData['slogan']}</h2>
-                    <a class="banner__btn _btn _blue" href="#rate">Купить</a>
+                    <a class="banner__btn _btn _blue" href={"/pay/course/" + idCourse}>Купить</a>
                     <a class="banner-show__errow">
                         <span>V</span>
                         <span>V</span>

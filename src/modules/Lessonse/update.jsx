@@ -13,13 +13,14 @@ import { toast } from "react-toastify";
 
 function Update() {
 
-    const { apiEditData, editData } = model;
+    const { user } = useAuth();
+    const { apiEditData, editData, setFinishLearn } = model;
     const [title, setTitle] = useState();
     const [modelEditor, setModelEditor] = useState();
     const [titleValid, setTitleValid] = useState(false);
     const [modelEditorValid, setModelEditorValid] = useState(false);
     const [isValid, setIsValid] = useState(false);
-    const [show, setShow] = useState(true);
+    const [show, setShow] = useState(user.role != "student");
     const { idCourse, lessonId } = useParams();
     const { isLoading, setLoadable } = loadableModel;
 
@@ -55,7 +56,6 @@ function Update() {
 
     useEffect(() => {
         apiEditData(lessonId, setLoadable);
-
     }, [])
 
     useEffect(() => {
@@ -91,16 +91,34 @@ function Update() {
         }
     };
 
+    const finishLearn = async () => {
+        setFinishLearn({
+            id: user.id,
+            idCourse: idCourse,
+            lessonId: lessonId,
+        })
+    };
+
 
     return (
         isLoading ?
             <Example /> :
             <div className="addcours">
                 <div>
-                    <div className="learing__header">
-                        <div className="addcours__title">Редактирование урока</div>
-                        <button className="learing__view _btn _blue" onClick={() => setShow(!show)}>{show ? "Посмотреть" : "Редактировать"}</button>
-                    </div>
+
+                    {user.role != "student"
+                        ?
+                        <div className="learing__header">
+                            <div className="addcours__title">Редактирование урока</div>
+                            <button className="learing__view _btn _blue" onClick={() => setShow(!show)}>{show ? "Посмотреть" : "Редактировать"}</button>
+                        </div>
+                        :
+                        <div className="learing__header">
+                            <div className="addcours__title">Прохождение урока</div>
+                            <div></div>
+                        </div>
+
+                    }
 
                     {
                         show
@@ -128,9 +146,16 @@ function Update() {
 
                     {isValid && modelValid && (<p style={{ color: "red", fontSize: "14px", marginTop: "10px" }}>Заполните поле описания</p>)}
 
-                    <button type="submit" className="addcours__submit" onClick={onSubmit}>
-                        Сохранить изменения
-                    </button>
+                    {user.role != "student"
+                        ?
+                        <button type="submit" className="addcours__submit" onClick={onSubmit}>
+                            Сохранить изменения
+                        </button>
+                        :
+                        <button type="submit" className="addcours__submit" onClick={finishLearn}>
+                            Прошёл
+                        </button>
+                    }
                     <a href={`/lessons/${idCourse}`} className="addcours__submit _btn _blue">
                         Назад
                     </a>

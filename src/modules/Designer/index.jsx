@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import StudioEditor from '@grapesjs/studio-sdk/react';
 import '@grapesjs/studio-sdk/style';
 import ruLocale from '../Designer/locale';
@@ -23,7 +23,7 @@ const Designer = () => {
                 }
             });
             console.log(response.data.link)
-            return response.data.link; // Предполагаем, что сервер возвращает {filename: 'имя_файла'}
+            return response.data.link;
         } catch (error) {
             console.error('Upload failed:', error);
             throw error;
@@ -38,10 +38,8 @@ const Designer = () => {
                     console.log('Редактор готов!', editor);
                 },
                 pages: false,
-                // ...
                 project: {
                     type: 'web',
-                    // The default project to use for new projects
                     id: `${userId}`
                 },
                 identity: {
@@ -53,7 +51,7 @@ const Designer = () => {
                 },
                 storage: {
                     type: 'self',
-                    autosaveChanges: 5, // save after every 5 changes
+                    autosaveChanges: 5,
 
                     onSave: async ({ project, editor }) => {
                         try {
@@ -89,7 +87,6 @@ const Designer = () => {
                                     'Accept': 'application/json',
                                 },
                             });
-
 
                             if (!response.ok) throw new Error('Failed to load project');
 
@@ -137,7 +134,6 @@ const Designer = () => {
                         return uploadedAssets;
                     },
                 },
-
             }}
         />
     );

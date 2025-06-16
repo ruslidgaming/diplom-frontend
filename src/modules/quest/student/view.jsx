@@ -2,14 +2,20 @@ import { observer } from "mobx-react-lite";
 import registerModel from "./models/register-model.jsx";
 import FromRegLog from "../../layout/components/form.jsx";
 import DivInput from "../../../core/UIKit/input.jsx";
-import { Link } from "react-router-dom";
-import { useRef, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
 import Icon from "../../../core/UIKit/icons.jsx";
 import { useForm } from 'react-hook-form';
 
 
 function Register() {
-    const { setRegister } = registerModel;
+    const { setRegister, setAdmminId } = registerModel;
+
+    const { id } = useParams();
+
+    useEffect(() => {
+        setAdmminId(id)
+    }, [])
 
     const [showPassword, setShowPassword] = useState(false);
     const [showPassword_r, setShowPassword_r] = useState(false);
@@ -39,11 +45,11 @@ function Register() {
         <FromRegLog className="regLog__form" formType="register" formTitle={<p>Регистрация <br /> в систему</p>} submitText={isSubmitting ? "Регистрация..." : "Регистрация"} onSubmit={handleSubmit(setRegister)} disciption={
             <>
                 <p className="regLog__description">
-                    У вас есть аккаунт? <a href="/student/login">Войти</a>
+                    У вас есть аккаунт? <a href={`/student/${id}/login`}>Войти</a>
                 </p>
                 <br />
                 <p className="regLog__description-back">
-                    <a href="/student/register">Вернуться на сайт</a>
+                    <a href={`/page/${id}`}>Вернуться на сайт</a>
                 </p>
             </>
 

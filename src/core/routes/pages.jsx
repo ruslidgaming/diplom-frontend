@@ -47,6 +47,7 @@ import Testpages from "../../modules/Designer/testPages";
 
 // Покупка
 import Pay from "../../modules/Pay/view";
+import StidentCourses from "../../modules/Student/index";
 
 export {
     Errors,
@@ -78,5 +79,6 @@ export {
     StudentRegister,
     StudRegLog,
     Pay,
-    AdminAbout
+    AdminAbout,
+    StidentCourses
 }

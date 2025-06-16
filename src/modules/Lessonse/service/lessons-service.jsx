@@ -1,8 +1,11 @@
 import instance from "../../../core/network/api";
-import { Lessons } from "../../../core/network/api-routes";
+import { Lessons, Student } from "../../../core/network/api-routes";
 
 export const apiLessonsCatalog = (id) => {
     return instance.get(Lessons.Catalog, { params: id })
+}
+export const apiLessonsCatalogStudent = (id) => {
+    return instance.get(Student.LessonsList, { params: id })
 }
 export const apiLessonsShow = (id) => {
     return instance.get(Lessons.Show, { params: id })

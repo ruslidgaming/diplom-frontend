@@ -22,33 +22,24 @@ const Testpages = () => {
                 'Accept': 'application/json',
                 'Authorization': 'Bearer ' + token,
             },
+        }).then(async (res) => {
+            if (!res.ok) throw new Error('Ошибка при загрузке');
+            let data = await res.json();
+            data = typeof data === 'string' ? JSON.parse(data) : data;
+            setHtml(data.html || '<h1>Нет HTML</h1>');
+            setCss(data.css || '');
+        }).catch((err) => {
+            setHtml('<h1>Ошибка загрузки</h1>');
+        }).finally(() => {
+            setLoadable(false);
         })
-            .then(async (res) => {
-                if (!res.ok) throw new Error('Ошибка при загрузке');
-
-                let data = await res.json();
-                data = typeof data === 'string' ? JSON.parse(data) : data;
-                console.log(data);
-                setHtml(data.html || '<h1>Нет HTML</h1>');
-                setCss(data.css || '');
-            })
-            .catch((err) => {
-                console.error(err);
-                setHtml('<h1>Ошибка загрузки</h1>');
-            })
-            .finally(() => {
-                setLoadable(false);
-            })
     }, []);
 
     return (
         isLoading ? (
             <Example />
         ) : (
-            <div>
-                <style>{css}</style>
-                <div dangerouslySetInnerHTML={{ __html: html }} />
-            </div>
+            <div><style>{css}</style><div dangerouslySetInnerHTML={{ __html: html }} /></div>
         )
     )
 };

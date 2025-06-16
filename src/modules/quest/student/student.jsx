@@ -2,8 +2,8 @@ import { observer } from "mobx-react-lite";
 import loginModel from "./models/login-model.jsx";
 import FromRegLog from "../../layout/components/form.jsx";
 import DivInput from "../../../core/UIKit/input.jsx";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 import Icon from "../../../core/UIKit/icons.jsx";
 import { useAuth } from "../../../core/hoc/AuthProvider.jsx";
 import { useForm } from "react-hook-form";
@@ -13,15 +13,20 @@ import logo from "../../../assets/img/logo.svg"
 
 
 function Login() {
-    const { setLogin } = loginModel;
-
-    const { signin } = useAuth();
+    const { setLogin, setAdminId } = loginModel;
+    const { signin, user } = useAuth();
+    const { id } = useParams();
 
     const [showPassword, setShowPassword] = useState(false);
 
     const togglePasswordVisibility = () => {
         setShowPassword(prevState => !prevState);
     }
+
+    useEffect(() => {
+        setAdminId(id)
+    }, [])
+
     const {
         register,
         formState: {
@@ -52,11 +57,11 @@ function Login() {
                     <p className="regLog__description">
                         <div className="regLog__svg">
                         </div>
-                        У вас нету аккаунта? <a href="/student/register">Зарегистрироваться</a>
+                        У вас нету аккаунта? <a href={`/student/${id}/register`}>Зарегистрироваться</a>
                     </p>
                     <br />
                     <p className="regLog__description-back">
-                        <a href="/student/register">Вернуться на сайт</a>
+                        <a href={`/page/${id}`}>Вернуться на сайт</a>
                     </p>
                 </>
             }>

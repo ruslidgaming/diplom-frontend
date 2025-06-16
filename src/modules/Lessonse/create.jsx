@@ -11,9 +11,6 @@ import { useParams } from "react-router-dom";
 
 
 function Create() {
-
-    // const { setCourseData } = courseModal;
-    const { user } = useAuth();
     const [title, setTitle] = useState('');
     const [model, setModel] = useState('');
     const [titleValid, setTitleValid] = useState(false);

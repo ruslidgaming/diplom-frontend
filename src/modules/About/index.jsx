@@ -70,7 +70,7 @@ const About = () => {
                                 </div>
                                 <div className="item-rate__list-item">
                                     <p>Нанимать ментора</p>
-                                    <p>0</p>
+                                    <p>нельзя</p>
                                 </div>
                                 <div className="item-rate__list-item">
                                     <p>Кол-во уроков</p>
@@ -78,7 +78,7 @@ const About = () => {
                                 </div>
                                 <div className="item-rate__list-item">
                                     <p>Статистика</p>
-                                    <p>нет</p>
+                                    <p>есть</p>
                                 </div>
                             </div>
                             <a href={`/pay/tariff/${1}`} className="item-rate__btn _btn _blue">Купить</a>
@@ -88,15 +88,15 @@ const About = () => {
                             <div className="item-rate__list">
                                 <div className="item-rate__list-item">
                                     <p>Кол-во курсов</p>
-                                    <p>до 5 курсов</p>
+                                    <p>5 курсов</p>
                                 </div>
                                 <div className="item-rate__list-item">
                                     <p>Нанимать ментора</p>
-                                    <p>1 на курс</p>
+                                    <p>3 ментора</p>
                                 </div>
                                 <div className="item-rate__list-item">
                                     <p>Кол-во уроков</p>
-                                    <p>50 уроков</p>
+                                    <p>100 уроков</p>
                                 </div>
                                 <div className="item-rate__list-item">
                                     <p>Статистика</p>
@@ -110,15 +110,15 @@ const About = () => {
                             <div className="item-rate__list">
                                 <div className="item-rate__list-item">
                                     <p>Кол-во курсов</p>
-                                    <p>до 3 на курс</p>
+                                    <p>15 курсов</p>
                                 </div>
                                 <div className="item-rate__list-item">
                                     <p>Нанимать ментора</p>
-                                    <p>до 3 на курс</p>
+                                    <p>10 менторов</p>
                                 </div>
                                 <div className="item-rate__list-item">
                                     <p>Кол-во уроков</p>
-                                    <p>200 уроков</p>
+                                    <p>500 уроков</p>
                                 </div>
                                 <div className="item-rate__list-item">
                                     <p>Статистика</p>

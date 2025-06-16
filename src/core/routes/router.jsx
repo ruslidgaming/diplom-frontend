@@ -6,9 +6,8 @@ import {
     MetodistiCatalog, MetodistCreare, MetodistUpdate,
     LessonsCatalog, StudRegLog, AdminAbout,
     DesignerIndex, Testpages, LessonsCreate, LessonsUpdate,
-    StudentLogin, StudentRegister, Pay
+    StudentLogin, StudentRegister, Pay, StidentCourses
 } from './pages'
-
 const router = createBrowserRouter(createRoutesFromElements(
     <Route>
         <Route path="/" element={<Layout />} >
@@ -16,17 +15,25 @@ const router = createBrowserRouter(createRoutesFromElements(
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
         </Route>
-
-
         <Route path="student/:id" element={<StudRegLog />} >
             <Route path="login" element={<StudentLogin />} />
             <Route path="register" element={<StudentRegister />} />
 
-            <Route path="courses" element={<StudentRegister />} />
+            <Route path="courses/:type" element={
+                <RequireAuth role={['student']}>
+                    <Profile />
+                </RequireAuth>
+            }>
+
+                <Route index element={<StidentCourses />} />
+                <Route path='show/:idCourse' element={<CoursesShow />} />
+
+            </Route>
+
         </Route>
 
         <Route path="designer" element={<DesignerIndex />} />
-        <Route path="testpages/:id" element={<Testpages />} />
+        <Route path="page/:id" element={<Testpages />} />
 
         <Route path="profile/" element={
             <RequireAuth role={['super']}>
@@ -40,6 +47,7 @@ const router = createBrowserRouter(createRoutesFromElements(
             <Route path="feedback" element={<Feedback />} />
             <Route path="many" element={<StatisticsMany />} />
         </Route>
+
 
 
         <Route path="pay/:type/:id" element={<Profile />} >
@@ -76,15 +84,15 @@ const router = createBrowserRouter(createRoutesFromElements(
         </Route>
 
         <Route path="/lessons/:idCourse" element={
-            <RequireAuth role={['mentor', 'admin']}>
+            <RequireAuth role={['mentor', 'admin', 'student']}>
                 <Profile />
             </RequireAuth>
         } >
+
             <Route index element={<LessonsCatalog />} />
 
             <Route path="create" element={<LessonsCreate />} />
             <Route path="update/:lessonId" element={<LessonsUpdate />} />
-            <Route path="show/:lessonId" element={<LessonsCatalog />} />
         </Route>
 
         <Route path='*' element={<Navigate to={"/error/404"} />} />

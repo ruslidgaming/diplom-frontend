@@ -40,7 +40,7 @@ export const sidebarAdminData = [
         type: "link",
         icon: "web",
         name: "Страница",
-        link: "/testpages",
+        link: "/page",
         new: "/",
     },
     {

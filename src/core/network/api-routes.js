@@ -30,7 +30,6 @@ export const CourseRoute = {
   TeacherDelete: "/admin/course/teacher/delete",
   Show: "/admin/course/show",
   Catalog: "/admin/course/catalog",
-
 }
 
 export const Lessons = {
@@ -46,7 +45,7 @@ export const Lessons = {
 export const Tariff = {
   Catalog: '/tariff/catalog',
   Show: '/tariff/show',
-  Pay : '/tariff/pay',
+  Pay: '/tariff/pay',
 }
 
 
@@ -57,5 +56,10 @@ export const ListRoute = {
 
 
 export const Student = {
+  Finish: "/student/finish",
   Pay: "/student/pay",
+  All: "/student/all",
+  My: "/student/my",
+  End: "/student/end",
+  LessonsList: "/student/lessons/list",
 }

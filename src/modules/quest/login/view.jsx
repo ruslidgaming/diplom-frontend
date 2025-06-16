@@ -45,8 +45,8 @@ function Login() {
         }>
 
             <div className="regLog__form-btns">
-                <div className={`regLog__form-btn ${role == 'admin' && '_active'}`} onClick={() => setRole("admin")}>Админ</div>
-                <div className={`regLog__form-btn ${role == 'mentor' && '_active'}`} onClick={() => setRole("mentor")}>Методист</div>
+                <div className={`regLog__form-btn ${role == 'admin' && '_active'}`} onClick={() => setRole("admin")}>Почта</div>
+                <div className={`regLog__form-btn ${role == 'mentor' && '_active'}`} onClick={() => setRole("mentor")}>Логин</div>
             </div>
 
             <DivInput className="regLog__input" label={<p>{role == 'admin' ? "Почта" : "Логин"} <span style={{ color: "red" }}>*</span></p>}>

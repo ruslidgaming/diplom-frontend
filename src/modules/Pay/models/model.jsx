@@ -2,9 +2,9 @@ import { makeAutoObservable } from "mobx";
 import { CourseRoute, ListRoute, Student, Tariff } from "../../../core/network/api-routes";
 import instance from "../../../core/network/api";
 import { toast } from "react-toastify";
+import { useAuth } from "../../../core/hoc/AuthProvider";
 // import { FeedbackRoute, ListRoute } from "../../../../core/network/api-routes";
 // import instance from "../../../../core/network/api";
-
 class ListModel {
     constructor() {
         makeAutoObservable(this, {}, { autoBind: true })
@@ -45,9 +45,16 @@ class ListModel {
             })
     }
 
-    apiPayCourse(id, userId) {
+    apiPayCourse(id, userId, admin_id) {
         instance.post(Student.Pay, { idCourse: id, idUser: userId })
+            .then((data) => {
+                window.location.href = '/student/ ' + admin_id + '/courses/my';
+            })
+            .catch((err) => {
+                toast.error("Ошибка при попытке оплаты")
+            })
     }
+
     apiPayTariff(id, userId) {
         instance.post(Tariff.Pay, { idTariff: id, idUser: userId })
             .then((data) => {
@@ -72,6 +79,7 @@ class ListModel {
         //         this.apiListData(data);
         //     })
     }
+
 }
 
 const listModel = new ListModel();

@@ -2,19 +2,19 @@ export const sidebarUserData = [
     {
         type: "link",
         icon: "cours",
-        name: "Курсы",
-        link: "/student/courses",
+        name: "Каталог",
+        link: "/student/courses/all",
     },
     {
         type: "link",
         icon: "myCours",
         name: "Мои курсы",
-        link: "/student/courses",
+        link: "/student/courses/my",
     },
     {
         type: "link",
         icon: "gotovo",
         name: "Пройденные курсы",
-        link: "/student/courses",
+        link: "/student/courses/end",
     },
 ]

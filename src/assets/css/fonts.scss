@@ -1,33 +1,9 @@
-@font-face {
-    font-family: "Inter";
-    font-weight: 500;
-    src: url("../fonts/Inter-Medium.ttf");
-}
-@font-face {
-    font-family: "Inter";
-    font-weight: 400;
-    src: url("../fonts/Inter-Regular.ttf");
-}
-@font-face {
-    font-family: "Unbounded";
-    font-weight: 700;
-    src: url("../fonts/Unbounded-Bold.ttf");
-}
-@font-face {
-    font-family: "Unbounded";
-    font-weight: 600;
-    src: url("../fonts/Unbounded-SemiBold.ttf");
-}
-@font-face {
-    font-family: "Unbounded";
-    font-weight: 500;
-    src: url("../fonts/Unbounded-Medium.ttf");
-}
-@font-face {
-    font-family: "Unbounded";
-    font-weight: 400;
-    src: url("../fonts/Unbounded-Regular.ttf");
-}
+@font-face {font-family: "Inter"; font-weight: 500;src: url("../fonts/Inter-Medium.ttf");}
+@font-face { font-family: "Inter"; font-weight: 400; src: url("../fonts/Inter-Regular.ttf"); }
+@font-face { font-family: "Unbounded"; font-weight: 700; src: url("../fonts/Unbounded-Bold.ttf"); }
+@font-face { font-family: "Unbounded"; font-weight: 600; src: url("../fonts/Unbounded-SemiBold.ttf"); }
+@font-face { font-family: "Unbounded"; font-weight: 500; src: url("../fonts/Unbounded-Medium.ttf");}
+@font-face { font-family: "Unbounded"; font-weight: 400; src: url("../fonts/Unbounded-Regular.ttf"); }
 
 $commonFont: "Inter";
 
@@ -35,3 +11,6 @@ $commonFont: "Inter";
     --font-inter: "Inter";
     --font-unbounded: "Unbounded";
 }
+
+
+

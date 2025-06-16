@@ -5,16 +5,8 @@ const DeleteModal = ({ onConfirm, onCancel, itemName, classNameBtn, btnOnClick, 
     const [isOpen, setIsOpen] = useState(false);
 
     const closeModal = () => setIsOpen(false);
-
-    const handleConfirm = () => {
-        onConfirm();
-        closeModal();
-    };
-
-    function btnClick() {
-        setIsOpen(true)
-        btnOnClick(idInfo)
-    }
+    const handleConfirm = () => { onConfirm(); closeModal(); }
+    function btnClick() {setIsOpen(true); btnOnClick(idInfo); }
 
     return (
         <>
@@ -64,5 +56,4 @@ const DeleteModal = ({ onConfirm, onCancel, itemName, classNameBtn, btnOnClick, 
         </>
     );
 };
-
 export default DeleteModal;
