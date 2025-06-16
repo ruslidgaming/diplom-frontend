@@ -38,6 +38,7 @@ class Model {
     apiLessons(id, setLoadable = null) {
         apiLessonsCatalogStudent(id)
             .then(res => {
+<<<<<<< HEAD
                 this._title = res.data.title
 
                 let countCompl = 0
@@ -53,6 +54,10 @@ class Model {
                 }
 
 
+=======
+                console.log(res.data)
+                this._title = res.data.title
+>>>>>>> 21458cd (фывцйу)
                 this.setCatalogList(res.data.lessonsList)
             })
             .catch(err => console.log(err))

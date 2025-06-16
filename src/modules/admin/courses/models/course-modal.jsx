@@ -7,6 +7,7 @@ class CourseModal {
     constructor() {
         makeAutoObservable(this, {}, { autoBind: true })
     }
+<<<<<<< HEAD
 
     _searchedModel = []; _searchValue = ""; _isSearch = false;
     get search() { return this._searchValue; }
@@ -16,16 +17,29 @@ class CourseModal {
 
         return this._searchedModel;
     }
+=======
+    _searchedModel = []; _searchValue = ""; _isSearch = false;
+    get search() { return this._searchValue; }
+    get isSearch() { return this._isSearch; }
+    get searchedModel() { return this._searchedModel; }
+>>>>>>> 21458cd (фывцйу)
 
     setSearch(value) {
         // console.log(value)
         this._searchValue = value;
         this._isSearch = value != "";
+<<<<<<< HEAD
         this._searchedModel = this.courseCatalogList.filter((item) => {
             return `${item.name}`.toLowerCase().includes(value.toLowerCase());
         })
     }
 
+=======
+        this._searchedModel = this._courseCatalogList.filter((item) => {
+            return `${item.name} ${item.mini_description}`.toLowerCase().includes(value.toLowerCase());
+        })
+    }
+>>>>>>> 21458cd (фывцйу)
     _courseCatalogList = []; _showCourseData = {}; _showCourseLessons = {}; _showCourseTeacherData = {}; _deleteCourseId = {};
 
     get showCourseData() {
