@@ -62,6 +62,9 @@ function Courses() {
         }
     };
 
+    useEffect(() => {
+        console.log(searchedModel.length)
+    }, [searchedModel])
 
     return isLoading ?
         <Example /> :
@@ -89,7 +92,7 @@ function Courses() {
 
                 <div className="courses__items">
                     {isSearch ?
-                        searchedModel.map((item, index) => {
+                        searchedModel.map((item, index) => (
                             <div className="courses__item item-course" key={index}>
                                 <div>
                                     <div className="item-course__img">
@@ -110,85 +113,41 @@ function Courses() {
                                         />
                                     </div>
                                 }
-                                <a className="item-course__link _btn" href={"/courses/show/" + item.id}>Подробнее</a>
+                                <a className="item-course__link _btn" href={"courses/show/" + item.id}>Подробнее</a>
                                 <a className="item-course__link _btn" href={"/lessons/" + item.id}>Уроки</a>
                             </div>
-                        })
+                        ))
                         :
                         courseCatalogList.length > 0 &&
                         courseCatalogList.map((item, index) => (
                             <>
-                            <div className="courses__item item-course" key={index}>
-                                <div>
-                                    <div className="item-course__img">
-                                        <img src={`http://127.0.0.1:8000/storage/${item.image}`} alt="" />
+                                <div className="courses__item item-course" key={index}>
+                                    <div>
+                                        <div className="item-course__img">
+                                            <img src={`http://127.0.0.1:8000/storage/${item.image}`} alt="" />
+                                        </div>
+                                        <h5 className="item-course__name">{item.name}</h5>
+                                        <p className="item-course__text">{item.mini_description}</p>
                                     </div>
-                                    <h5 className="item-course__name">{item.name}</h5>
-                                    <p className="item-course__text">{item.mini_description}</p>
+                                    {user.role == "admin" &&
+                                        <div className="item-course__btns">
+                                            <a className="item-course__bnt _btn _blue" href={"/admin/courses/edit/" + item.id}>Редактировать</a>
+                                            <DeleteModal classNameBtn={"item-course__bnt _btn _red"}
+                                                idInfo={item.id}
+                                                btnOnClick={deleteCourseId}
+                                                onConfirm={setCourseDelete}
+                                                onCancel={() => console.log('Удаление отменено')}
+                                                itemName="курс 'Введение в React'"
+                                            />
+                                        </div>
+                                    }
+                                    <a className="item-course__link _btn" href={"courses/show/" + item.id}>Подробнее</a>
+                                    <a className="item-course__link _btn" href={"/lessons/" + item.id}>Уроки</a>
                                 </div>
-                                {user.role == "admin" &&
-                                    <div className="item-course__btns">
-                                        <a className="item-course__bnt _btn _blue" href={"/admin/courses/edit/" + item.id}>Редактировать</a>
-                                        <DeleteModal classNameBtn={"item-course__bnt _btn _red"}
-                                            idInfo={item.id}
-                                            btnOnClick={deleteCourseId}
-                                            onConfirm={setCourseDelete}
-                                            onCancel={() => console.log('Удаление отменено')}
-                                            itemName="курс 'Введение в React'"
-                                        />
-                                    </div>
-                                }
-                                <a className="item-course__link _btn" href={"/courses/show/" + item.id}>Подробнее</a>
-                                <a className="item-course__link _btn" href={"/lessons/" + item.id}>Уроки</a>
-                            </div><div className="courses__item item-course" key={index}>
-                                <div>
-                                    <div className="item-course__img">
-                                        <img src={`http://127.0.0.1:8000/storage/${item.image}`} alt="" />
-                                    </div>
-                                    <h5 className="item-course__name">{item.name}</h5>
-                                    <p className="item-course__text">{item.mini_description}</p>
-                                </div>
-                                {user.role == "admin" &&
-                                    <div className="item-course__btns">
-                                        <a className="item-course__bnt _btn _blue" href={"/admin/courses/edit/" + item.id}>Редактировать</a>
-                                        <DeleteModal classNameBtn={"item-course__bnt _btn _red"}
-                                            idInfo={item.id}
-                                            btnOnClick={deleteCourseId}
-                                            onConfirm={setCourseDelete}
-                                            onCancel={() => console.log('Удаление отменено')}
-                                            itemName="курс 'Введение в React'"
-                                        />
-                                    </div>
-                                }
-                                <a className="item-course__link _btn" href={"/courses/show/" + item.id}>Подробнее</a>
-                                <a className="item-course__link _btn" href={"/lessons/" + item.id}>Уроки</a>
-                            </div><div className="courses__item item-course" key={index}>
-                                <div>
-                                    <div className="item-course__img">
-                                        <img src={`http://127.0.0.1:8000/storage/${item.image}`} alt="" />
-                                    </div>
-                                    <h5 className="item-course__name">{item.name}</h5>
-                                    <p className="item-course__text">{item.mini_description}</p>
-                                </div>
-                                {user.role == "admin" &&
-                                    <div className="item-course__btns">
-                                        <a className="item-course__bnt _btn _blue" href={"/admin/courses/edit/" + item.id}>Редактировать</a>
-                                        <DeleteModal classNameBtn={"item-course__bnt _btn _red"}
-                                            idInfo={item.id}
-                                            btnOnClick={deleteCourseId}
-                                            onConfirm={setCourseDelete}
-                                            onCancel={() => console.log('Удаление отменено')}
-                                            itemName="курс 'Введение в React'"
-                                        />
-                                    </div>
-                                }
-                                <a className="item-course__link _btn" href={"/courses/show/" + item.id}>Подробнее</a>
-                                <a className="item-course__link _btn" href={"/lessons/" + item.id}>Уроки</a>
-                            </div>
                             </>
                         ))}
                 </div>
-            </div>
+            </div >
         </>
 }
 export default observer(Courses);

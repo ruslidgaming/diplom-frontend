@@ -22,6 +22,7 @@ function StatisticsCourses() {
 
     return <>
         <div className="static-many static">
+            <div className="static__title">За текущий месяц</div>
             <div className="static__carts">
                 <div className={`static__cart cart-static ${staticSections == 'course' && "_active"}`} onClick={() => CheckSetStaticSections('course')}>
                     <div className="cart-static__icon">

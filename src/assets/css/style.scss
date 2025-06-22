@@ -842,6 +842,15 @@
     font-size: 14px !important;
   }
 
+  &__price {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 10px;
+    margin-bottom: -10px;
+    font-family: var(--font-unbounded);
+  }
+
   @media (max-width: em($mPoint-5, 16)) {
     padding: 15px 20px 30px 20px;
   }
@@ -2429,13 +2438,17 @@
       gap: 20px;
     }
     &-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
       position: absolute;
       top: 100%;
       left: 0;
       width: 100%;
-      padding: 15px;
+      padding: 15px 15px 30px 15px;
       border-radius: 0 0 40px 40px;
       background-color: var(--clr-fon);
+      box-shadow: 0 4px 5px 0 rgb(225, 225, 225);
     }
 
     &-item {

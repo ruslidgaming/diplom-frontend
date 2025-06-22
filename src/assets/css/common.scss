@@ -279,6 +279,13 @@
         display: flex;
         gap: 30px;
         margin-bottom: 50px;
+
+        &-title {
+            font-size: 20px;
+            margin-bottom: 20px;
+            font-family: var(--font-unbounded);
+            font-weight: 600;
+        }
     }
     &__cart {
     }

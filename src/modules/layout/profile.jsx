@@ -55,7 +55,7 @@ export default function Profile() {
                     <div className="profile__panel panel-profile">
                         <div className="panel-profile__items">
 
-                            
+
                             {panelData.map((item, i) => {
                                 if (item.type == "title") {
                                     return (

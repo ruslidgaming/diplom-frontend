@@ -32,17 +32,24 @@ class ListModel {
     }
 
 
-    apiDataTariff(id, userId, setLoadable) {
-        instance.get(Tariff.Show, { params: { idTariff: id, idAdmin: userId } })
-            .then((res) => {
-                this._list = res.data.list
-            })
-            .catch((err) => {
-                console.log('err', err)
-            })
-            .finally(() => {
-                setLoadable && setLoadable(false)
-            })
+    apiDataTariff(id) {
+        this._list
+
+
+        switch (id) {
+            case 1:
+                this._list.name = ""
+                this._list.price = ""
+
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+
+            default:
+                break;
+        }
     }
 
     apiPayCourse(id, userId, admin_id) {

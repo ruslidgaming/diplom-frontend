@@ -59,7 +59,8 @@ function Pay() {
         if (type == "course") {
             apiData(id, setLoadable)
         } else if (type == "tariff") {
-            apiDataTariff(id, user.id, setLoadable)
+            apiDataTariff(id)
+            setLoadable(false)
         }
     }, [])
 
@@ -82,7 +83,7 @@ function Pay() {
                                 <p class="_text-lvl_2">{list.name}</p>
                             </div>
                             <div class="buy__info-text _down">
-                                <p class="_text-lvl_1">Стоимость курса</p>
+                                <p class="_text-lvl_1">Стоимость {type == "course" ? "курса" : "тарифа"} </p>
                                 <p class="_text-lvl_1">{list.price} ₽</p>
                             </div>
                         </div>

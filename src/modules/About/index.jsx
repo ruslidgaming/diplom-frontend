@@ -80,6 +80,10 @@ const About = () => {
                                     <p>Статистика</p>
                                     <p>есть</p>
                                 </div>
+                                <div className="item-rate__list-item">
+                                    <div className="item-rate__price">Стоимость</div>
+                                    <div className="item-rate__price">15 000₽</div>
+                                </div>
                             </div>
                             <a href={`/pay/tariff/${1}`} className="item-rate__btn _btn _blue">Купить</a>
                         </div>
@@ -102,7 +106,12 @@ const About = () => {
                                     <p>Статистика</p>
                                     <p>есть</p>
                                 </div>
+                                <div className="item-rate__list-item">
+                                    <div className="item-rate__price">Стоимость</div>
+                                    <div className="item-rate__price">40 000₽</div>
+                                </div>
                             </div>
+
                             <a href={`/pay/tariff/${2}`} className="item-rate__btn _btn _blue">Купить</a>
                         </div>
                         <div className="rate__item item-rate">
@@ -123,6 +132,11 @@ const About = () => {
                                 <div className="item-rate__list-item">
                                     <p>Статистика</p>
                                     <p>есть</p>
+                                </div>
+
+                                <div className="item-rate__list-item">
+                                    <div className="item-rate__price">Стоимость</div>
+                                    <div className="item-rate__price">120 000₽</div>
                                 </div>
                             </div>
                             <a href={`/pay/tariff/${3}`} className="item-rate__btn _btn _blue">Купить</a>
