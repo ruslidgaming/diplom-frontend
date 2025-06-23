@@ -46,6 +46,9 @@ export default function Profile() {
         }
     }, [])
 
+
+
+
     return (
         <>
             <div className="profile">
@@ -62,14 +65,48 @@ export default function Profile() {
                                         <div className="panel-profile__title" key={i}>{item.name}</div>
                                     )
                                 } else if (item.type == "link") {
-                                    return (
-                                        <Link to={item.link != "/page" ? item.link : item.link + "/" + user.id} target={item.new ? "_blank" : ""} className={`panel-profile__item item-profile ${localUrl.pathname == item.link ? "_active" : ""}`} onClick={() => setActive(i)} >
-                                            <div className="item-profile__icon">
-                                                <ProfileIcon name={item.icon} />
-                                            </div>
-                                            <p className="item-profile__name">{item.name}</p>
-                                        </Link>
-                                    )
+                                    if (user.role == "admin") {
+                                        if (user.tarif == 0 || user.tarif == 1) {
+
+                                            if (item.link == "/admin/many" || item.link == "/admin/lessons") {
+                                                return (
+                                                    <div className={`panel-profile__item item-profile _not`} onClick={() => setActive(i)} >
+                                                        <div className="item-profile__icon">
+                                                            <ProfileIcon name={item.icon} />
+                                                        </div>
+                                                        <p className="item-profile__name">{item.name}</p>
+                                                    </div>
+                                                )
+                                            } else {
+                                                return (
+                                                    <Link to={item.link != "/page" ? item.link : item.link + "/" + user.id} target={item.new ? "_blank" : ""} className={`panel-profile__item item-profile ${localUrl.pathname == item.link ? "_active" : ""}`} onClick={() => setActive(i)} >
+                                                        <div className="item-profile__icon">
+                                                            <ProfileIcon name={item.icon} />
+                                                        </div>
+                                                        <p className="item-profile__name">{item.name}</p>
+                                                    </Link>
+                                                )
+                                            }
+                                        } else {
+                                            return (
+                                                <Link to={item.link != "/page" ? item.link : item.link + "/" + user.id} target={item.new ? "_blank" : ""} className={`panel-profile__item item-profile ${localUrl.pathname == item.link ? "_active" : ""}`} onClick={() => setActive(i)} >
+                                                    <div className="item-profile__icon">
+                                                        <ProfileIcon name={item.icon} />
+                                                    </div>
+                                                    <p className="item-profile__name">{item.name}</p>
+                                                </Link>
+                                            )
+                                        }
+                                    } else {
+                                        return (
+                                            <Link to={item.link != "/page" ? item.link : item.link + "/" + user.id} target={item.new ? "_blank" : ""} className={`panel-profile__item item-profile ${localUrl.pathname == item.link ? "_active" : ""}`} onClick={() => setActive(i)} >
+                                                <div className="item-profile__icon">
+                                                    <ProfileIcon name={item.icon} />
+                                                </div>
+                                                <p className="item-profile__name">{item.name}</p>
+                                            </Link>
+                                        )
+                                    }
                                 }
                             })}
 

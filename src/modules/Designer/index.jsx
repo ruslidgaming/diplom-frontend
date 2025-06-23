@@ -4,13 +4,13 @@ import '@grapesjs/studio-sdk/style';
 import ruLocale from '../Designer/locale';
 import axios from 'axios';
 
+
+
+
 const Designer = () => {
     const user = JSON.parse(localStorage.getItem('user'));
     const token = localStorage.getItem('access_token');
-    // const userId = user.id;
     const userId = user.id;
-
-    console.log(ruLocale);
 
     const uploadFileToServer = async (file) => {
         const formData = new FormData();

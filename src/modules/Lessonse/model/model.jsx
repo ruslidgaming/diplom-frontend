@@ -28,7 +28,6 @@ class Model {
     apiCatalog(id, setLoadable = null) {
         apiLessonsCatalog({ id: id })
             .then(res => {
-                console.log(res.data)
                 this._title = res.data.title
                 this.setCatalogList(res.data.lessons)
             })
@@ -39,8 +38,21 @@ class Model {
     apiLessons(id, setLoadable = null) {
         apiLessonsCatalogStudent(id)
             .then(res => {
-                console.log(res.data)
                 this._title = res.data.title
+
+                let countCompl = 0
+
+                for (let i = 0; i < res.data.lessonsList.length; i++) {
+                    if (res.data.lessonsList[i].complete == 0) {
+                        if (countCompl == 0) {
+                            countCompl = 1
+                        } else {
+                            res.data.lessonsList[i].complete = 2
+                        }   
+                    }
+                }
+
+
                 this.setCatalogList(res.data.lessonsList)
             })
             .catch(err => console.log(err))

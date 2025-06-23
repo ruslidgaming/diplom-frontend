@@ -8,6 +8,8 @@ import {
     DesignerIndex, Testpages, LessonsCreate, LessonsUpdate,
     StudentLogin, StudentRegister, Pay, StidentCourses
 } from './pages'
+
+
 const router = createBrowserRouter(createRoutesFromElements(
     <Route>
         <Route path="/" element={<Layout />} >
@@ -48,13 +50,9 @@ const router = createBrowserRouter(createRoutesFromElements(
             <Route path="many" element={<StatisticsMany />} />
         </Route>
 
-
-
         <Route path="pay/:type/:id" element={<Profile />} >
             <Route index element={<Pay />} />
         </Route>
-
-
 
         <Route path="admin/" element={
             <RequireAuth role={['admin']}>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import StudioEditor from '@grapesjs/studio-sdk/react';
 import '@grapesjs/studio-sdk/style';
 import ruLocale from '../Designer/locale';
@@ -8,7 +8,6 @@ import SecretField from './components/copyPass';
 
 const About = () => {
     const user = JSON.parse(localStorage.getItem('user'));
-
     return (
 
         <div>
@@ -61,7 +60,7 @@ const About = () => {
 
                 <div className="adminAbout__rate">
                     <div className="rate__items">
-                        <div className="rate__item item-rate">
+                        <div className={`rate__item item-rate`}>
                             <div className="item-rate__name">Курс</div>
                             <div className="item-rate__list">
                                 <div className="item-rate__list-item">
@@ -78,16 +77,25 @@ const About = () => {
                                 </div>
                                 <div className="item-rate__list-item">
                                     <p>Статистика</p>
-                                    <p>есть</p>
+                                    <p>нет</p>
                                 </div>
                                 <div className="item-rate__list-item">
                                     <div className="item-rate__price">Стоимость</div>
                                     <div className="item-rate__price">15 000₽</div>
                                 </div>
                             </div>
-                            <a href={`/pay/tariff/${1}`} className="item-rate__btn _btn _blue">Купить</a>
+
+
+                            {
+                                user.tarif != "1" ?
+                                    <a href={`/pay/tariff/${1}`} className="item-rate__btn _btn _blue">Купить</a>
+                                    :
+                                    <div className='item-rate__btn _btn _blue-text'>
+                                        Куплен
+                                    </div>
+                            }
                         </div>
-                        <div className="rate__item item-rate">
+                        <div className={`rate__item item-rate`}>
                             <div className="item-rate__name">Школа</div>
                             <div className="item-rate__list">
                                 <div className="item-rate__list-item">
@@ -111,10 +119,16 @@ const About = () => {
                                     <div className="item-rate__price">40 000₽</div>
                                 </div>
                             </div>
-
-                            <a href={`/pay/tariff/${2}`} className="item-rate__btn _btn _blue">Купить</a>
+                            {
+                                user.tarif != "2" ?
+                                    <a href={`/pay/tariff/${2}`} className="item-rate__btn _btn _blue">Купить</a>
+                                    :
+                                    <div className='item-rate__btn _btn _blue-text'>
+                                        Куплен
+                                    </div>
+                            }
                         </div>
-                        <div className="rate__item item-rate">
+                        <div className={`rate__item item-rate`}>
                             <div className="item-rate__name">Академия</div>
                             <div className="item-rate__list">
                                 <div className="item-rate__list-item">
@@ -139,7 +153,14 @@ const About = () => {
                                     <div className="item-rate__price">120 000₽</div>
                                 </div>
                             </div>
-                            <a href={`/pay/tariff/${3}`} className="item-rate__btn _btn _blue">Купить</a>
+
+                            {user.tarif != "3" ?
+                                <a href={`/pay/tariff/${3}`} className="item-rate__btn _btn _blue">Купить</a>
+                                :
+                                <div className='item-rate__btn _btn _blue-text'>
+                                    Куплен
+                                </div>
+                            }
                         </div>
                     </div>
                 </div>

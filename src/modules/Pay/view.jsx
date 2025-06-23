@@ -60,6 +60,7 @@ function Pay() {
             apiData(id, setLoadable)
         } else if (type == "tariff") {
             apiDataTariff(id)
+            console.log(id)
             setLoadable(false)
         }
     }, [])

@@ -79,26 +79,22 @@ function CoursesShow() {
                 </section>
             }
 
-            {showCourseLessons.length > 0
-                &&
 
+            <section class="banner-show__technologies _content _py">
+                <h2 class="technologies__title _700">Вас ждут <span>{
+                    showCourseLessons.length == 1 ? "урок" : (showCourseLessons.length > 1 && showCourseLessons.length < 5 ? "урока" : "уроков")
+                }</span>
 
-                <section class="banner-show__technologies _content _py">
-                    <h2 class="technologies__title _700">Вас ждут <span>{
-                        showCourseLessons.length == 1 ? "урок" : (showCourseLessons.length > 1 && showCourseLessons.length < 5 ? "урока" : "уроков")
-                    }</span>
+                </h2>
 
-                    </h2>
-
-                    <div class="lesson__cards">
-                        {showCourseLessons.map((item, index) => (
-                            <div key={index} class="technologies__card _fonBack-navy__blue _hover">
-                                <p class="_text-lvl_3">{item.name}</p>
-                            </div>
-                        ))}
-                    </div>
-                </section>
-            }
+                <div class="lesson__cards">
+                    {showCourseLessons.map((item, index) => (
+                        <div key={index} class="technologies__card _fonBack-navy__blue _hover">
+                            <p class="_text-lvl_3">{item.name}</p>
+                        </div>
+                    ))}
+                </div>
+            </section>
 
 
             {<section class="banner-show__technologies _py" id="teacher">

@@ -14,10 +14,13 @@ function CoursesForm() {
 
 
     // Модели данных
+    const [VH, setVH] = useState("Горизонтальный");
     const [courseCards, setCourseCards] = useState([]);
     const [mentorCards, setMentorCards] = useState([]);
     const [courseImagePreview, setCourseImagePreview] = useState(null);
+    const [certificateImagePreview, setCertificateImagePreview] = useState(null);
     const [mentorImagePreviews, setMentorImagePreviews] = useState({});
+
 
     const {
         register,
@@ -56,6 +59,7 @@ function CoursesForm() {
     const onSubmit = async (data) => {
         const formData = new FormData();
 
+        formData.append("certificate", data.certificate);
         formData.append("title", data.title);
         formData.append("price", data.price);
         formData.append("cardDescription", data.cardDescription);
@@ -372,7 +376,83 @@ function CoursesForm() {
                     </div>
                 </div>
 
-                {/* <button type="submit" className="addcours__submit" onClick={onSubmit}> */}
+                <div className="addcours__certificate">
+                    <div className="addcours__title">Добавите шаблон для <span>сертификата</span></div>
+
+                    <div className="block__certificate">
+
+                        <div className="certificate__inputs">
+
+                            <div className="certificate__name">Найтройки сертификата</div>
+
+                            <div className="certificate__type">
+                                <div className={`certificate__type-btn _bnt ${VH == "Вертикальный" ? "_active" : ""}`} onClick={() => setVH("Вертикальный")}>Горизонтальный</div>
+                                <div className={`certificate__type-btn _bnt ${VH == "Горизонтальный" ? "_active" : ""}`} onClick={() => setVH("Горизонтальный")}>Вертикальный</div>
+                            </div>
+
+                            <div className="certificate__razmer">
+                                <DivInput className={`addcours__inp _certi ${errors.price != null ? "_red" : ""}`} label={<p>Ширина</p>}>
+                                    <input
+                                        type="number"
+                                        className={`addcours-card__face-inp ${errors.price != null ? "_red" : ""}`}
+                                        placeholder="Ширина"
+                                        {...register("price", validationRules.price)}
+                                    />
+                                </DivInput>
+                                <DivInput className={`addcours__inp _certi ${errors.price != null ? "_red" : ""}`} label={<p>Длина</p>}>
+                                    <input
+                                        type="number"
+                                        className={`addcours-card__face-inp  `}
+                                        placeholder="Длина"
+                                        {...register("price", validationRules.price)}
+                                    />
+                                </DivInput>
+
+                            </div>
+
+                        </div>
+
+                        <div>
+                            <div className="addcours-card__img _certificate">
+                                <input
+                                    type="file"
+                                    id="cours__certificate"
+                                    style={{ display: "none" }}
+                                    accept="image/*"
+                                    {...register("certificate", {
+                                        required: "Изображение обязательно",
+                                        onChange: (e) => {
+                                            const file = e.target.files[0];
+                                            if (file) {
+                                                const reader = new FileReader();
+                                                reader.onload = () => setCertificateImagePreview(reader.result);
+                                                reader.readAsDataURL(file);
+                                            }
+                                        }
+                                    })}
+                                />
+                                <label htmlFor={`cours__certificate`} className={`${VH == "Горизонтальный" ? "horizont" : "vertical"}`}>
+                                    {certificateImagePreview ? (
+                                        <img
+                                            className="addcours-card__face-img"
+                                            src={certificateImagePreview}
+                                            alt="Preview"
+                                            style={{ width: 500, height: 900, objectFit: 'cover' }}
+                                        />
+                                    ) : (
+                                        "350x350"
+                                    )}
+                                </label>
+                                {errors.certificateImage && (
+                                    <p style={{ color: "red" }}>{errors.certificateImage.message}</p>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
                 <button type="submit" className="addcours__submit" onClick={handleSubmit(onSubmit)}>
                     Сохранить курс
                 </button>

@@ -1218,6 +1218,10 @@
       color: white;
     }
   }
+
+  &._not {
+    opacity: 0.3;
+  }
 }
 .header-profile {
   background: #ffffff;
@@ -1539,6 +1543,27 @@
       width: min-content;
       font-size: 35px;
       color: white;
+
+      &._certificate {
+        & label {
+          &.horizont {
+            width: 500px;
+            height: 750px;
+          }
+          &.vertical {
+            width: 750px;
+            height: 500px;
+          }
+          & label {
+            & img {
+              object-fit: cover;
+            }
+          }
+
+          max-width: none;
+          max-height: none;
+        }
+      }
 
       & label {
         display: block;
@@ -1990,6 +2015,9 @@
 .technologies {
   &__title {
     text-align: center;
+    & span {
+      color: var(--clr-blue);
+    }
   }
 
   &__cards {
@@ -2845,5 +2873,71 @@
       background-color: var(--clr-blue);
       color: white;
     }
+  }
+}
+
+.addcours__certificate {
+  margin-top: 100px;
+
+  & .addcours__title {
+    font-size: 48px;
+    max-width: 650px;
+    margin-bottom: 50px;
+
+    & span {
+      color: var(--clr-blue);
+    }
+  }
+}
+
+.block__certificate {
+  display: flex;
+  // align-items: center;
+  gap: 350px;
+}
+
+.certificate {
+  &__inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    margin-top: 50px;
+  }
+
+  &__name {
+    font-size: 24px;
+    font-weight: 500;
+  }
+
+  &__type {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    &-btn {
+      border: 1px solid lightgray;
+      color: lightgrey;
+      border-radius: 10px;
+      padding: 10px 20px;
+
+      &._active {
+        color: white;
+        border: 1px solid var(--clr-blue);
+        background-color: var(--clr-blue);
+      }
+    }
+  }
+  &__razmer {
+  }
+}
+
+.addcours__inp._certi._red > .input__input {
+  border-color: red !important;
+}
+
+.cours__certificate {
+  & img {
+    object-fit: cover !important;
   }
 }
