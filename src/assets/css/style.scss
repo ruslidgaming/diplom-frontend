@@ -1462,7 +1462,7 @@
   &__inp {
     display: grid;
     align-items: end;
-    grid-template-columns: 100px 1fr;
+    grid-template-columns: 120px 1fr;
 
     &._textarea {
       display: block;
@@ -1546,6 +1546,7 @@
 
       &._certificate {
         & label {
+          position: relative;
           &.horizont {
             width: 500px;
             height: 750px;
@@ -2920,6 +2921,7 @@
       color: lightgrey;
       border-radius: 10px;
       padding: 10px 20px;
+      cursor: pointer;
 
       &._active {
         color: white;
@@ -2929,6 +2931,11 @@
     }
   }
   &__razmer {
+    &-title {
+      font-weight: 700;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
   }
 }
 
@@ -2940,4 +2947,13 @@
   & img {
     object-fit: cover !important;
   }
+}
+
+.cours__certificate-name {
+  z-index: 1;
+  color: var(--clr-black);
+  position: absolute;
+  
+  font-weight: 400;
+  font-size: 20px;
 }

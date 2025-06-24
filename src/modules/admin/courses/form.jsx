@@ -1,6 +1,6 @@
 import { observer } from "mobx-react-lite";
 import { useEffect, useState } from "react";
-import { useForm, Controller } from "react-hook-form";
+import { useForm, Controller, useWatch } from "react-hook-form";
 import DivInput from "../../../core/UIKit/input";
 import foto from "../../../assets/img/banner.png";
 import courseModal from "./models/course-modal";
@@ -43,6 +43,16 @@ function CoursesForm() {
         mode: "onChange",
     });
 
+
+    const [shirina, dlina] = useWatch({
+        control,
+        name: ['shirina', 'dlina'],
+        defaultValue: [0, 0]
+    });
+
+
+
+
     // Валидационные схемы
     const validationRules = {
         title: { required: "Название обязательно" },
@@ -54,6 +64,8 @@ function CoursesForm() {
             required: "Описание обязательно",
             maxLength: { value: 150, message: "Максимум 150 символов" },
         },
+        shirina: { required: "Введите координаты" },
+        dlina: { required: "Введите координаты" },
         slogan: { required: "Слоган обязателен" },
         aboutCourse: { required: "Описание курса обязательно" },
     };
@@ -61,7 +73,9 @@ function CoursesForm() {
     const onSubmit = async (data) => {
         const formData = new FormData();
 
-        formData.append("certificate", data.certificate);
+        formData.append("shirina", data.shirina);
+        formData.append("dlina", data.dlina);
+
         formData.append("title", data.title);
         formData.append("price", data.price);
         formData.append("cardDescription", data.cardDescription);
@@ -73,6 +87,8 @@ function CoursesForm() {
         data.mentorCards = mentorCards
 
         formData.append("courseImage", getValues("courseImage")[0]);
+        formData.append("certificate", getValues("certificate")[0]);
+
         console.log(getValues("courseImage")[0])
         formData.append(`testImg`, mentorCards[0].image);
 
@@ -88,7 +104,7 @@ function CoursesForm() {
         });
         formData.append(`count`, countImg);
         formData.append('idUser', user.id)
-        console.log(user.id)
+
         try {
             const response = await fetch('http://127.0.0.1:8000/api/course/add', {
                 method: 'POST',
@@ -100,7 +116,7 @@ function CoursesForm() {
 
             const result = await response.json();
             console.log('Server response:', result);
-            window.location.href = '/admin/courses';
+            // window.location.href = '/admin/courses';
 
         } catch (error) {
             console.error('Error uploading file:', error);
@@ -385,33 +401,31 @@ function CoursesForm() {
 
                         <div className="certificate__inputs">
 
-                            <div className="certificate__name">Найтройки сертификата</div>
+                            <div className="certificate__name">Вид сертификата</div>
 
                             <div className="certificate__type">
                                 <div className={`certificate__type-btn _bnt ${VH == "Вертикальный" ? "_active" : ""}`} onClick={() => setVH("Вертикальный")}>Горизонтальный</div>
                                 <div className={`certificate__type-btn _bnt ${VH == "Горизонтальный" ? "_active" : ""}`} onClick={() => setVH("Горизонтальный")}>Вертикальный</div>
                             </div>
-
                             <div className="certificate__razmer">
-                                <DivInput className={`addcours__inp _certi ${errors.shirina != null ? "_red" : ""}`} label={<p>Ширина</p>}>
+                                <div className="certificate__name">Координаты имени</div>
+                                <DivInput className={`addcours__inp _certi ${errors.shirina != null ? "_red" : ""}`} label={<p>Координата-X</p>}>
                                     <input
                                         type="number"
                                         className={`addcours-card__face-inp ${errors.shirina != null ? "_red" : ""}`}
-                                        placeholder="Ширина"
+                                        placeholder="X"
                                         {...register("shirina", validationRules.shirina)}
                                     />
                                 </DivInput>
-                                <DivInput className={`addcours__inp _certi ${errors.dlina != null ? "_red" : ""}`} label={<p>Длина</p>}>
+                                <DivInput className={`addcours__inp _certi ${errors.dlina != null ? "_red" : ""}`} label={<p>Координата-Y</p>}>
                                     <input
                                         type="number"
                                         className={`addcours-card__face-inp  `}
-                                        placeholder="Длина"
+                                        placeholder="Y"
                                         {...register("dlina", validationRules.dlina)}
                                     />
                                 </DivInput>
-
                             </div>
-
                         </div>
 
                         <div>
@@ -435,18 +449,25 @@ function CoursesForm() {
                                 />
                                 <label htmlFor={`cours__certificate`} className={`${VH == "Горизонтальный" ? "horizont" : "vertical"}`}>
                                     {certificateImagePreview ? (
-                                        <img
-                                            className="addcours-card__face-img"
-                                            src={certificateImagePreview}
-                                            alt="Preview"
-                                            style={{ width: 500, height: 900, objectFit: 'cover' }}
-                                        />
+
+                                        <>
+                                            <p className="cours__certificate-name" style={{
+                                                top: `${shirina}px `,
+                                                left: `${dlina}px `,
+                                            }}>Иванов Иван Иванович</p>
+                                            <img
+                                                className="addcours-card__face-img"
+                                                src={certificateImagePreview}
+                                                alt="Preview"
+                                                style={{ objectFit: 'cover' }}
+                                            />
+                                        </>
                                     ) : (
-                                        "350x350"
+                                        "Сертификат"
                                     )}
                                 </label>
-                                {errors.certificateImage && (
-                                    <p style={{ color: "red" }}>{errors.certificateImage.message}</p>
+                                {errors.certificate && (
+                                    <p style={{ color: "red" }}>{errors.certificate.message}</p>
                                 )}
                             </div>
                         </div>

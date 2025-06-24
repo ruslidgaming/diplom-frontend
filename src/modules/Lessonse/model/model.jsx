@@ -8,7 +8,7 @@ class Model {
     constructor() {
         makeAutoObservable(this, {}, { autoBind: true })
     }
-    // Каталог
+    // Каталог  
     _catalogList = [];
     _title = "";
 
