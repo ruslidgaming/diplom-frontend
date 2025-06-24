@@ -121,6 +121,7 @@ function Courses() {
                         courseCatalogList.length > 0 &&
                         courseCatalogList.map((item, index) => (
                             <>
+<<<<<<< HEAD
                                 <div className="courses__item item-course" key={index}>
                                     <div>
                                         <div className="item-course__img">
@@ -128,6 +129,12 @@ function Courses() {
                                         </div>
                                         <h5 className="item-course__name">{item.name}</h5>
                                         <p className="item-course__text">{item.mini_description}</p>
+=======
+                            <div className="courses__item item-course" key={index}>
+                                <div>
+                                    <div className="item-course__img">
+                                        <img src={`http://127.0.0.1:8000/storage/${item.image}`} alt="" />
+>>>>>>> 21458cd (фывцйу)
                                     </div>
                                     {user.role == "admin" &&
                                         <div className="item-course__btns">
@@ -144,6 +151,68 @@ function Courses() {
                                     <a className="item-course__link _btn" href={"courses/show/" + item.id}>Подробнее</a>
                                     <a className="item-course__link _btn" href={"/lessons/" + item.id}>Уроки</a>
                                 </div>
+<<<<<<< HEAD
+=======
+                                {user.role == "admin" &&
+                                    <div className="item-course__btns">
+                                        <a className="item-course__bnt _btn _blue" href={"/admin/courses/edit/" + item.id}>Редактировать</a>
+                                        <DeleteModal classNameBtn={"item-course__bnt _btn _red"}
+                                            idInfo={item.id}
+                                            btnOnClick={deleteCourseId}
+                                            onConfirm={setCourseDelete}
+                                            onCancel={() => console.log('Удаление отменено')}
+                                            itemName="курс 'Введение в React'"
+                                        />
+                                    </div>
+                                }
+                                <a className="item-course__link _btn" href={"/courses/show/" + item.id}>Подробнее</a>
+                                <a className="item-course__link _btn" href={"/lessons/" + item.id}>Уроки</a>
+                            </div><div className="courses__item item-course" key={index}>
+                                <div>
+                                    <div className="item-course__img">
+                                        <img src={`http://127.0.0.1:8000/storage/${item.image}`} alt="" />
+                                    </div>
+                                    <h5 className="item-course__name">{item.name}</h5>
+                                    <p className="item-course__text">{item.mini_description}</p>
+                                </div>
+                                {user.role == "admin" &&
+                                    <div className="item-course__btns">
+                                        <a className="item-course__bnt _btn _blue" href={"/admin/courses/edit/" + item.id}>Редактировать</a>
+                                        <DeleteModal classNameBtn={"item-course__bnt _btn _red"}
+                                            idInfo={item.id}
+                                            btnOnClick={deleteCourseId}
+                                            onConfirm={setCourseDelete}
+                                            onCancel={() => console.log('Удаление отменено')}
+                                            itemName="курс 'Введение в React'"
+                                        />
+                                    </div>
+                                }
+                                <a className="item-course__link _btn" href={"/courses/show/" + item.id}>Подробнее</a>
+                                <a className="item-course__link _btn" href={"/lessons/" + item.id}>Уроки</a>
+                            </div><div className="courses__item item-course" key={index}>
+                                <div>
+                                    <div className="item-course__img">
+                                        <img src={`http://127.0.0.1:8000/storage/${item.image}`} alt="" />
+                                    </div>
+                                    <h5 className="item-course__name">{item.name}</h5>
+                                    <p className="item-course__text">{item.mini_description}</p>
+                                </div>
+                                {user.role == "admin" &&
+                                    <div className="item-course__btns">
+                                        <a className="item-course__bnt _btn _blue" href={"/admin/courses/edit/" + item.id}>Редактировать</a>
+                                        <DeleteModal classNameBtn={"item-course__bnt _btn _red"}
+                                            idInfo={item.id}
+                                            btnOnClick={deleteCourseId}
+                                            onConfirm={setCourseDelete}
+                                            onCancel={() => console.log('Удаление отменено')}
+                                            itemName="курс 'Введение в React'"
+                                        />
+                                    </div>
+                                }
+                                <a className="item-course__link _btn" href={"/courses/show/" + item.id}>Подробнее</a>
+                                <a className="item-course__link _btn" href={"/lessons/" + item.id}>Уроки</a>
+                            </div>
+>>>>>>> 21458cd (фывцйу)
                             </>
                         ))}
                 </div>

@@ -77,7 +77,7 @@ const About = () => {
                                 </div>
                                 <div className="item-rate__list-item">
                                     <p>Статистика</p>
-                                    <p>нет</p>
+                                    <p>есть</p>
                                 </div>
                                 <div className="item-rate__list-item">
                                     <div className="item-rate__price">Стоимость</div>

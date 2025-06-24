@@ -8,8 +8,11 @@ import {
     DesignerIndex, Testpages, LessonsCreate, LessonsUpdate,
     StudentLogin, StudentRegister, Pay, StidentCourses
 } from './pages'
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 21458cd (фывцйу)
 const router = createBrowserRouter(createRoutesFromElements(
     <Route>
         <Route path="/" element={<Layout />} >
@@ -50,6 +53,11 @@ const router = createBrowserRouter(createRoutesFromElements(
             <Route path="many" element={<StatisticsMany />} />
         </Route>
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 21458cd (фывцйу)
         <Route path="pay/:type/:id" element={<Profile />} >
             <Route index element={<Pay />} />
         </Route>

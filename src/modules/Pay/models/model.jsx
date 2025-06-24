@@ -65,6 +65,19 @@ class ListModel {
             })
     }
 
+<<<<<<< HEAD
+=======
+    apiPayCourse(id, userId, admin_id) {
+        instance.post(Student.Pay, { idCourse: id, idUser: userId })
+            .then((data) => {
+                window.location.href = '/student/ ' + admin_id + '/courses/my';
+            })
+            .catch((err) => {
+                toast.error("Ошибка при попытке оплаты")
+            })
+    }
+
+>>>>>>> 21458cd (фывцйу)
     apiPayTariff(id, userId) {
         instance.post(Tariff.Pay, { idTariff: id, idUser: userId })
             .then((data) => {
