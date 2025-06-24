@@ -34,6 +34,8 @@ function CoursesForm() {
         defaultValues: {
             title: "",
             price: "",
+            shirina: "",
+            dlina: "",
             cardDescription: "",
             slogan: "",
             aboutCourse: "",
@@ -391,20 +393,20 @@ function CoursesForm() {
                             </div>
 
                             <div className="certificate__razmer">
-                                <DivInput className={`addcours__inp _certi ${errors.price != null ? "_red" : ""}`} label={<p>Ширина</p>}>
+                                <DivInput className={`addcours__inp _certi ${errors.shirina != null ? "_red" : ""}`} label={<p>Ширина</p>}>
                                     <input
                                         type="number"
-                                        className={`addcours-card__face-inp ${errors.price != null ? "_red" : ""}`}
+                                        className={`addcours-card__face-inp ${errors.shirina != null ? "_red" : ""}`}
                                         placeholder="Ширина"
-                                        {...register("price", validationRules.price)}
+                                        {...register("shirina", validationRules.shirina)}
                                     />
                                 </DivInput>
-                                <DivInput className={`addcours__inp _certi ${errors.price != null ? "_red" : ""}`} label={<p>Длина</p>}>
+                                <DivInput className={`addcours__inp _certi ${errors.dlina != null ? "_red" : ""}`} label={<p>Длина</p>}>
                                     <input
                                         type="number"
                                         className={`addcours-card__face-inp  `}
                                         placeholder="Длина"
-                                        {...register("price", validationRules.price)}
+                                        {...register("dlina", validationRules.dlina)}
                                     />
                                 </DivInput>
 
