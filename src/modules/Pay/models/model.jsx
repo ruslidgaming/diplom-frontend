@@ -65,8 +65,6 @@ class ListModel {
             })
     }
 
-<<<<<<< HEAD
-=======
     apiPayCourse(id, userId, admin_id) {
         instance.post(Student.Pay, { idCourse: id, idUser: userId })
             .then((data) => {
@@ -77,7 +75,6 @@ class ListModel {
             })
     }
 
->>>>>>> 21458cd (фывцйу)
     apiPayTariff(id, userId) {
         instance.post(Tariff.Pay, { idTariff: id, idUser: userId })
             .then((data) => {

@@ -48,10 +48,6 @@ import Testpages from "../../modules/Designer/testPages";
 // Покупка
 import Pay from "../../modules/Pay/view";
 import StidentCourses from "../../modules/Student/index";
-<<<<<<< HEAD
-
-=======
->>>>>>> 21458cd (фывцйу)
 
 export {
     Errors,

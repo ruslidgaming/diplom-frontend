@@ -231,11 +231,7 @@ function Main() {
                         </SwiperSlide>
                     </Swiper>
 
-<<<<<<< HEAD
-
-=======
                     
->>>>>>> 21458cd (фывцйу)
                     <div className="constructor__btns">
                         <button className="constructor__btn btn-prev" onClick={slideClickPrev}>
                             <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -321,13 +317,6 @@ function Main() {
                                 <div className="item-rate__list-item">
                                     <p>Статистика</p>
                                     <p>есть</p>
-<<<<<<< HEAD
-                                </div>
-                                <div className="item-rate__list-item">
-                                    <div className="item-rate__price">Стоимость</div>
-                                    <div className="item-rate__price">40 000₽</div>
-=======
->>>>>>> 21458cd (фывцйу)
                                 </div>
                             </div>
 
