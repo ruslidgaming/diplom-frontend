@@ -522,9 +522,10 @@
     font-size: 16px;
     font-weight: 500;
     line-height: prc(22, 16);
+    margin-bottom: 20px;
   }
   &__btn {
-    margin-top: 20px;
+    margin-top: auto;
   }
 }
 
@@ -1394,7 +1395,7 @@
   }
   &__items {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(4, minmax(300px, 1fr));
     gap: 20px;
   }
   &__item {
@@ -1431,11 +1432,12 @@
   &__text {
     font-size: 14px;
     font-family: var(--font-inter);
+    margin-bottom: 15px;
   }
   &__btns {
     display: flex;
     gap: 10px;
-    margin-top: 15px;
+    margin-top: auto;
   }
   &__bnt {
     font-size: 14px !important;
@@ -2552,6 +2554,23 @@
   background: #f5f5f5;
   border-radius: 20px;
 
+  &.__finished {
+    background-color: var(--clr-blue);
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    &._not {
+      opacity: 0.7;
+    }
+
+    & .item-lessons__number {
+      background-color: white;
+    }
+    & path {
+      fill: white;
+    }
+  }
+
   &__name {
     font-weight: 500;
     font-size: 18px;
@@ -2953,7 +2972,7 @@
   z-index: 1;
   color: var(--clr-black);
   position: absolute;
-  
+
   font-weight: 400;
   font-size: 20px;
 }

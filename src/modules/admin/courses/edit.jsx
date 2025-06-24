@@ -1,6 +1,6 @@
 import { observer } from "mobx-react-lite";
 import { useEffect, useState } from "react";
-import { useForm, Controller } from "react-hook-form";
+import { useForm, Controller, useWatch } from "react-hook-form";
 import DivInput from "../../../core/UIKit/input";
 import foto from "../../../assets/img/banner.png";
 import courseModal from "./models/course-modal";
@@ -31,11 +31,19 @@ function CoursesEditForm() {
         defaultValues: {
             title: "",
             price: "",
+            shirina: "",
+            dlina: "",
             cardDescription: "",
             slogan: "",
             aboutCourse: "",
         },
         mode: "onSubmit",
+    });
+
+    const [shirina, dlina] = useWatch({
+        control,
+        name: ['shirina', 'dlina'],
+        defaultValue: [0, 0]
     });
 
     useEffect(() => {
@@ -49,6 +57,10 @@ function CoursesEditForm() {
                 setValue("cardDescription", res.data['course'].mini_description)
                 setValue("slogan", res.data['course'].slogan)
                 setValue("aboutCourse", res.data['course'].description)
+                console.log(res.data)
+                setValue("shirina", res.data['course'].coordinate_x)
+                setValue("dlina", res.data['course'].coordinate_y)
+                setVH(res.data['course'].vh)
             })
             .catch(err => {
                 console.log(err)
@@ -60,9 +72,10 @@ function CoursesEditForm() {
     // Модели данных
     const [courseCards, setCourseCards] = useState([]);
     const [mentorCards, setMentorCards] = useState([]);
+    const [VH, setVH] = useState();
     const [courseImagePreview, setCourseImagePreview] = useState(null);
+    const [certificateImagePreview, setCertificateImagePreview] = useState(null);
     const [mentorImagePreviews, setMentorImagePreviews] = useState({});
-
 
 
     // Валидационные схемы
@@ -76,12 +89,17 @@ function CoursesEditForm() {
             required: "Описание обязательно",
             maxLength: { value: 150, message: "Максимум 150 символов" },
         },
+        shirina: { required: "Введите координаты" },
+        dlina: { required: "Введите координаты" },
         slogan: { required: "Слоган обязателен" },
         aboutCourse: { required: "Описание курса обязательно" },
     };
 
     const onSubmit = async (data) => {
         const formData = new FormData();
+        formData.append("shirina", data.shirina);
+        formData.append("dlina", data.dlina);
+        formData.append("vh", VH);
 
         formData.append("title", data.title);
         formData.append("price", data.price);
@@ -94,6 +112,7 @@ function CoursesEditForm() {
         data.mentorCards = mentorCards
 
         getValues("courseImage")[0] && formData.append("courseImage", getValues("courseImage")[0]);
+        getValues("certificate")[0] && formData.append("certificate", getValues("certificate")[0]);;
 
         let countImg = 0;
 
@@ -417,6 +436,99 @@ function CoursesEditForm() {
                                 ))}
                             </div>
                         </div>
+
+
+
+                        <div className="addcours__certificate">
+                            <div className="addcours__title">Добавите шаблон для <span>сертификата</span></div>
+
+                            <div className="block__certificate">
+
+                                <div className="certificate__inputs">
+
+                                    <div className="certificate__name">Вид сертификата</div>
+
+                                    <div className="certificate__type">
+                                        <div className={`certificate__type-btn _bnt ${VH == "Вертикальный" ? "_active" : ""}`} onClick={() => setVH("Вертикальный")}>Горизонтальный</div>
+                                        <div className={`certificate__type-btn _bnt ${VH == "Горизонтальный" ? "_active" : ""}`} onClick={() => setVH("Горизонтальный")}>Вертикальный</div>
+                                    </div>
+                                    <div className="certificate__razmer">
+                                        <div className="certificate__name">Координаты имени</div>
+                                        <DivInput className={`addcours__inp _certi ${errors.shirina != null ? "_red" : ""}`} label={<p>Координата-X</p>}>
+                                            <input
+                                                type="number"
+                                                className={`addcours-card__face-inp ${errors.shirina != null ? "_red" : ""}`}
+                                                placeholder="X"
+                                                {...register("shirina", validationRules.shirina)}
+                                            />
+                                        </DivInput>
+                                        <DivInput className={`addcours__inp _certi ${errors.dlina != null ? "_red" : ""}`} label={<p>Координата-Y</p>}>
+                                            <input
+                                                type="number"
+                                                className={`addcours-card__face-inp  `}
+                                                placeholder="Y"
+                                                {...register("dlina", validationRules.dlina)}
+                                            />
+                                        </DivInput>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div className="addcours-card__img _certificate">
+                                        <input
+                                            type="file"
+                                            id="cours__certificate"
+                                            style={{ display: "none" }}
+                                            accept="image/*"
+                                            {...register("certificate", {
+                                                onChange: (e) => {
+                                                    const file = e.target.files[0];
+                                                    if (file) {
+                                                        const reader = new FileReader();
+                                                        reader.onload = () => setCertificateImagePreview(reader.result);
+                                                        reader.readAsDataURL(file);
+                                                    }
+                                                }
+                                            })}
+                                        />
+                                        <label htmlFor={`cours__certificate`} className={`${VH == "Горизонтальный" ? "horizont" : "vertical"}`}>
+                                            {certificateImagePreview ? (
+
+                                                <>
+                                                    <p className="cours__certificate-name" style={{
+                                                        top: `${shirina}px `,
+                                                        left: `${dlina}px `,
+                                                    }}>Иванов Иван Иванович</p>
+                                                    <img
+                                                        className="addcours-card__face-img"
+                                                        src={certificateImagePreview}
+                                                        alt="Preview"
+                                                        style={{ objectFit: 'cover' }}
+                                                    />
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <p className="cours__certificate-name" style={{
+                                                        top: `${shirina}px `,
+                                                        left: `${dlina}px `,
+                                                    }}>Иванов Иван Иванович</p>
+                                                    <img className="addcours-card__face-img" src={`http://127.0.0.1:8000/storage/${showCourseData.certificate}`}
+                                                        style={{ objectFit: 'cover' }}
+                                                    />
+                                                </>
+                                            )}
+                                        </label>
+                                        {errors.certificate && (
+                                            <p style={{ color: "red" }}>{errors.certificate.message}</p>
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
 
                         {/* <button type="submit" className="addcours__submit" onClick={onSubmit}> */}
                         <button type="submit" className="addcours__submit" onClick={handleSubmit(onSubmit)}>

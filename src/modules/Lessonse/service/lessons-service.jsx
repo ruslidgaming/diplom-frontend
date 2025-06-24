@@ -25,3 +25,7 @@ export const apiLessonsDelete = (id) => {
 export const apiLessonsPassed = (data) => {
     return instance.post(Lessons.Passed, data)
 }
+
+export const apiSerteficate = (data) => {
+    return instance.get(Lessons.Serteficate, { params: data })
+}

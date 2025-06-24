@@ -40,6 +40,7 @@ export const Lessons = {
   Edit: '/lessons/edit',
   Delete: '/lessons/delete',
   Passed: '/lessons/passed',
+  Serteficate: '/cerf',
 }
 
 export const Tariff = {

@@ -14,7 +14,7 @@ import { toast } from "react-toastify";
 function Update() {
 
     const { user } = useAuth();
-    const { apiEditData, editData, setFinishLearn } = model;
+    const { apiEditData, editData, setFinishLearn, setSerteficate } = model;
     const [title, setTitle] = useState();
     const [modelEditor, setModelEditor] = useState();
     const [titleValid, setTitleValid] = useState(false);
@@ -55,7 +55,11 @@ function Update() {
     }, [title]);
 
     useEffect(() => {
-        apiEditData(lessonId, setLoadable);
+        if (lessonId !== "finish") {
+            apiEditData(lessonId, setLoadable);
+        } else {
+            setSerteficate(idCourse, setLoadable, user)
+        }
     }, [])
 
     useEffect(() => {

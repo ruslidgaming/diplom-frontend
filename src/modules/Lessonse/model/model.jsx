@@ -1,6 +1,7 @@
 import { makeAutoObservable } from "mobx";
-import { apiLessonsCatalog, apiLessonsCatalogStudent, apiLessonsDelete, apiLessonsUpdate } from "../service/lessons-service";
+import { apiLessonsCatalog, apiLessonsCatalogStudent, apiLessonsDelete, apiLessonsUpdate, apiSerteficate } from "../service/lessons-service";
 import { StudentFinish } from "../../Student/service";
+import { useAuth } from "../../../core/hoc/AuthProvider";
 
 
 
@@ -11,6 +12,17 @@ class Model {
     // Каталог  
     _catalogList = [];
     _title = "";
+    _serteficate = true;
+    _serteficateImg = true;
+    _endcourse = 0;
+
+    get serteficate() {
+        return this._serteficate;
+    }
+
+    get serteficateImg() {
+        return this._serteficateImg;
+    }
 
     get title() {
         return this._title;
@@ -47,7 +59,8 @@ class Model {
                             countCompl = 1
                         } else {
                             res.data.lessonsList[i].complete = 2
-                        }   
+                            this._serteficate = false
+                        }
                     }
                 }
 
@@ -95,16 +108,30 @@ class Model {
             });
     }
 
-
-
     setFinishLearn(data) {
         StudentFinish(data)
             .then(info => {
-                window.location.href = '/lessons/' + data.idCourse + "/update/" + info.data.finish;
+
+                if (info.data.finish == 'finish') {
+                    window.location.href = '/lessons/' + data.idCourse;
+                } else {
+                    window.location.href = '/lessons/' + data.idCourse + "/update/" + info.data.finish;
+                }
             })
             .catch(
                 err => console.log(err)
             )
+    }
+
+    setSerteficate(id, setLoadable, user) {
+
+        apiSerteficate({ id: id, user: user })
+            .then((data) => {
+                console.log(data)
+            })
+            .finally(() => {
+                setLoadable(false)
+            })
     }
 }
 

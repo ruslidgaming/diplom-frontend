@@ -75,6 +75,7 @@ function CoursesForm() {
 
         formData.append("shirina", data.shirina);
         formData.append("dlina", data.dlina);
+        formData.append("vh", VH);  
 
         formData.append("title", data.title);
         formData.append("price", data.price);
@@ -116,7 +117,7 @@ function CoursesForm() {
 
             const result = await response.json();
             console.log('Server response:', result);
-            // window.location.href = '/admin/courses';
+            window.location.href = '/admin/courses';
 
         } catch (error) {
             console.error('Error uploading file:', error);
