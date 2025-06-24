@@ -1,7 +1,6 @@
 import { makeAutoObservable } from "mobx";
 import { apiLessonsCatalog, apiLessonsCatalogStudent, apiLessonsDelete, apiLessonsUpdate } from "../service/lessons-service";
 import { StudentFinish } from "../../Student/service";
-import { info } from "sass";
 
 
 
