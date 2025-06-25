@@ -13,7 +13,7 @@ import { useParams } from "react-router-dom";
 function Catalog() {
     const { user } = useAuth();
     const { idCourse } = useParams();
-    const { apiLessons, apiCatalog, catalogList, serteficate, deleteId, setDelete, title } = model;
+    const { apiLessons, apiCatalog, catalogList, serteficate, deleteId, setDelete, title, goood } = model;
     const { isLoading, setLoadable } = loadableModel;
 
     useEffect(() => {
@@ -36,7 +36,11 @@ function Catalog() {
 
                     {
                         user.role == "student" ?
-                            <div></div>
+                            <div className="lessons__progress">
+                                Пройдено <span>
+                                    {goood} из {catalogList.length}
+                                </span>
+                            </div>
                             :
                             <a className="courses__add" href={`/lessons/${idCourse}/create`}>
                                 <Icon className="courses__add__icon" name={"plus"} />

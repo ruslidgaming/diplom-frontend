@@ -15,6 +15,12 @@
   align-items: center;
   gap: 10px;
 
+  &.__student {
+    & .logo__text {
+      color: var(--clr-black);
+    }
+  }
+
   &__img {
     width: 70px;
     height: 54px;
@@ -2524,7 +2530,18 @@
     font-size: 24px;
     max-width: 55%;
   }
+  &__progress {
+    font-family: "Unbounded";
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 25px;
 
+    color: #17183e;
+
+    & span {
+      font-weight: 600;
+    }
+  }
   &__add {
   }
   &__items {
@@ -2975,4 +2992,20 @@
 
   font-weight: 400;
   font-size: 20px;
+}
+
+.certificate-img {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 600px;
+  max-height: 600px;
+
+  margin: auto;
+  & img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
 }

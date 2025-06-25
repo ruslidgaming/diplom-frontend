@@ -9,12 +9,13 @@ import model from "./model/model";
 import Example from "../admin/metodisti/components/LottieAnimation";
 import loadableModel from "../../core/UIKit/loadable/Loadable";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 
 function Update() {
 
     const { user } = useAuth();
-    const { apiEditData, editData, setFinishLearn, setSerteficate } = model;
+    const { apiEditData, editData, setFinishLearn, setSerteficate, serteficateImg } = model;
     const [title, setTitle] = useState();
     const [modelEditor, setModelEditor] = useState();
     const [titleValid, setTitleValid] = useState(false);
@@ -103,52 +104,86 @@ function Update() {
         })
     };
 
+    const downloadCertificate = async () => {
+        try {
+            const response = await axios.get(`http://127.0.0.1:8000/api/lessons/serteficateDownload`, {
+                params: {
+                    path: serteficateImg
+                },
+                responseType: 'blob'
+            });
+
+            // Создаем временную ссылку для скачивания
+            const url = window.URL.createObjectURL(new Blob([response.data]));
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', serteficateImg);
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+        } catch (error) {
+            console.error('Download failed:', error);
+        }
+    }
+
 
     return (
         isLoading ?
             <Example /> :
+
             <div className="addcours">
                 <div>
+                    {serteficateImg == "" ?
+                        <>
+                            {user.role != "student"
+                                ?
+                                <div className="learing__header">
+                                    <div className="addcours__title">Редактирование урока</div>
+                                    <button className="learing__view _btn _blue" onClick={() => setShow(!show)}>{show ? "Посмотреть" : "Редактировать"}</button>
+                                </div>
+                                :
+                                <div className="learing__header">
+                                    <div className="addcours__title">Прохождение урока</div>
+                                    <div></div>
+                                </div>
 
-                    {user.role != "student"
-                        ?
-                        <div className="learing__header">
-                            <div className="addcours__title">Редактирование урока</div>
-                            <button className="learing__view _btn _blue" onClick={() => setShow(!show)}>{show ? "Посмотреть" : "Редактировать"}</button>
-                        </div>
+                            }
+
+                            {
+                                show
+                                    ?
+                                    <div>
+                                        <DivInput className="learing__inp">
+                                            <input
+                                                value={title}
+                                                onChange={e => setTitle(e.target.value)}
+                                                className="addcours-card__face-inp"
+                                                placeholder="Название"
+                                            />
+                                        </DivInput>
+
+                                        {isValid && titleValid && (<p style={{ color: "red", fontSize: "14px", textAlign: "center", margin: "0 0 20px 0" }}>Название объязательно</p>)}
+
+                                    </div>
+                                    :
+                                    <h2 className="learing__title">{title}</h2>
+                            }
+
+
+
+                            <Editor model={modelEditor} setModel={setModelEditor} show={show} />
+
+                            {isValid && modelValid && (<p style={{ color: "red", fontSize: "14px", marginTop: "10px" }}>Заполните поле описания</p>)}
+                        </>
                         :
-                        <div className="learing__header">
-                            <div className="addcours__title">Прохождение урока</div>
-                            <div></div>
+                        <div className="certificate-img">
+                            <img src={`http://127.0.0.1:8000/storage/${serteficateImg}`} alt="serteficate" />
                         </div>
-
-                    }
-
-                    {
-                        show
-                            ?
-                            <div>
-                                <DivInput className="learing__inp">
-                                    <input
-                                        value={title}
-                                        onChange={e => setTitle(e.target.value)}
-                                        className="addcours-card__face-inp"
-                                        placeholder="Название"
-                                    />
-                                </DivInput>
-
-                                {isValid && titleValid && (<p style={{ color: "red", fontSize: "14px", textAlign: "center", margin: "0 0 20px 0" }}>Название объязательно</p>)}
-
-                            </div>
-                            :
-                            <h2 className="learing__title">{title}</h2>
                     }
 
 
 
-                    <Editor model={modelEditor} setModel={setModelEditor} show={show} />
 
-                    {isValid && modelValid && (<p style={{ color: "red", fontSize: "14px", marginTop: "10px" }}>Заполните поле описания</p>)}
 
                     {user.role != "student"
                         ?
@@ -156,15 +191,22 @@ function Update() {
                             Сохранить изменения
                         </button>
                         :
-                        <button type="submit" className="addcours__submit" onClick={finishLearn}>
-                            Прошёл
-                        </button>
+                        (lessonId === "finish" ?
+                            <button type="submit" className="addcours__submit" onClick={downloadCertificate}>
+                                Скачать сертификат
+                            </button>
+                            :
+
+                            <button type="submit" className="addcours__submit" onClick={finishLearn}>
+                                Прошёл
+                            </button>)
                     }
                     <a href={`/lessons/${idCourse}`} className="addcours__submit _btn _blue">
                         Назад
                     </a>
                 </div>
             </div>
+
     );
 }
 

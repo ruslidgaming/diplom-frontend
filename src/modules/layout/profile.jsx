@@ -52,7 +52,7 @@ export default function Profile() {
     return (
         <>
             <div className="profile">
-                <HeaderProfile name={user.name} />
+                <HeaderProfile name={user.name} role={user.role} school={user.school} admin={user.admin_id} />
 
                 <div className="profile__main">
                     <div className="profile__panel panel-profile">

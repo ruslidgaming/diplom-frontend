@@ -10,14 +10,18 @@ class Model {
         makeAutoObservable(this, {}, { autoBind: true })
     }
     // Каталог  
+    _good = 0;
     _catalogList = [];
     _title = "";
     _serteficate = true;
-    _serteficateImg = true;
+    _serteficateImg = "";
     _endcourse = 0;
 
     get serteficate() {
         return this._serteficate;
+    }
+    get goood() {
+        return this._good;
     }
 
     get serteficateImg() {
@@ -61,6 +65,8 @@ class Model {
                             res.data.lessonsList[i].complete = 2
                             this._serteficate = false
                         }
+                    } else if (res.data.lessonsList[i].complete == 1) {
+                        this._good += 1
                     }
                 }
 
@@ -127,7 +133,7 @@ class Model {
 
         apiSerteficate({ id: id, user: user })
             .then((data) => {
-                console.log(data)
+                this._serteficateImg = data.data.url
             })
             .finally(() => {
                 setLoadable(false)

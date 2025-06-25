@@ -2,15 +2,23 @@ import { observer } from "mobx-react-lite";
 import logo from "../../../assets/img/logo.svg"
 import { Link } from "react-router-dom";
 
-export const HeaderProfile = observer(({ name }) => {
+export const HeaderProfile = observer(({ name, role, school, admin }) => {
+
     return <>
         <header className="profile__header header-profile">
-            <Link to="/" className="header-profile__logo logo">
-                <div className="logo__img">
-                    <img src={logo} alt="logo" />
-                </div>
-                <p className="logo__text">ФЕНЕК</p>
-            </Link>
+
+            {role != "student" ?
+                <Link to="/" className="header-profile__logo logo">
+                    <div className="logo__img">
+                        <img src={logo} alt="logo" />
+                    </div>
+                    <p className="logo__text">ФЕНЕК</p>
+                </Link>
+                :
+                <Link to={`student/${admin}/login`} className="header-profile__logo logo __student">
+                    <p className="logo__text">{school}</p>
+                </Link>
+            }
 
 
             <div className="header-profile__user">
