@@ -41,7 +41,7 @@ class StudModel {
     endCatalog(id, setLoadable) {
         StudentEnd()
             .then(x => {
-                this._catalog = x.data
+                this._catalog = x.data.courses
             })
             .catch(err => {
                 console.log(err)
