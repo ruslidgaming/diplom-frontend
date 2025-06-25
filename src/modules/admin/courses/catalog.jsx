@@ -72,7 +72,7 @@ function Courses() {
             <div className="courses">
                 <div className="courses__header">
                     <DivInput className={`search`} >
-                        <input type="text" onChange={(e) => setSearch(e.target.value)} value={search} placeholder="Название училища" />
+                        <input type="text" onChange={(e) => setSearch(e.target.value)} value={search} placeholder="Название курса" />
 
                         <div className="search__icon">
                             <Icon name={"search"} />
